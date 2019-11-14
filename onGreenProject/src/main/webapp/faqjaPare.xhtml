@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Faqja e Pare - AgroPrice</title>
+	<h:outputStylesheet library="css" name="faqjaPare.css" />
+</h:head>
+<h:body styleClass="fullContent">
+<h:form>
+<h:panelGrid columns="5" style="margin-left: auto;
+	margin-right: auto;">
+ <p:commandButton value="HOME" styleClass="toolbarButtons" 
+  icon="fa fa-home" action="faqjaPare.xhtml"/>
+ <p:commandButton value="INFORMACION" styleClass="toolbarButtons"
+ icon="fa fa-info" onclick="PF('dlg1').show();"/>
+<p:graphicImage value="/resources/images/LogoAgroPrice.jpg" styleClass="centerimg" 
+  style="width:100px;height:100px;"/>
+   <p:commandButton value="LOGOHU" styleClass="toolbarButtons"
+   icon="fa fa-sign-in"/>
+    <p:commandButton value="REGJISTROHU" styleClass="toolbarButtons"
+    icon="fa fa-registered"/>
+  </h:panelGrid>
+<p:graphicImage value="/resources/images/Agri3.jpg" styleClass="centerimg" 
+   style="width:900px;height:550px;" />
+   <br></br>
+   <h:panelGrid columns="2" styleClass="ourLooks">
+			<p:graphicImage value="/resources/images/AgriTechno.jpg" 
+				styleClass="imageOnPanel" />
+			<h:outputText
+				value="Ne sjellim teknologjinë &lt;br /&gt; 
+		 për tu informuar më shumë rreth &lt;br /&gt; 
+		 agrokulturës ne Shqipëri."
+				escape="false" styleClass="labelOnPanel"></h:outputText>
+		</h:panelGrid>
+	<br></br>
+	<br></br>
+	<h:panelGrid columns="2" style="margin-left: auto;
+	margin-right: auto;" cellpadding="20">
+	<p:graphicImage value="/resources/images/stats1.PNG"></p:graphicImage>
+	<p:graphicImage value="/resources/images/stats3.PNG"></p:graphicImage>
+	</h:panelGrid>
+	<p:graphicImage value="/resources/images/stats2.PNG" 
+	 styleClass="centerimg"></p:graphicImage>
+	 <br></br>
+	 <br></br>
+</h:form>
+<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+<p:dialog header="Informacion"
+		styleClass="dialog" widgetVar="dlg1" showEffect="explode" height="500">
+		<p:graphicImage value="/resources/images/dialogImage.jpg"/>
+	</p:dialog>
+</h:body>
+</html>

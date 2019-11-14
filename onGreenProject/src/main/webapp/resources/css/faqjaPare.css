@@ -1,0 +1,71 @@
+.centerimg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fullContent {
+         background-color: #ffc488; 
+         /*            background-color: #b0ffb0; */
+}
+
+.toolbarButtons{
+	background-color:#ffdbb7;
+	margin-top: 10px;
+	font-size: 18px !important;
+	border: none;
+}
+
+.ourLooks {
+	margin: 0 auto;
+	background-color: #80c651;
+	width: 40%;
+	height : 200px;
+	text-align:center;
+}
+
+.imageOnPanel{
+  height: 160px;
+  width:70%;	
+  margin-right: 100px;
+  margin-left: 20px;
+}
+
+.labelOnPanel{
+	padding-right:20px;
+	font-style: italic;
+	font-size: x-large;
+	font-variant: small-caps;
+	color: black;
+}
+
+.centeredFooterBar{
+	position: fixed; bottom : 0px;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	color: white !important;
+	background: #ffc488 !important;
+	margin-bottom: 0 !important;
+	width: 100% !important;
+	font-size: 13px !important;
+	font-weight: bold !important;
+	padding-left: 40% !important;
+	bottom: 0px;
+}
+
+.ui-dialog .ui-dialog-titlebar{
+	color: white;
+}
+
+.ui-dialog .ui-dialog-titlebar{
+	background-color: #80c651;
+}
+
+.ui-dialog .ui-dialog-titlebar-close, .ui-icon-closethick {
+    background-color: white;
+    width: 16px;
+}
+
+.ui-dialog-titlebar-close {
+  background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_888888_256x240.png") repeat scroll -93px -127px rgba(0, 0, 0, 0);
+}
