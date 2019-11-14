@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+   <h:head>
+	<title>Logohu</title>
+   <h:outputStylesheet library="css" name="loginAndRegister.css"/>
+   <style>               
+        .Bimage{background-image:url("#{resource['images:AgriLogin2.jpg']}");
+        background-size:100%;
+    background-repeat: no-repeat; 
+	}
+        </style>  
+   </h:head>
+   <h:body styleClass="Bimage">
+  <h:form styleClass="center" id="loginForm">
+        <p:growl id="growl" sticky="false" time="3000"/>
+        <h:graphicImage value="/resources/images/user1.jpg" styleClass="centerimg"
+        width = "80" height = "80"/>
+<br/>
+        <h:panelGrid columns="1">
+        <p:outputLabel value="Logohu ne llogarine tende" styleClass="enterMsg">
+        </p:outputLabel><br/>
+            <p:inputText id="username" value="#{loginBean.userModel.username}"
+             placeholder= "Username " required = "true"
+             requiredMessage="Username duhet plotesuar!"/>
+             <br ></br>
+            <p:password id="password" value="#{loginBean.userModel.password}"
+            placeholder= "Fjalekalimi" required = "true"
+             requiredMessage="Fjalekalimi duhet plotesuar!"/>
+        </h:panelGrid><br/>
+        <p:commandButton id="loginButton" styleClass="button"
+        value="Logohu" update="loginForm" action="#{loginBean.verifyLogin}"
+        actionListener="#{userLoggedinBean.UserLoggedIn}">
+        <f:attribute name="username" value="#{loginBean.userModel.username}"/>
+        </p:commandButton>
+        <p:commandLink id="back" action="#{firstPageBean.goToHome}" immediate="true"
+         styleClass="backLink" style="margin-left:27%;">
+         <h:outputText value="Prapa" styleClass="labelSignUp" />
+         </p:commandLink>
+        <br/>
+        <br/>
+        <p:outputLabel value="Nuk je i rregjistruar?" styleClass="signUp"></p:outputLabel>
+        <p:commandLink id="signup"  action="#{firstPageBean.goToRegister}" 
+        immediate="true" style="margin-right:20px;">
+        <h:outputText value="Regjistrohu" styleClass="labelSignUp" />
+    </p:commandLink>
+    <br/>
+</h:form>
+   </h:body>
+ </html>
+   

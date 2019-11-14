@@ -11,19 +11,10 @@
 </h:head>
 <h:body styleClass="fullContent">
 <h:form>
-<h:panelGrid columns="5" style="margin-left: auto;
-	margin-right: auto;">
- <p:commandButton value="HOME" styleClass="toolbarButtons" 
-  icon="fa fa-home" action="faqjaPare.xhtml"/>
- <p:commandButton value="INFORMACION" styleClass="toolbarButtons"
- icon="fa fa-info" onclick="PF('dlg1').show();"/>
-<p:graphicImage value="/resources/images/LogoAgroPrice.jpg" styleClass="centerimg" 
-  style="width:100px;height:100px;"/>
-   <p:commandButton value="LOGOHU" styleClass="toolbarButtons"
-   icon="fa fa-sign-in"/>
-    <p:commandButton value="REGJISTROHU" styleClass="toolbarButtons"
-    icon="fa fa-registered"/>
-  </h:panelGrid>
+<ui:insert name="header">
+		<ui:include src="/templates/headerFaqjaPare.xhtml"></ui:include>
+	</ui:insert>
+	<br></br>
 <p:graphicImage value="/resources/images/Agri3.jpg" styleClass="centerimg" 
    style="width:900px;height:550px;" />
    <br></br>
@@ -51,7 +42,7 @@
 <ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>
-<p:dialog header="Informacion"
+<p:dialog header="Informacion" resizable="false"
 		styleClass="dialog" widgetVar="dlg1" showEffect="explode" height="500">
 		<p:graphicImage value="/resources/images/dialogImage.jpg"/>
 	</p:dialog>

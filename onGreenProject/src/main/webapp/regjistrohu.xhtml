@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Regjistrohu</title>
+	<h:outputStylesheet library="css" name="loginAndRegister.css" />
+	<style>               
+        .Bimage{background-image:url("#{resource['images:AgriRegister.jpg']}");
+        background-size:100%;
+    background-repeat: no-repeat; 
+    background-position: center top;
+	}
+        </style>  
+</h:head>
+<h:body  styleClass="Bimage">
+	<h:form styleClass="signUpForm" id="registerForm">
+		<p:growl id="growl" sticky="false" life="2000"/>
+		 <h:graphicImage value="/resources/images/user1.jpg" styleClass="centerimg"
+        width = "80" height = "80"/>
+		<br></br>
+		<h:panelGrid columns="2" cellpadding="5">
+			<p:inputText value="#{userResourceBean.userModel.firstname}" required="true"
+				id="firstname" label="Emri" placeholder="Emri"
+				requiredMessage="Emri duhet plotesuar !"
+				validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
+				<f:validateLength minimum="3" maximum="45" />
+			</p:inputText>
+			<p:message for="firstname" display="icon" />
+
+			<p:inputText id="lastname" value="#{userResourceBean.userModel.lastname}"
+				placeholder="Mbiemri" required="true" label="Mbiemri"
+				requiredMessage="Mbiemri duhet plotesuar !"
+				validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
+				<f:validateLength minimum="3" maximum="45" />
+			</p:inputText>
+			<p:message for="lastname" display="icon" />
+
+			<p:inputText id="username" value="#{userResourceBean.userModel.username}"
+				placeholder="Username" required="true" label="Username"
+				requiredMessage="Username duhet plotesuar !"
+				validatorMessage="Username duhet te kete me shume se 3 dhe me pak se 45 karaktere">
+				<f:validateLength minimum="4" maximum="45" />
+			</p:inputText>
+			<p:message for="username" display="icon" />
+
+			<p:inputText id="password" value="#{userResourceBean.userModel.password}"
+				placeholder="Fjalekalimi" required="true" label="Fjalekalimi"
+				requiredMessage="Fjalekalimi duhet plotesuar !"
+				validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere">
+				<f:validateLength minimum="8" maximum="45" />
+			</p:inputText>
+			<p:message for="password" display="icon" />
+
+			<p:inputText id="address" value="#{userResourceBean.userModel.address}"
+				placeholder="Adresa" required="true" label="Adresa"
+				requiredMessage="Address duhet plotesuar !"
+				validatorMessage="Adresa duhet te kete me pak se 45 karaktere">
+				<f:validateLength maximum="45" />
+			</p:inputText>
+			<p:message for="address" display="icon" />
+
+			<p:inputText id="email" value="#{userResourceBean.userModel.email}"
+				placeholder="Email" required="true" label="Email"
+				requiredMessage="Email duhet plotesuar !"
+				validatorMessage="Email nuk eshte i sakte.">
+				<f:validateRegex
+					pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</p:inputText>
+			<p:message for="email" display="icon" />
+
+			<p:inputText id="mobile" value="#{userResourceBean.userModel.mobile}"
+				placeholder="Phone number(+355)" required="true" label="Nr.Cel : +355"
+				requiredMessage="Nr.Cel duhet plotesuar !"
+				validatorMessage="Ju lutem shkruani nje numer te sakte (fillon me +355)">
+				 <f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />
+			</p:inputText>
+			<p:message for="mobile" display="icon" />
+			<p:commandButton id="register" styleClass="button" value="Regjistrohu"
+			update="registerForm" action="#{userResourceBean.addUser}">
+		</p:commandButton>
+		<br> </br>
+		<p:outputLabel value="Ndryshuat mendje?" styleClass="signUp"></p:outputLabel>
+		<p:commandLink action="#{firstPageBean.goToHome}" ajax="false"
+			immediate="true" styleClass="link">
+			<h:outputText value="Prapa" styleClass="labelCancel" />
+		</p:commandLink>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

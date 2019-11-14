@@ -69,3 +69,42 @@
 .ui-dialog-titlebar-close {
   background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_888888_256x240.png") repeat scroll -93px -127px rgba(0, 0, 0, 0);
 }
+
+
+.ui-widget-header {
+	background: #80c651 !important;
+}
+
+.ui-menuitem-text {
+	padding-right: 100px !important;
+}
+
+.ui-widget-header .ui-icon {
+	visibility: hidden !important;
+}
+
+.ui-menuitem-text {
+	font-size: 14px;
+	font-family: "Arial" !important;
+	color: white;
+	text-align: center !important;
+}
+
+.ui-widget-header a {
+	color: white !important;
+	text-shadow: none;
+	font-size: 15px !important;
+	text-decoration: none;
+}
+
+.ui-breadcrumb {
+	width : 100%;
+	position: fixed;
+	padding-left: 25% !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	margin-top: -9px !important;
+	margin-left: -8px !important;
+	margin-right: -8px !important;
+	border: none;
+}
