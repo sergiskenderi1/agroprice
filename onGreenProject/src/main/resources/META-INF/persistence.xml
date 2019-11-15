@@ -6,8 +6,17 @@
 	version="2.1">
 	<persistence-unit name="PERSISTENCE" transaction-type="RESOURCE_LOCAL"> 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>entity.User</class>
+		<class>entity.NjesiMatese</class>
+		<class>entity.Produkt</class>
+		<class>entity.ProduktNeTreg</class>
+		<class>entity.ProduktRezervuar</class>
+		<class>entity.Rezervim</class>
+		<class>entity.Roli</class>
+		<class>entity.Status</class>
+		<class>entity.Tregu</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/onGreen" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/agroprice" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />
