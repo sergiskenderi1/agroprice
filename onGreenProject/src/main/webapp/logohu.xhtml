@@ -28,14 +28,15 @@
              placeholder= "Username " required = "true"
              requiredMessage="Username duhet plotesuar!"/>
              <br ></br>
-            <p:password id="password" value="#{loginBean.userModel.password}"
+            <p:password id="password" value="#{loginBean.userModel.fjalekalimi}"
             placeholder= "Fjalekalimi" required = "true"
              requiredMessage="Fjalekalimi duhet plotesuar!"/>
         </h:panelGrid><br/>
         <p:commandButton id="loginButton" styleClass="button"
         value="Logohu" update="loginForm" action="#{loginBean.verifyLogin}"
-        actionListener="#{userLoggedinBean.UserLoggedIn}">
-        <f:attribute name="username" value="#{loginBean.userModel.username}"/>
+        actionListener="#{userLoggedinBean.UserLoggedIn}"
+        >
+        <f:attribute name="username" value="#{loginBean.userModel.username}"/> 
         </p:commandButton>
         <p:commandLink id="back" action="#{firstPageBean.goToHome}" immediate="true"
          styleClass="backLink" style="margin-left:27%;">

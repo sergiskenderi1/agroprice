@@ -25,7 +25,7 @@
         width = "80" height = "80"/>
 		<br></br>
 		<h:panelGrid columns="2" cellpadding="5">
-			<p:inputText value="#{userResourceBean.userModel.firstname}" required="true"
+			<p:inputText value="#{userResourceBean.userModel.emri}" required="true"
 				id="firstname" label="Emri" placeholder="Emri"
 				requiredMessage="Emri duhet plotesuar !"
 				validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
@@ -33,7 +33,7 @@
 			</p:inputText>
 			<p:message for="firstname" display="icon" />
 
-			<p:inputText id="lastname" value="#{userResourceBean.userModel.lastname}"
+			<p:inputText id="lastname" value="#{userResourceBean.userModel.mbiemri}"
 				placeholder="Mbiemri" required="true" label="Mbiemri"
 				requiredMessage="Mbiemri duhet plotesuar !"
 				validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
@@ -49,7 +49,7 @@
 			</p:inputText>
 			<p:message for="username" display="icon" />
 
-			<p:inputText id="password" value="#{userResourceBean.userModel.password}"
+			<p:inputText id="password" value="#{userResourceBean.userModel.fjalekalimi}"
 				placeholder="Fjalekalimi" required="true" label="Fjalekalimi"
 				requiredMessage="Fjalekalimi duhet plotesuar !"
 				validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere">
@@ -57,7 +57,7 @@
 			</p:inputText>
 			<p:message for="password" display="icon" />
 
-			<p:inputText id="address" value="#{userResourceBean.userModel.address}"
+			<p:inputText id="address" value="#{userResourceBean.userModel.adresa}"
 				placeholder="Adresa" required="true" label="Adresa"
 				requiredMessage="Address duhet plotesuar !"
 				validatorMessage="Adresa duhet te kete me pak se 45 karaktere">
@@ -74,7 +74,7 @@
 			</p:inputText>
 			<p:message for="email" display="icon" />
 
-			<p:inputText id="mobile" value="#{userResourceBean.userModel.mobile}"
+			<p:inputText id="mobile" value="#{userResourceBean.userModel.celular}"
 				placeholder="Phone number(+355)" required="true" label="Nr.Cel : +355"
 				requiredMessage="Nr.Cel duhet plotesuar !"
 				validatorMessage="Ju lutem shkruani nje numer te sakte (fillon me +355)">

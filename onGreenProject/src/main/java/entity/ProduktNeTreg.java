@@ -25,6 +25,8 @@ public class ProduktNeTreg {
 	@ManyToOne
 	@JoinColumn(name = "idProdukt")
 	private Produkt produkt;
+	@ManyToOne
+	@JoinColumn(name = "idNjesiMatese")
 	private NjesiMatese njesiMatese;
 	@ManyToOne
 	@JoinColumn(name = "treguId")
