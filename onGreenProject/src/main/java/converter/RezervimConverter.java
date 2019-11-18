@@ -7,7 +7,7 @@ public class RezervimConverter {
 
 	public static Rezervim convertToEntity(RezervimModel model) {
 		Rezervim entity = new Rezervim();
-		entity.setId(model.getId());
+		entity.setIdrezervim(model.getId());
 		entity.setCmimiTotal(model.getCmimiTotal());
 		entity.setData(model.getData());
 		entity.setMesazhi(model.getMesazhi());
@@ -19,7 +19,7 @@ public class RezervimConverter {
 	
 	public static RezervimModel convertToModel(Rezervim entity) {
 		RezervimModel model = new RezervimModel();
-		model.setId(entity.getId());
+		model.setId(entity.getIdrezervim());
 		model.setCmimiTotal(entity.getCmimiTotal());
 		model.setData(entity.getData());
 		model.setMesazhi(entity.getMesazhi());

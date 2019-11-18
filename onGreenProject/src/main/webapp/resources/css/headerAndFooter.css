@@ -1,0 +1,74 @@
+.ui-widget-header {
+	background: #4787B8 !important;
+	position: fixed;
+}
+
+body {
+	height: 100%;
+}
+
+.ui-breadcrumb ul li a.ui-icon-home {
+	visibility: hidden !important;
+}
+
+.ui-menuitem-text {
+	padding-right: 80px !important;
+	padding-left: 20px;
+}
+
+.ui-widget-header .ui-icon {
+	visibility: hidden !important;
+}
+
+.ui:hover {
+	text-decoration: underline;
+}
+
+.ui-menuitem-text {
+	font-size: 12px;
+	font-family: "Arial" !important;
+	color: white;
+	text-align: center !important;
+}
+
+#footerBar {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	background: #4787B8 !important;
+	margin-left: -6px !important;
+	margin-right: -6px !important;
+	position: fixed;
+	bottom: 0px;
+	width: 100% !important;
+}
+
+.centeredFooterBar {
+	position: fixed; bottom : 0px;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	color: white !important;
+	background: #4787B8 !important;
+	margin-bottom: 0 !important;
+	width: 100% !important;
+	font-size: 13px !important;
+	font-weight: bold !important;
+	padding-left: 40% !important;
+	bottom: 0px;
+}
+
+.ui-widget-header a {
+	color: white !important;
+	text-shadow: none;
+	font-size: 15px !important;
+	text-decoration: none;
+}
+
+.ui-breadcrumb {
+	width : 100%;
+	padding-left: 160px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	margin-top: -9px !important;
+	margin-left: -8px !important;
+	margin-right: -8px !important;
+}

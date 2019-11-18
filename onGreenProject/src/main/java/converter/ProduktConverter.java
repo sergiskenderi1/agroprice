@@ -7,7 +7,7 @@ public class ProduktConverter {
 
 	public static Produkt convertToProduktEntity(ProduktModel model) {
 		Produkt entity = new Produkt();
-		entity.setId(model.getId());
+		entity.setIdprodukt(model.getId());
 		entity.setEmri(model.getEmri());
 		entity.setCmimi(model.getCmimi());
 		entity.setValid(model.isValid());
@@ -16,7 +16,7 @@ public class ProduktConverter {
 	
 	public static ProduktModel convertToProduktModel(Produkt entity) {
 		ProduktModel model = new ProduktModel();
-		model.setId(entity.getId());
+		model.setId(entity.getIdprodukt());
 		model.setEmri(entity.getEmri());
 		model.setCmimi(entity.getCmimi());
 		model.setValid(entity.isValid());

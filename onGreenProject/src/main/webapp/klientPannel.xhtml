@@ -1,17 +1,123 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-   <h:head>
-	<title>Logohu</title>
-   <h:outputStylesheet library="css" name="loginAndRegister.css"/>
- 
-   </h:head>
-   <h:body>
-   <h:outputLabel>KLIENT</h:outputLabel>
-   </h:body>
-   
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Klient pannel</title>
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+	<h:outputStylesheet library="css" name="profilAdmin.css" />
+</h:head>
+<h:body styleClass="fullContent">
+	<ui:insert name="header">
+		<ui:include src="/templates/headerKlient.xhtml"></ui:include>
+	</ui:insert>
+	<p:panelGrid columns="1" styleClass="main">
+		<br />
+		<p:panelGrid columns="2" styleClass="mainPannel">
+			<h:panelGroup layout="block" styleClass="pannelFirst">
+				<h:graphicImage value="/resources/images/employeePannel.png" />
+				<br />
+				<h:outputText value="Profili im" styleClass="msg" />
+				<br />
+				<h:outputText value="Emri/Mbiemri:" styleClass="line" />
+				<h:outputText
+					value="#{userLoggedinBean.userModel.emri} 
+					#{userLoggedinBean.userModel.mbiemri}" />
+				<br />
+				<h:outputText value="Email:" styleClass="line" />
+				<h:outputText value="#{userLoggedinBean.userModel.email}" />
+				<br />
+				<h:outputText value="Nr.Celular:" styleClass="line" />
+				<h:outputText value="#{userLoggedinBean.userModel.celular}" />
+				<br />
+				<h:form columns="2">
+				<p:growl id="growl" sticky="false" time="4000"/>
+					<p:commandButton value="Dilni"
+						action="#{userLoggedinBean.logout}" styleClass="logOut"
+						icon="fa fa-sign-out" />
+
+					<p:commandButton value="Ndrysho Profilin" styleClass="logOut" 
+					action="editClientProfile.xhtml?faces-redirect=true"
+					icon="fa fa-edit"/>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup layout="block" styleClass="pannelSecond">
+				<br />
+				<br />
+				<h:outputText
+					value="Mireseerdhet #{userLoggedinBean.userModel.emri}"
+					styleClass="welcome" />
+				<br />
+				<h:outputText value="Ushqimi eshte forma primare e kenaqesise"
+					styleClass="welcome2" />
+				<br />
+				<br />
+				<h:outputText value="Ju urojme nje dite te kendshme..." styleClass="welcome1" />
+				<br />
+				<h:graphicImage value="/resources/images/products.png"
+					styleClass="products" />
+				<br />
+			</h:panelGroup>
+		</p:panelGrid>
+		<br />
+		<p:panelGrid columns="3" styleClass="secondPannel">
+			<h:panelGroup layout="block" styleClass="productPannel">
+				<br />
+				<br />
+				<h:outputText value="Krijoni nje rezervim" styleClass="manage" />
+				<br />
+				<h:outputText value="Ketu ju mund te krijoni nje rezervim.(ndryshoni/fshini)"
+					styleClass="line-msg" />
+				<br />
+				<br />
+				<h:form>
+					<p:commandButton value="Krijo" icon="fa fa-cart-plus"
+                     action="#{orderResourceBean.moveToManageOrder(userLoggedinBean.userModel.id)}"
+					styleClass="buttonStyle">
+					</p:commandButton>
+				</h:form>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" styleClass="employeePannel">
+				<br />
+				<br />
+				<h:outputText value="Rezervime Ne Pritje" styleClass="manage" />
+				<br />
+				<h:outputText value="Ketu mund te shikoni te gjithe rezervimet ne pritje."
+					styleClass="line-msg" />
+				<br />
+				<br />
+				<h:form>
+					<p:commandButton value="Rezervime ne pritje" icon="fa fa-list-ul"
+					action="waitingOrders.xhtml?faces-redirect=true"	styleClass="buttonStyle" />
+				</h:form>
+				<br />
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" styleClass="storePannel">
+				<br />
+				<br />
+				<h:outputText value="Rezervimet e mia" styleClass="manage" />
+				<br />
+				<h:outputText value="Ketu mund te shikoni te gjitha rezervimet tuaja."
+					styleClass="line-msg" />
+				<br />
+				<br />
+				<h:form>
+					<p:commandButton value="Rezervime" icon="fa fa-list-ul"
+						styleClass="buttonStyle" action="receivedOrders.xhtml?faces-redirect=true"/>
+				</h:form>
+				<br />
+			</h:panelGroup>
+		</p:panelGrid>
+		<br />
+	</p:panelGrid>
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+</h:body>
+
 </html>

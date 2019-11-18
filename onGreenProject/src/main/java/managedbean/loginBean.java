@@ -54,11 +54,11 @@ public class loginBean {
 	public String verifyLogin() {
 		if (userService.verifyLogin(userModel)) {
 			this.userModel = userService.getUserByUsername(userModel.getUsername());
-			if (userModel.getRole().getId() == 1) {
+			if (userModel.getRole().getIdroli() == 1) {
 				return "adminPannel.xhtml?faces-redirect=true";
-			} else if (userModel.getRole().getId() == 2) {
+			} else if (userModel.getRole().getIdroli() == 2) {
 				return "shitesPannel.xhtml?faces-redirect=true";
-			} else if (userModel.getRole().getId() == 3) {
+			} else if (userModel.getRole().getIdroli() == 3) {
 				return "klientPannel.xhtml?faces-redirect=true";
 			} else {
 				return null;

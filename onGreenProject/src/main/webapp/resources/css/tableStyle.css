@@ -1,0 +1,189 @@
+.storeMsg {
+	color: #4f4f4f !important;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+	font-weight: bold;
+	font-size: 13px !important;
+	margin-bottom: 13px !important;
+}
+
+.ui-datatable table {
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.ui-inputfield{
+	box-shadow: none !important;
+	
+}
+
+.tableStore {
+	margin-left: 200px !important;
+	margin-right: 200px !important;
+}
+
+.tableList {
+	margin-left: 16.2% !important;
+	margin-right: 15% !important;
+}
+
+.ui-button .ui-button-text {
+	display: block;
+	font-size: 13px !important;
+}
+
+.ui-widget .ui-widget {
+	font-size: 10px !important;
+}
+
+.ui-column-title {
+	font-size: 15px !important;
+	text-align: left !important;
+}
+
+.ui-datatable thead th {
+	text-align: left !important;
+}
+.searchFilter{
+	padding-left:250px !important;
+}
+.editButton {
+	background: #008CBA !important;
+	margin-right: 35px !important;
+	margin-top: -2px !important;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
+.buttonDelete {
+	background: #BA4141 !important;
+	margin-top: -2px !important;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
+
+.newButton {
+	background: #008CBA !important;
+	margin-left: 25px !important;
+	color: white !important;
+	font-weight: normal !important;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+	cursor: pointer;
+}
+
+.takeOrderButton {
+	font-weight: normal !important;
+	background: #009900 !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 10px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
+.doneOrderButton{
+	font-weight: normal !important;
+	background: #BA4141 !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 10px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+	
+}
+
+
+.msg {
+	padding-left: 30px;
+	font-family: "Arial Black";
+	color: black;
+	font-size: 25px;
+	text-align: center;
+}
+
+.ui-datatable {
+	text-align: left !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	background-color: #333333 !important;
+}
+
+.ui-widget-header .ui-icon {
+	visibility: visible !important;
+	font-color: #ffffff !important;
+}
+
+.table-column1 {
+	width: 10px !important;
+}
+
+.table-column2 {
+	width: 70px !important;
+}
+
+.table-column3{
+	width: 120px !important;
+}
+.table-column4{
+	width: 120px !important;
+}
+
+.table-column7{
+	width: 130px !important;
+}
+
+.headerStore {
+	border: 1px solid #333333 !important;
+	background-color: #efefef !important;
+}
+
+.ui-datatable tbody td {
+	font-size: 13px !important;
+}
+
+.mainTableHeader {
+	margin-top: 5px !important;
+	font-size: 15px !important;
+}
+
+.ui-datatable .ui-datatable-header {
+	border-bottom: 0 none;
+	height: 25px !important;
+	padding-top: 10px !important;
+	padding-bottom: 20px !important;
+	background-color: #f3f3f3 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	color: #ffffff !important;
+}
+
+.ui-widget .ui-widget {
+	font-size: 13px !important;
+}
+.table-columnID{
+	width: 30px !important;
+}
+.table-columnName{
+	width: 100px !important;
+}
+.table-columnSurname{
+	width: 120px !important;
+	
+}
+.table-columnManage{
+	width: 200px !important;
+	
+}
+.columnOrderID{
+	width:30px;
+}

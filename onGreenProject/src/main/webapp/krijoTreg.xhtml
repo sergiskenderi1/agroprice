@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Krijo Nje Treg</title>
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="tableStyle.css" />
+</h:head>
+
+<h:body styleClass="fullContent">
+
+	<h:form styleClass="formNew" id="new">
+		<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
+		<br />
+		<h:outputText value="Krijo Nje Treg Te Ri" styleClass="title"></h:outputText>
+		<br />
+		<p:separator styleClass="headerSeparator" />
+		<br />
+
+		<p:outputLabel styleClass="inputField" value="Emri i Tregut"></p:outputLabel>
+		<br />
+		<p:inputText value="#{tregBean.tregModel.emri}"
+			required="true" requiredMessage="Emri duhet plotesuar."
+			validatorMessage="Emri duhet te kete nga 3 - 30 karaktere.">
+			<f:validateLength minimum="3" maximum="30"></f:validateLength>
+		</p:inputText>
+		<br />
+		<br />
+
+		<p:outputLabel styleClass="inputField" value="Adresa"></p:outputLabel>
+		<br />
+		<p:inputText value="#{tregBean.tregModel.adresa}"
+			required="true" requiredMessage="Adresa duhet plotesuar."
+			validatorMessage="Adresa duhet te kete nga 5-35 karaktere.">
+			<f:validateLength minimum="5" maximum="35"></f:validateLength>
+		</p:inputText>
+		<br />
+		<br />
+
+		<p:outputLabel styleClass="inputField" value="Celular"></p:outputLabel>
+		<br />
+
+		<p:inputText value="#{tregBean.tregModel.celular}"
+			required="true" requiredMessage="Numri duhet plotesuar."
+			validatorMessage="Numri nuk ekziston . Ju lutem venodseni ne formatin: +355 6x xx xx xxx">
+			<f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />
+		</p:inputText>
+		<br />
+		<br />
+		<p:commandButton actionListener="#{tregBean.krijoTreg}"
+			value="Ruaj Tregun." update=":new" styleClass="saveButton"></p:commandButton>
+		<br />
+	</h:form>
+
+</h:body>
+</html>

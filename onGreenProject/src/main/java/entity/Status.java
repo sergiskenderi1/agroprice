@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Status {
 
 	@Id
-	@Column(name = "idstatus")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String emri;

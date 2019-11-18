@@ -15,7 +15,7 @@ public class Roli {
 	@Id
 	@Column(name = "idroli")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int idroli;
 	private String emri;
 	private String pershkrim;
 	
@@ -23,13 +23,16 @@ public class Roli {
 		
 	}
 
-	public int getId() {
-		return id;
+	public int getIdroli() {
+		return idroli;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	public void setIdroli(int idroli) {
+		this.idroli = idroli;
 	}
+
+
 
 	public String getEmri() {
 		return emri;

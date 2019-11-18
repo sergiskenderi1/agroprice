@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet
+	name="webjars/font-awesome/4.4.0/css/font-awesome.css" />
+<title>Employee header</title>
+</head>
+<body>
+
+	<ui:composition>
+	<h:form>
+		<p:breadCrumb styleClass="centeredMenuBar">
+			<p:menuitem value="Categories" url="#" icon="fa-folder-open" />
+			<p:menuitem value="HOME " url="employeePannel.xhtml" />
+			<p:menuitem value="ALL ORDERS " action="#{orderResourceBean.moveToTotalOrdersPannel(userLoggedinBean.userModel.store.id)}" />
+			<p:menuitem value="PREPARING ORDERS " action="#{orderResourceBean.moveToPreparingOrdersPannel(userLoggedinBean.userModel.store.id)}" />
+			<p:menuitem value="DILNI " url="login.xhtml" />
+
+		</p:breadCrumb>
+		</h:form>
+	</ui:composition>
+	
+</body>
+</html>

@@ -19,7 +19,7 @@ public class Tregu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idtregu")
-	private int id;
+	private int idtregu;
 	private String emri;
 	private String adresa;
 	private String celular;
@@ -33,12 +33,17 @@ public class Tregu {
 		
 	}
 	
-	public int getId() {
-		return id;
+	
+	public int getIdtregu() {
+		return idtregu;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setIdtregu(int idtregu) {
+		this.idtregu = idtregu;
 	}
+
+
 	public String getEmri() {
 		return emri;
 	}

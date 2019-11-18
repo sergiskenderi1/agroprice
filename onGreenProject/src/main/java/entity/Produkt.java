@@ -13,8 +13,8 @@ public class Produkt {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "idprodukt")
+	private Integer idprodukt;
 	private String emri;
 	private float cmimi;
 	private boolean valid;
@@ -23,13 +23,23 @@ public class Produkt {
 		
 	}
 
-	public Integer getId() {
-		return id;
+	/**
+	 * @return the idprodukt
+	 */
+	public Integer getIdprodukt() {
+		return idprodukt;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+
+
+	/**
+	 * @param idprodukt the idprodukt to set
+	 */
+	public void setIdprodukt(Integer idprodukt) {
+		this.idprodukt = idprodukt;
 	}
+
+
 
 	public String getEmri() {
 		return emri;

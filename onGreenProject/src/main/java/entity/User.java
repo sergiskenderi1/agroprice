@@ -17,7 +17,7 @@ public class User {
 	@Id
 	@Column(name = "iduseri")
 	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-	private Integer id;
+	private Integer iduseri;
 	private String username;
 	private String fjalekalimi;
 	private String emri;
@@ -47,12 +47,13 @@ public class User {
 		this.celular = celular;
 	}
 
-	public Integer getId() {
-		return id;
+
+	public Integer getIduseri() {
+		return iduseri;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIduseri(Integer iduseri) {
+		this.iduseri = iduseri;
 	}
 
 	public String getUsername() {

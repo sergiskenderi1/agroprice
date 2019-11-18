@@ -7,7 +7,7 @@ public class UserConverter {
    
 	public static User convertToUser(UserModel userModel) {
 		User user = new User();
-		user.setId(userModel.getId());
+		user.setIduseri(userModel.getId());
 		user.setCelular(userModel.getCelular());
 		user.setAdresa(userModel.getAdresa());
 		user.setEmail(userModel.getEmail());
@@ -23,7 +23,7 @@ public class UserConverter {
 	
 	public static UserModel convertToUserModel(User user) {
 		UserModel userModel = new UserModel();
-		userModel.setId(user.getId());
+		userModel.setId(user.getIduseri());
 		userModel.setCelular(user.getCelular());
 		userModel.setAdresa(user.getAdresa());
 		userModel.setEmail(user.getEmail());

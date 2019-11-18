@@ -1,0 +1,189 @@
+.msg{
+	color:black;
+	font-weight:bold;
+	
+}
+.mainPannel.ui-panelgrid>*>tr,
+.mainPannel.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+.mainPannel{
+	margin: 0 auto;
+	background-color:white;
+}
+.secondPannel{
+	margin: 0 auto;
+	background-color:white;
+}
+.secondPannel.ui-panelgrid>*>tr,
+.secondPannel.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+    background-color:white;
+}
+.main.ui-panelgrid>*>tr,
+.main.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+    margin: 0 auto;
+    background-color:white;
+}
+
+.personalOrdersPannel{
+	
+	padding-bottom:20px;
+	padding-left:15px;
+	width:450px !important;
+	border:1px solid #D4D4D4;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0
+		rgba(0, 0, 0, 0.3);
+		background-color:#bacbe2 !important;
+}
+.welcomeName{
+	margin-left:20px !important;
+	margin-top:45px;
+	font-family:"Arial Black";
+	color:black;
+	font-size:32px;
+}
+.main{
+	margin: 0 auto;
+	
+}
+	.msgInput{
+	font-size:13px;
+	color:black;
+	padding-left:5px !important;
+	}
+	.totalOrdersPannel {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    width: 450px !important;
+    border: 1px solid #D4D4D4;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-color: #bacbe2!important;
+}
+
+.productPannel {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    width: 290px;
+    border: 1px solid #D4D4D4;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-color: #bacbe2!important;
+}
+.storePannel{
+	
+	padding-bottom:20px;
+	padding-left:15px;
+	width:290px;
+	border:1px solid #D4D4D4;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0
+		rgba(0, 0, 0, 0.3);
+		background-color:#bacbe2 !important;
+}
+.employeePannel{
+	
+	padding-bottom:20px;
+	padding-left:15px;
+	width:290px;
+	border:1px solid #D4D4D4;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0
+		rgba(0, 0, 0, 0.3);
+		background-color:#bacbe2 !important;
+}
+
+.pannelFirst{
+	
+	padding-left:20px;
+	padding-right:30px;
+	padding-bottom:20px;
+	border:1px solid #D4D4D4;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	}
+	
+	.pannelSecond{
+	padding-left:40px;
+	padding-right:20px;
+	padding-bottom:20px;
+	margin-left:25px;
+	width:550px;
+	height:390px;
+	background-color:#EFEFEF;
+	border:1px solid #D4D4D4;
+	}
+	.line-msg{
+	font-size:14px;
+	color:black;
+	}
+	.line{
+	font-size:13px;
+	color:black;
+	}
+	.welcome{
+	margin-top:45px;
+	font-family:"Arial Black";
+	color:black;
+	font-size:32px;
+	}
+	.welcome1{
+	font-size:13.5px;
+	margin-top:25px;
+	}
+	.welcome2{
+	margin-top:45px;
+	font-family:"Arial";
+	color:black;
+	font-size:18px;
+	}
+	.manage{
+	font-family:"Arial Black";
+	color:#000000;
+	font-size:20px;
+	}
+	.buttonStyle{
+	background-color: #ffffff !important;
+	color:black !important;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:15px;
+	padding-right:15px;;
+	text-shadow: none;
+	cursor: pointer;
+	font-family:"Poppins" !important;;
+	font-weight:300 !important;
+	font-size:15px !important;
+	
+	font-weight:300;
+	}
+	
+	input {
+ 
+    font: 200 5px ;
+}
+.logOut{
+
+	background: #008CBA !important;
+	color: white !important;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:15px;
+	padding-right:15px;;
+	text-shadow: none;
+	cursor: pointer;
+	font-weight:300 !important;
+	font-size:15px !important;
+	margin-top:10px;
+	}
+	
+	.products{
+	padding-top:90px;
+	width:540px;
+	}
+
+
+
+.fullContent{
+	background-color:white;
+}

@@ -20,7 +20,7 @@ public class Rezervim {
 	@Id
 	@Column(name = "idrezervim")
 	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-	private int id;
+	private int idrezervim;
 	private String data;
 	private float cmimiTotal;
 	private String mesazhi;
@@ -38,13 +38,21 @@ public class Rezervim {
 		
 	}
 
-	public int getId() {
-		return id;
+	/**
+	 * @return the idrezervim
+	 */
+	public int getIdrezervim() {
+		return idrezervim;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	/**
+	 * @param idrezervim the idrezervim to set
+	 */
+	public void setIdrezervim(int idrezervim) {
+		this.idrezervim = idrezervim;
 	}
+
 
 	public String getData() {
 		return data;

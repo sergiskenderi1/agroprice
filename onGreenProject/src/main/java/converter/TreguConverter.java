@@ -10,7 +10,7 @@ public class TreguConverter {
 		entity.setAdresa(model.getAdresa());
 		entity.setCelular(model.getCelular());
 		entity.setEmri(model.getEmri());
-		entity.setId(model.getId());
+		entity.setIdtregu(model.getId());
 		entity.setValid(model.isValid());
 		return entity;
 	}
@@ -20,7 +20,7 @@ public class TreguConverter {
 		model.setAdresa(entity.getAdresa());
 		model.setCelular(entity.getCelular());
 		model.setEmri(entity.getEmri());
-		model.setId(entity.getId());
+		model.setId(entity.getIdtregu());
 		model.setValid(entity.isValid());
 		return model;
 	}
