@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	<managed-bean>
+		<description>useri i loguar</description>
+		<managed-bean-name>userLoggedinBean1</managed-bean-name>
+		<managed-bean-class>managedbean.UserLoggedinBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Pasi logohet , ne cilin panel duhet te shkoje</description>
+		<managed-bean-name>loginBean1</managed-bean-name>
+		<managed-bean-class>managedbean.loginBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>navigimi ne faqjen e pare</description>
+		<managed-bean-name>firstPageBean1</managed-bean-name>
+		<managed-bean-class>managedbean.firstPageBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>tregBean1</managed-bean-name>
+		<managed-bean-class>managedbean.TregBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userResourceBean1</managed-bean-name>
+		<managed-bean-class>managedbean.UserResourceBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+</faces-config>

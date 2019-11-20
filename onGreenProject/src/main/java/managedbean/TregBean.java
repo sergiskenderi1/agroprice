@@ -23,6 +23,7 @@ public class TregBean {
 	private TreguServiceInterface tregService;
 	private List<TreguModel> storeList;
 	private List<TreguModel> filteredStores;
+	private int idTreg;
 
 	@PostConstruct
 	public void init() {
@@ -91,7 +92,7 @@ public class TregBean {
 	}
 
 	public String moveToTregPannel() {
-		return "tregjet.xhtml?faces-redirect=true";
+		return "menaxhoTregjet.xhtml?faces-redirect=true";
 	}
 
 	public void krijoTreg() {
@@ -138,4 +139,23 @@ public class TregBean {
 	public void handleClose(CloseEvent event) {
 		this.tregModel = new TreguModel();
 	}
+	
+	public String moveToEmployeePannel(int idTreg) {
+        this.setIdTreg(idTreg);
+		if (idTreg != 0) {
+			return "menaxhoShitesit.xhtml?id=" + idTreg + "faces-redirect=true";
+		} else {
+			FacesContextUtil.facesContext("KUJDES!", "Ju lutem zgjidhni nje treg ne liste!");
+			return null;
+		}
+	}
+
+	public int getIdTreg() {
+		return idTreg;
+	}
+
+	public void setIdTreg(int idTreg) {
+		this.idTreg = idTreg;
+	}
+
 }

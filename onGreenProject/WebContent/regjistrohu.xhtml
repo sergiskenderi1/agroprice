@@ -30,6 +30,7 @@
 				requiredMessage="Emri duhet plotesuar !"
 				validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
 				<f:validateLength minimum="3" maximum="45" />
+				<f:validateRegex pattern="^[a-zA-Z]+$" />
 			</p:inputText>
 			<p:message for="firstname" display="icon" />
 
@@ -38,6 +39,7 @@
 				requiredMessage="Mbiemri duhet plotesuar !"
 				validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
 				<f:validateLength minimum="3" maximum="45" />
+				<f:validateRegex pattern="^[a-zA-Z]+$" />
 			</p:inputText>
 			<p:message for="lastname" display="icon" />
 
@@ -75,7 +77,7 @@
 			<p:message for="email" display="icon" />
 
 			<p:inputText id="mobile" value="#{userResourceBean.userModel.celular}"
-				placeholder="Phone number(+355)" required="true" label="Nr.Cel : +355"
+				placeholder="Celulari(+355)" required="true" label="Nr.Cel : +355"
 				requiredMessage="Nr.Cel duhet plotesuar !"
 				validatorMessage="Ju lutem shkruani nje numer te sakte (fillon me +355)">
 				 <f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />

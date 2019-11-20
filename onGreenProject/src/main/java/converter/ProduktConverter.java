@@ -9,7 +9,8 @@ public class ProduktConverter {
 		Produkt entity = new Produkt();
 		entity.setIdprodukt(model.getId());
 		entity.setEmri(model.getEmri());
-		entity.setCmimi(model.getCmimi());
+		entity.setCmimiMin(model.getCmimiMin());
+		entity.setCmimiMax(model.getCmimiMax());
 		entity.setValid(model.isValid());
 		return entity;
 	}
@@ -18,7 +19,8 @@ public class ProduktConverter {
 		ProduktModel model = new ProduktModel();
 		model.setId(entity.getIdprodukt());
 		model.setEmri(entity.getEmri());
-		model.setCmimi(entity.getCmimi());
+		model.setCmimiMin(entity.getCmimiMin());
+		model.setCmimiMax(entity.getCmimiMax());
 		model.setValid(entity.isValid());
 		return model;
 	}

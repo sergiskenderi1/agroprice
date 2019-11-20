@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Ndrysho Produkt</title>
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="tableStyleProdukt.css" />
+</h:head>
+<h:body styleClass="fullContent">
+	<h:form styleClass="formNew" id="edit"
+		visible="#{facesContext.validationFailed}">
+		<p:growl id="growl" showDetail="true" life="2000" sticky="false" />
+			<h:panelGroup columns="1" styelClass="mainGroup">
+				<br />
+				<br />
+				<h:outputText value="Ndrysho Produkt" styleClass="titleEditStore"></h:outputText>
+				<br />
+				<p:separator styleClass="headerSeparator" />
+				<br />
+				<p:outputLabel styleClass="inputField" value="Emri"></p:outputLabel>
+				<br />
+				<p:inputText id="inputName"
+					converterMessage="Emri duhet te permbaje nga 2 deri ne 45 karaktere!"
+					value="#{produktBean.productModel.emri}" required="true"
+					requiredMessage="Emri duhet plotesuar!"
+					validatorMessage="Emri i produktit duhet te permbaje vetem shkronja.">
+					<f:validateRegex pattern="^[a-zA-Z]+$" />
+					<f:validateLength minimum="2" maximum="45" />
+				</p:inputText>
+				<br />
+				<br />
+				<p:outputLabel styleClass="inputField" value="Cmimi Minimal"></p:outputLabel>
+				<br />
+				<p:inputNumber id="inputPrice"
+					converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
+					value="#{produktBean.productModel.cmimiMin}" required="true"
+					requiredMessage="Cmimi minimal duhet plotesuar!"
+					validatorMessage="Shkruani nje cmim te sakte.">
+					<f:validateLongRange minimum="1" maximum="10000" />
+				</p:inputNumber>
+				<br />
+				<br />
+				<p:outputLabel styleClass="inputField" value="Cmimi Maksimal"></p:outputLabel>
+				<br />
+				<p:inputNumber id="inputPrice1"
+					converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
+					value="#{produktBean.productModel.cmimiMax}" required="true"
+					requiredMessage="Cmimi maksimal duhet plotesuar."
+					validatorMessage="Shkruani nje cmim te sakte.">
+					<f:validateLongRange minimum="1" maximum="10000" />
+				</p:inputNumber>
+				<br />
+				<br />
+				<p:commandButton
+					actionListener="#{produktBean.ndryshoProdukt}"
+					value="Ruaj Produkt" styleClass="saveButton" update=":edit">
+				</p:commandButton>
+				<br />
+			</h:panelGroup>
+	</h:form>
+</h:body>
+</html>

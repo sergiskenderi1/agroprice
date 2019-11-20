@@ -6,6 +6,11 @@
 	margin-bottom: 13px !important;
 }
 
+.headGrid{
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .ui-datatable table {
 	border-collapse: collapse;
 	width: 100%;
@@ -174,12 +179,19 @@
 	width: 30px !important;
 }
 .table-columnName{
-	width: 100px !important;
+	width: 50px !important;
+	text-align: center;
 }
-.table-columnSurname{
-	width: 120px !important;
+.table-columnPrice{
+	width: 50px !important;
+	text-align:center;
+}
+
+.table-columnManage1{
+	width: 50px !important;
 	
 }
+
 .table-columnManage{
 	width: 200px !important;
 	

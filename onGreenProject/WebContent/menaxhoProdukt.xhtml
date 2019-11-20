@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Paneli i Menaxhimit te Produkteve</title>
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+	<h:outputStylesheet library="css" name="tableStyleProdukt.css" />
+</h:head>
+<h:body styleClass="content">
+	<ui:insert name="header">
+		<ui:include src="/templates/headerAdmin.xhtml"></ui:include>
+	</ui:insert>
+	<br></br>
+	<p:growl id="growl" showDetail="true" life="2000" sticky="false" />
+	<h:form id="productform">
+	   <br/>
+	   <h:panelGrid columns="1" styleClass="headGrid">
+		<h:panelGroup>
+		<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Produkteve</p:outputLabel>
+		<p:commandButton value="Krijo Produkt" type="button"
+					onclick="PF('dlgNew').show();" update=":newForm"
+					styleClass="newButton" icon="fa fa-user-plus"></p:commandButton>
+		</h:panelGroup>
+		</h:panelGrid>
+        <br />
+		<p:dataTable styleClass="tableStore" id="productsdatatable"
+			value="#{produktBean.productModels}" var="product" border="1">
+		
+			<p:column headerText="Emri" styleClass="table-columnName">
+				<h:outputText value="#{product.emri}"></h:outputText>
+			</p:column>
+			<p:column headerText="Cmimi Minimal" styleClass="table-columnPrice">
+				<h:outputText value="#{product.cmimiMin}"></h:outputText>
+			</p:column>
+			<p:column headerText="Cmimi Miksimal" styleClass="table-columnPrice">
+				<h:outputText value="#{product.cmimiMax}"></h:outputText>
+			</p:column>
+			<p:column headerText="Menaxho Produkt" styleClass="table-columnManage1">
+				<p:commandButton id="edit" value="Ndrysho" process="@this"
+					styleClass="editButton" icon="fa fa-pencil"
+					actionListener="#{produktBean.edit(product)}"
+					update=":entityDialog" oncomplete="PF('entityDialog').show()">
+				</p:commandButton>
+
+				<p:commandButton styleClass="buttonDelete" value="Fshi"
+					update="growl"
+					actionListener="#{produktBean.fshiProdukt(product)}"
+					icon="fa fa-trash">
+					<p:confirm header="Confirmation" message="A jeni i sigurte?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Po" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Jo" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<p:dialog widgetVar="dlgNew" modal="true" width="350" height="350">
+ 		<ui:include src="krijoProdukt.xhtml" />
+	</p:dialog>
+	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
+		width="350" height="350">
+		<ui:include src="ndryshoProdukt.xhtml" />
+		<p:ajax event="close" listener="#{produktBean.handleClose}" />
+	</p:dialog>
+	<br />
+	<br />
+	<br />
+	<br />
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+</h:body>
+</html>

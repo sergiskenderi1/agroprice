@@ -2,7 +2,6 @@ package repository;
 
 import java.util.List;
 
-import entity.ProduktRezervuar;
 import entity.Tregu;
 
 public interface TreguRepositoryInterface {
@@ -18,5 +17,7 @@ public interface TreguRepositoryInterface {
 	public boolean fshiTreg(Tregu tregu);
 	
 	public boolean verifikoTreg(Tregu tregu);
+	
+	public boolean gjejTregNgaID(int idTregu);
 
 }

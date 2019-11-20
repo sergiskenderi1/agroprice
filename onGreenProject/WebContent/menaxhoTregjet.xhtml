@@ -20,26 +20,20 @@
 	<h:form id="formStore">
 		<br />
 		<br />
+		<h:panelGrid columns="1" styleClass="headGrid">
+		<h:panelGroup>
+		<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Tregjeve</p:outputLabel>
+		<p:commandButton value="Krijo Treg" type="button"
+					onclick="PF('dlgNew').show();" update=":newForm"
+					styleClass="newButton" icon="fa fa-user-plus"></p:commandButton>
+		</h:panelGroup>
+		</h:panelGrid>
+		<br/>
 		<p:dataTable id="tableStore" styleClass="tableList"
 			value="#{tregBean.storeList}" var="store" border="1" 
 			widgetVar="filterStore" filteredValue="#{tregBean.filteredStores}" 
 			emptyMessage="Nuk gjendet asnje treg .">
 
-			<f:facet name="header" styleClass="mainTableHeader">
-				<span style="font-size: 15px; color: #555555;margin-left:120px;">Paneli i
-				Menaxhimit te Tregjeve </span>
-
-				<p:commandButton value="Krijo Treg" type="button"
-					styleClass="newButton" onclick="PF('dlgNew').show();"
-					update=":newForm">
-				</p:commandButton>
-			
-			
-                <p:outputLabel value="Kerko " styleClass="searchFilter"/>
-                <p:inputText id="globalFilter" onkeyup="PF('filterStore').filter()" 
-                style="width:150px;" placeholder="Shkruani cfare kerkoni"/>            
-			</f:facet>
-			
 			<p:column  headerText="ID" filterBy="#{store.id}" filterMatchMode="contains" 
 			styleClass="table-column1">
 				<h:outputText value="#{store.id}"></h:outputText>

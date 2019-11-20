@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import converter.TreguConverter;
-import entity.ProduktRezervuar;
 import entity.Tregu;
 import model.TreguModel;
 import repository.TreguRepository;
@@ -44,5 +43,19 @@ public class TreguService implements TreguServiceInterface {
 			return treguRepository.fshiTreg(TreguConverter.convertToEntity(tregModel));
 		}else
 		return false;
+	}
+	
+	@Override
+	public TreguModel gjejTregNgaEmri(String emri) {
+		
+		return TreguConverter.convertToModel(treguRepository.gjejTregNgaEmri(emri));
+	}
+	
+	@Override
+	public boolean gjejTregNgaId(int idTreg) {
+		 if(!treguRepository.gjejTregNgaID(idTreg))
+			return false;
+		else 
+			return true;
 	}
 }

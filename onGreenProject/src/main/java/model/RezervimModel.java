@@ -10,9 +10,17 @@ public class RezervimModel {
 	private float cmimiTotal;
 	private String mesazhi;
 	private boolean valid;
+	private int idShites;
 	private User user;
 	private Status status;
 	
+	
+	public int getIdShites() {
+		return idShites;
+	}
+	public void setIdShites(int idShites) {
+		this.idShites = idShites;
+	}
 	public int getId() {
 		return id;
 	}

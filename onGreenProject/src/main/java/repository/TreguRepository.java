@@ -5,11 +5,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import entity.ProduktNeTreg;
-import entity.ProduktRezervuar;
 import entity.Tregu;
 import entity.User;
 import util.HibernateUtil;
@@ -32,6 +29,7 @@ public class TreguRepository implements TreguRepositoryInterface{
 			return null;
 		}
 	}
+	
 	@Override
 	public Tregu gjejTregNgaEmri(String emri) {
 		try {
@@ -109,6 +107,22 @@ public class TreguRepository implements TreguRepositoryInterface{
 			} else
 				return false;
 		}catch(Exception ex) {
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean gjejTregNgaID(int idTregu) {
+		Tregu tregu = new Tregu();
+		try {
+
+			TypedQuery<Tregu> storeQuery = em.createQuery("Select t from Tregu t where idtregu=:id AND valid=:valid",
+					Tregu.class);
+			storeQuery.setParameter("id", idTregu);
+			storeQuery.setParameter("valid", Boolean.TRUE);
+			tregu = storeQuery.getSingleResult();
+			return true;
+		} catch (Exception e) {
 			return false;
 		}
 	}

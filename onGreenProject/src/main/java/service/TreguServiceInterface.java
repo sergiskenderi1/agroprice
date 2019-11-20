@@ -13,4 +13,8 @@ public interface TreguServiceInterface {
 	public boolean ndryshoTreg(TreguModel tregModel);
 	
 	public boolean fshiTreg(TreguModel tregModel);
+	
+	public TreguModel gjejTregNgaEmri(String emri);
+	
+	public boolean gjejTregNgaId(int idTreg);
 }

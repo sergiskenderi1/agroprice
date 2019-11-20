@@ -25,6 +25,7 @@ public class Rezervim {
 	private float cmimiTotal;
 	private String mesazhi;
 	private boolean valid;
+	private int idShites;
 	@ManyToOne
 	@JoinColumn(name = "idclient")
 	private User user;
@@ -37,6 +38,17 @@ public class Rezervim {
 	public Rezervim() {
 		
 	}
+	
+	public int getIdShites() {
+		return idShites;
+	}
+
+
+
+	public void setIdShites(int idShites) {
+		this.idShites = idShites;
+	}
+
 
 	/**
 	 * @return the idrezervim

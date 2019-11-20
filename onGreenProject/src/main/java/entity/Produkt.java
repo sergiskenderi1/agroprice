@@ -16,12 +16,37 @@ public class Produkt {
 	@Column(name = "idprodukt")
 	private Integer idprodukt;
 	private String emri;
-	private float cmimi;
+	private float cmimiMin;
+	private float cmimiMax;
 	private boolean valid;
 	
 	public Produkt() {
 		
 	}
+
+	public float getCmimiMin() {
+		return cmimiMin;
+	}
+
+
+
+	public void setCmimiMin(float cmimiMin) {
+		this.cmimiMin = cmimiMin;
+	}
+
+
+
+	public float getCmimiMax() {
+		return cmimiMax;
+	}
+
+
+
+	public void setCmimiMax(float cmimiMax) {
+		this.cmimiMax = cmimiMax;
+	}
+
+
 
 	/**
 	 * @return the idprodukt
@@ -47,15 +72,6 @@ public class Produkt {
 
 	public void setEmri(String emri) {
 		this.emri = emri;
-	}
-
-
-	public float getCmimi() {
-		return cmimi;
-	}
-
-	public void setCmimi(float cmimi) {
-		this.cmimi = cmimi;
 	}
 
 	public boolean isValid() {

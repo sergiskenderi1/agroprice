@@ -7,6 +7,8 @@ public class TreguModel {
 	private String adresa;
 	private String celular;
 	private boolean valid;
+	
+	
 	public int getId() {
 		return id;
 	}

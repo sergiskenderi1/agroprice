@@ -80,5 +80,7 @@ public class Tregu {
 	public void setProduktNeTreg(List<ProduktNeTreg> produktNeTreg) {
 		this.produktNeTreg = produktNeTreg;
 	}
+
+
 	
 }
