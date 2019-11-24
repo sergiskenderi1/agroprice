@@ -57,6 +57,14 @@
 				</p:inputNumber>
 				<br />
 				<br />
+				<h:selectOneMenu id="njesiMatese" required="true"
+				label="Njesia Matese" value="#{produktBean.njesiMatese}">
+				<f:selectItem itemValue="#{produktBean.productModel.getNjesiMatese().getEmri()}" itemLabel="Zgjidh njerin" />
+					<f:selectItems value="#{produktBean.njesiMateseList}" var="njesi"
+						itemValue="#{njesi.emri}" itemLabel="#{njesi.emri}" />
+			</h:selectOneMenu>
+			    <br />
+			    <br />
 				<p:commandButton
 					actionListener="#{produktBean.ndryshoProdukt}"
 					value="Ruaj Produkt" styleClass="saveButton" update=":edit">

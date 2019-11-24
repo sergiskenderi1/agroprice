@@ -25,9 +25,8 @@
 			<br />
 			<p:outputLabel styleClass="inputField" value="Emri"></p:outputLabel>
 			<br />
-			<p:inputText id="inputName"
-				value="#{produktBean.productModel.emri}" required="true"
-				requiredMessage="Emri duhet plotesuar!"
+			<p:inputText id="inputName" value="#{produktBean.productModel.emri}"
+				required="true" requiredMessage="Emri duhet plotesuar!"
 				converterMessage="Emri duhet te permbaje nga 2 deri ne 45 karaktere!"
 				validatorMessage="Emri i produktit duhet te permbaje vetem shkronja.">
 				<f:validateRegex pattern="^[a-zA-Z]+$" />
@@ -38,7 +37,7 @@
 			<p:outputLabel styleClass="inputField" value="Cmimi Minimal"></p:outputLabel>
 			<br />
 			<p:inputNumber id="inputPrice"
-			converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
+				converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
 				value="#{produktBean.productModel.cmimiMin}" required="true"
 				requiredMessage="Cmimi Minimal duhet plotesuar!"
 				validatorMessage="Cmimi nuk eshte i sakte.">
@@ -49,7 +48,7 @@
 			<p:outputLabel styleClass="inputField" value="Cmimi Maksimal"></p:outputLabel>
 			<br />
 			<p:inputNumber id="inputPrice1"
-			converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
+				converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
 				value="#{produktBean.productModel.cmimiMax}" required="true"
 				requiredMessage="Cmimi Maksimal duhet plotesuar!"
 				validatorMessage="Cmimi nuk eshte i sakte.">
@@ -57,11 +56,20 @@
 			</p:inputNumber>
 			<br />
 			<br />
+			<h:selectOneMenu id="njesiMatese" required="true"
+				label="Njesia Matese" value="#{produktBean.njesiMatese}">
+				<f:selectItem itemValue="#{null}" itemLabel="Zgjidh njerin" />
+					<f:selectItems value="#{produktBean.njesiMateseList}" var="njesi"
+						itemValue="#{njesi.emri}" itemLabel="#{njesi.emri}" />
+			</h:selectOneMenu>
+			<br />
+			<br />
 			<p:commandButton action="#{produktBean.krijoProdukt}"
 				styleClass="saveButton" value="Ruaj Produkt"
 				update="productform:productsdatatable,:new"></p:commandButton>
 			<br />
-			</h:panelGroup>
+			<br />
+		</h:panelGroup>
 	</h:form>
 </h:body>
 </html>

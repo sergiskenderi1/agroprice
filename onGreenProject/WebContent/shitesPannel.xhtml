@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Shites pannel</title>
+	<title>Paneli i Shitesit</title>
 	<h:outputStylesheet library="css" name="headerAndFooter.css" />
 	<h:outputStylesheet library="css" name="profilAdmin.css" />
 </h:head>
@@ -21,33 +21,34 @@
 				<h:panelGroup layout="block" styleClass="pannelFirst">
 					<h:graphicImage value="/resources/images/employeePannel.png" />
 					<br />
-					<h:outputText value="Your Profile" styleClass="msg" />
+					<h:outputText value="Profili im" styleClass="msg" />
 					<br />
-					<h:outputText value="Name/Surname:" styleClass="line" />
+					<h:outputText value="Emri/Mbiemri:" styleClass="line" />
 					<h:outputText value="#{userLoggedinBean.userModel.emri}" styleClass="msgInput"/>
 					<h:outputText value="#{userLoggedinBean.userModel.mbiemri}" styleClass="msgInput"/>
 					<br />
 					<h:outputText value="Email:" styleClass="line" />
 					<h:outputText value="#{userLoggedinBean.userModel.email}" styleClass="msgInput"/>
 					<br />
-					<h:outputText value="Mobile:" styleClass="line" />
+					<h:outputText value="Celular:" styleClass="line" />
 					<h:outputText value="#{userLoggedinBean.userModel.celular}" styleClass="msgInput"/>
 					<br />
-					<p:commandButton value="Logout" action="#{userLoggedinBean.logout}" icon="fa fa-sign-out" styleClass="logOut" />
+					<p:commandButton value="Dilni" action="#{userLoggedinBean.dilni}" icon="fa fa-sign-out" 
+					styleClass="logOut" />
 
 				</h:panelGroup>
 				<h:panelGroup layout="block" styleClass="pannelSecond">
 					<br />
 					<br />
-					<h:outputText value="Welcome" styleClass="welcome" />
+					<h:outputText value="Pershendetje" styleClass="welcome" />
 					<h:outputText value="#{userLoggedinBean.userModel.emri}" 
 					styleClass="welcomeName" />
 					<br />
-					<h:outputText value="Here you are at the orders management pannel"
+					<h:outputText value="Mos harroni ... Nje molle ne dite mban doktorin larg."
 						styleClass="welcome2" />
 					<br />
 					<br />
-					<h:outputText value="Have a nice day..." styleClass="welcome1" />
+					<h:outputText value="Ju urojme nje dite te bukur..." styleClass="welcome1" />
 					<br />
 					<h:graphicImage value="/resources/images/products.png"
 						styleClass="products" />
@@ -58,15 +59,15 @@
 			<p:panelGrid columns="2" styleClass="secondPannel">
 				<h:panelGroup layout="block" styleClass="totalOrdersPannel">
 					<br />
-					<h:outputText value="View All Orders" styleClass="manage" />
+					<h:outputText value="Menaxho Produktet ne Tregun tend." styleClass="manage" />
 					<br />
-					<h:outputText value="See all the orders that any employee hasn't taken yet."
+					<h:outputText value="Shiko,ndrysho ose krijo produktet e tua."
 						styleClass="line-msg" />
 					<br />
 					<br />
 					<h:form>
-						<p:commandButton value="See the list"
-							action="#{orderResourceBean.moveToTotalOrdersPannel(userLoggedinBean.userModel.store.id)}"
+						<p:commandButton value="Menaxho Produkt"
+							action="menaxhoProduktNeTregShites.xhtml?faces-redirect=true"
 							icon="fa fa-cogs" styleClass="buttonStyle" >
 							</p:commandButton>
 					</h:form>
@@ -76,14 +77,14 @@
 				<h:panelGroup layout="block" styleClass="personalOrdersPannel">
 					<br />
 					<br />
-					<h:outputText value="Process Orders" styleClass="manage" />
+					<h:outputText value="Rezervimet per Produktet e tua." styleClass="manage"/>
 					<br />
-					<h:outputText value="Mark a specific order on your list as done."
+					<h:outputText value="Menaxho rezervimet e tua."
 						styleClass="line-msg" />
 					<br />
 					<br />
 					<h:form>
-					<p:commandButton value="Preparing orders" action="#{orderResourceBean.moveToPreparingOrdersPannel(userLoggedinBean.userModel.store.id)}" icon="fa fa-cogs" styleClass="buttonStyle" />
+					<p:commandButton value="Shiko Rezervimet" action="#{orderResourceBean.moveToPreparingOrdersPannel(userLoggedinBean.userModel.store.id)}" icon="fa fa-cogs" styleClass="buttonStyle" />
 
                     </h:form> 
 				</h:panelGroup>

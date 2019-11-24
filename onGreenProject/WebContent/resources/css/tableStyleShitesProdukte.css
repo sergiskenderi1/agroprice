@@ -1,35 +1,19 @@
 
-.headGrid{
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .ui-inputfield{
 	box-shadow: none !important;
 }
 
-.tableStore {
-	margin-left: 200px !important;
-	margin-right: 200px !important;
+.ui-button .ui-button-text {
+	display: block;
+	font-size: 15px !important;
 }
 
 .ui-widget .ui-widget {
 	font-size: 10px !important;
 }
 
-.ui-column-title {
-	font-size: 15px !important;
-}
-
-.ui-datatable thead th {
-	text-align: center !important;
-}
-.searchFilter{
-	padding-left:250px !important;
-}
 .editButton {
 	background: #008CBA !important;
-	margin-left: 15px;
 	margin-right: 35px !important;
 	margin-top: -2px !important;
 	font-weight: normal !important;
@@ -42,7 +26,6 @@
 .buttonDelete {
 	background: #BA4141 !important;
 	margin-top: -2px !important;
-	margin-left: 10px;
 	font-weight: normal !important;
 	color: white !important;
 	cursor: pointer;
@@ -62,18 +45,23 @@
 	cursor: pointer;
 }
 
+.ui-datatable {
+	text-align: center !important;
+	padding-top: 50px;
+}
 
 .ui-dialog .ui-dialog-titlebar-close {
 	background-color: #333333 !important;
 }
 
-.ui-widget-header .ui-icon {
-	visibility: visible !important;
-	font-color: #ffffff !important;
-}
-
 .ui-datatable tbody td {
 	font-size: 13px !important;
+	text-align: center;
+}
+
+.headGrid{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .ui-dialog .ui-dialog-titlebar {
@@ -85,16 +73,25 @@
 }
 
 .table-columnName{
-	width: 50px !important;
-	text-align: center;
+	width: 200px !important;
 }
-.table-columnPrice{
-	width: 50px !important;
-	text-align:center;
+.table-columnCmimi{
+	width: 140px !important;
+	
 }
-
-.table-columnManage1{
-	width: 100px !important;
+.table-columnManage{
+	width: 200px !important;
 	
 }
 
+.titleEditProdukt {
+	font-family: "Arial Black";
+	color: #000000;
+	font-size: 18px;
+}
+
+.titleEditProdukt1 {
+	font-family: "Arial Black";
+	color: #000000;
+	font-size: 20px;
+}

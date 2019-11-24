@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
 
+import model.NjesiMateseModel;
 import model.ProduktModel;
 import service.ProduktService;
 import service.ProduktServiceInterface;
@@ -23,6 +24,9 @@ public class ProduktBean {
 	private ProduktServiceInterface productService ;
 	private ProduktModel productModel;
 	private List<ProduktModel> productModels;
+	private List<ProduktModel> filteredProducts;
+	private String njesiMatese;
+	private List<NjesiMateseModel> njesiMateseList;
 	
 	@PostConstruct
 	public void init() {
@@ -30,8 +34,36 @@ public class ProduktBean {
 		productService = new ProduktService();
 		productModels = new ArrayList<>();
 		productModels = productService.tregoProduktet();
+		njesiMateseList = productService.tregoNjesiMatese();
 	}
 	
+	public List<NjesiMateseModel> getNjesiMateseList() {
+		return njesiMateseList;
+	}
+
+	public void setNjesiMateseList(List<NjesiMateseModel> njesiMateseList) {
+		this.njesiMateseList = njesiMateseList;
+	}
+
+
+
+	public String getNjesiMatese() {
+		return njesiMatese;
+	}
+
+	public void setNjesiMatese(String njesiMatese) {
+		this.njesiMatese = njesiMatese;
+	}
+
+	public List<ProduktModel> getFilteredProducts() {
+		return filteredProducts;
+	}
+
+	public void setFilteredProducts(List<ProduktModel> filteredProducts) {
+		this.filteredProducts = filteredProducts;
+	}
+
+
 	public void edit(ProduktModel productModel) {
 		this.productModel = productModel;
 	}
@@ -65,7 +97,7 @@ public class ProduktBean {
 	}
 	
 	public void krijoProdukt() {
-		if (productService.krijoProdukt(productModel)) {
+		if (productService.krijoProdukt(productModel,njesiMatese)) {
 			productModels = productService.tregoProduktet();
 			FacesContextUtil.facesContext("Sukses!", "Produkti u krijua me sukses!");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
@@ -79,7 +111,7 @@ public class ProduktBean {
 	}
 	
 	public void ndryshoProdukt() {
-		if (productService.ndryshoProdukt(productModel)) {
+		if (productService.ndryshoProdukt(productModel,njesiMatese)) {
 			productModels = productService.tregoProduktet();
 			FacesContextUtil.facesContext("Sukses!", "Produkti u ndryshua me sukses!");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");

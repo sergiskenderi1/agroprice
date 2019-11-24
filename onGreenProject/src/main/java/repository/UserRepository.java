@@ -47,6 +47,19 @@ public class UserRepository implements UserRepositoryInterface {
 			return null;
 		}
 	}
+	
+	@Override
+	public User getUserById(int idUser) {
+		try {
+			Query query = em.createQuery("Select u from User u where iduseri=:user and " + "valid=:valid");
+			query.setParameter("user", idUser);
+			query.setParameter("valid", Boolean.TRUE);
+			User user = (User) query.getSingleResult();
+			return user;
+		} catch (NoResultException ex) {
+			return null;
+		}
+	}
 
 	@Override
 	public boolean addUser(User user) {

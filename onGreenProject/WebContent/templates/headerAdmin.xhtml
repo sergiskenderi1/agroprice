@@ -12,6 +12,7 @@
 </head>
 <body>
 	<ui:composition>
+	   <h:form>
 		<p:breadCrumb styleClass="centeredMenuBar">
 			<p:menuitem value="Categories" url="#" icon="fa-folder-open" />
 			<p:menuitem value="HOME " url="adminPannel.xhtml" />
@@ -19,9 +20,10 @@
 			<p:menuitem value="PRODUKTET NE TREG" url="#" />
 			<p:menuitem value="SHITESIT " url="zgjidhTreg.xhtml" />
 			<p:menuitem value="TREGJET " url="menaxhoTregjet.xhtml" />
-			<p:menuitem value="DILNI " url="logohu.xhtml" />
+			<p:menuitem value="DILNI " action="#{userLoggedinBean.dilni}" />
 
 		</p:breadCrumb>
+		</h:form>
 	</ui:composition>
 </body>
 </html>

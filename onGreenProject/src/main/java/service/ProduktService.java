@@ -3,8 +3,11 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import converter.NjesiMateseConverter;
 import converter.ProduktConverter;
+import entity.NjesiMatese;
 import entity.Produkt;
+import model.NjesiMateseModel;
 import model.ProduktModel;
 import repository.ProduktNeTregRepository;
 import repository.ProduktNeTregRepositoryInterface;
@@ -25,23 +28,23 @@ public class ProduktService implements ProduktServiceInterface{
 	}
 	
 	@Override
-	public boolean krijoProdukt(ProduktModel produktModel) {
+	public boolean krijoProdukt(ProduktModel produktModel,String njesiMatese) {
 		if((productRepository.gjejProduktNgaEmri(produktModel.getEmri()) == null) &&
 			 (produktModel.getCmimiMin() <= produktModel.getCmimiMax())) {
-			return productRepository.krijoProdukt(ProduktConverter.convertToProduktEntity(produktModel));
+			return productRepository.krijoProdukt(ProduktConverter.convertToProduktEntity(produktModel),njesiMatese);
 		}else
 			return false;
 	}
 	
 	@Override
-	public boolean ndryshoProdukt(ProduktModel produktModel) {
+	public boolean ndryshoProdukt(ProduktModel produktModel,String njesiMatese) {
 		if (productRepository.gjejProduktNgaEmri(produktModel.getEmri()) == null 
 				&& produktModel.getCmimiMin() <= produktModel.getCmimiMax()) {
-			return productRepository.ndryshoProdukt(ProduktConverter.convertToProduktEntity(produktModel));
+			return productRepository.ndryshoProdukt(ProduktConverter.convertToProduktEntity(produktModel),njesiMatese);
 		}
 		if (productRepository.gjejProduktNgaEmri(produktModel.getEmri()).getIdprodukt() == produktModel.getId()
 				&& produktModel.getCmimiMin() <= produktModel.getCmimiMax()) {
-			return productRepository.ndryshoProdukt(ProduktConverter.convertToProduktEntity(produktModel));
+			return productRepository.ndryshoProdukt(ProduktConverter.convertToProduktEntity(produktModel),njesiMatese);
 		} else {
 			return false;
 		}
@@ -59,5 +62,14 @@ public class ProduktService implements ProduktServiceInterface{
 	@Override
 	public boolean fshiProdukt(ProduktModel produktModel) {
 		return productRepository.fshiProdukt(ProduktConverter.convertToProduktEntity(produktModel));
+	}
+	
+	@Override
+	public List<NjesiMateseModel> tregoNjesiMatese() {
+		List<NjesiMateseModel> njesiMatese = new ArrayList<>();
+		for(NjesiMatese entity : productRepository.tregoNjesiMatese()) {
+			njesiMatese.add(NjesiMateseConverter.convertToNjesiMateseModel(entity));
+		}
+		return njesiMatese;
 	}
 }

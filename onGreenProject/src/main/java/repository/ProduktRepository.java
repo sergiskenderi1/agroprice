@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import entity.NjesiMatese;
 import entity.Produkt;
 import util.HibernateUtil;
 
@@ -29,10 +31,15 @@ public class ProduktRepository implements ProduktRepositoryInterface{
 	}
 	
 	@Override
-	public boolean krijoProdukt(Produkt produkt) {
+	public boolean krijoProdukt(Produkt produkt,String njesiMatese) {
 		try {
+			NjesiMatese njesi = new NjesiMatese();
+			Query query = em.createQuery("Select n from NjesiMatese n where emri=:emri");
+			query.setParameter("emri", njesiMatese);
+			njesi =(NjesiMatese) query.getSingleResult();
 			tx.begin();
 			produkt.setValid(Boolean.TRUE);
+			produkt.setNjesiMatese(njesi);
 			em.persist(produkt);
 			tx.commit();
 			return true;
@@ -57,9 +64,14 @@ public class ProduktRepository implements ProduktRepositoryInterface{
 	}
 	
 	@Override
-	public boolean ndryshoProdukt(Produkt produkt) {
+	public boolean ndryshoProdukt(Produkt produkt,String njesiMatese) {
 		try {
+			NjesiMatese njesi = new NjesiMatese();
+			Query query = em.createQuery("Select n from NjesiMatese n where emri=:emri");
+			query.setParameter("emri", njesiMatese);
+			njesi =(NjesiMatese) query.getSingleResult();
 			tx.begin();
+			produkt.setNjesiMatese(njesi);
 			em.merge(produkt);
 			tx.commit();
 			return true;
@@ -78,6 +90,18 @@ public class ProduktRepository implements ProduktRepositoryInterface{
 			return true;
 		} catch (Exception e) {
 			return false;
+		}
+	}
+	
+	@Override
+	public List<NjesiMatese> tregoNjesiMatese() {
+		List<NjesiMatese> njesiMatese = new ArrayList<>();
+		try {
+			Query query = em.createQuery("Select n from NjesiMatese n");
+			njesiMatese = query.getResultList();
+			return njesiMatese;
+		}catch (Exception e) {
+			return null;
 		}
 	}
 }

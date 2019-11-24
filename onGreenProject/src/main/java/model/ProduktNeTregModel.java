@@ -1,6 +1,5 @@
 package model;
 
-import entity.NjesiMatese;
 import entity.Produkt;
 import entity.Tregu;
 import entity.User;
@@ -12,12 +11,24 @@ public class ProduktNeTregModel {
 	private boolean valid;
 	private User user;
 	private Produkt produkt;
-	private NjesiMatese njesiMatese;
 	private Tregu tregu;
+	private float cmimiShites;
 	
 	public int getId() {
 		return id;
 	}
+	
+	public float getCmimiShites() {
+		return cmimiShites;
+	}
+
+
+	public void setCmimiShites(float cmimiShites) {
+		this.cmimiShites = cmimiShites;
+	}
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -44,12 +55,6 @@ public class ProduktNeTregModel {
 	}
 	public void setProdukt(Produkt produkt) {
 		this.produkt = produkt;
-	}
-	public NjesiMatese getNjesiMatese() {
-		return njesiMatese;
-	}
-	public void setNjesiMatese(NjesiMatese njesiMatese) {
-		this.njesiMatese = njesiMatese;
 	}
 	public Tregu getTregu() {
 		return tregu;

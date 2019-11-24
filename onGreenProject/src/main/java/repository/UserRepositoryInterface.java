@@ -10,6 +10,8 @@ public interface UserRepositoryInterface {
 	
 	public User getUserByUsername(String username);
 	
+	public User getUserById(int idUser);
+	
 	public boolean addUser(User user);
 	
 	public boolean verifyUsername(String username);

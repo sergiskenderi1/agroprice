@@ -47,4 +47,8 @@ public class UserLoggedinBean {
 		}
 	}
 
+	public String dilni() {
+		this.userModel = new UserModel();
+		return "logohu.xhtml?faces-redirect=true";
+	}
 }

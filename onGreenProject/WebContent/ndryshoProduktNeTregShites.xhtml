@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Ndrysho Produkt Ne Treg</title>
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="tableStyleShitesProdukte.css" />
+</h:head>
+<h:body styleClass="fullContent">
+
+	<h:form styleClass="formNew" id="edit">
+		<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
+		<h:panelGroup columns="1" styleClass="mainGroup">
+			<br />
+			<h:outputText value="Ndrysho Cmimin/Sasine"
+				styleClass="titleEditProdukt"></h:outputText>
+			<br />
+			<p:separator style="width:50%;margin-left:10px;" />
+			<br />
+
+			<p:outputLabel styleClass="inputField" value="Emri"></p:outputLabel>
+			<br />
+			<p:inputText
+				value="#{produktNeTregBean.produktNeTregModel.getProdukt().getEmri()}"
+				disabled="true" />
+			<br />
+
+			<p:outputLabel styleClass="inputField" value="Cmimi Minimal"></p:outputLabel>
+			<br />
+			<p:inputText value="#{produktNeTregBean.produktNeTregModel.getProdukt().cmimiMin}"
+				disabled="true" />
+			<br />
+
+			<p:outputLabel styleClass="inputField" value="Cmimi Maximal"></p:outputLabel>
+			<br />
+			<p:inputText value="#{produktNeTregBean.produktNeTregModel.getProdukt().cmimiMax}"
+				disabled="true" />
+			<br />
+
+			<p:outputLabel styleClass="inputField" value="Cmimi juaj"></p:outputLabel>
+			<br />
+			<p:inputNumber id="inputPrice1"
+				converterMessage="Cmimi duhet te jete me i madh se 0 dhe me i vogel se 100000"
+				value="#{produktNeTregBean.produktNeTregModel.cmimiShites}"
+				required="true" requiredMessage="Cmimi juaj duhet plotesuar!"
+				validatorMessage="Cmimi nuk eshte i sakte.">
+				<f:validateLongRange minimum="1" maximum="10000" />
+			</p:inputNumber>
+			<br />
+
+			<p:outputLabel styleClass="inputField" value="Sasia juaj"></p:outputLabel>
+			<br />
+			<p:inputNumber id="inputSasia"
+				converterMessage="Sasia duhet te jete me e madhe se 0 dhe me e vogel se 100000"
+				value="#{produktNeTregBean.produktNeTregModel.sasiaNeTreg}"
+				required="true" requiredMessage="Sasia duhet plotesuar!"
+				validatorMessage="Sasia nuk eshte e sakte.">
+				<f:validateLongRange minimum="1" maximum="10000" />
+			</p:inputNumber>
+			<br />
+            <p:outputLabel styleClass="inputField" value="Njesia Matese"></p:outputLabel>
+			<br />
+			<p:inputText value="#{produktNeTregBean.produktNeTregModel.getProdukt().getNjesiMatese().getEmri()}"
+				disabled="true" />
+			<br />
+			<br />
+
+			<p:commandButton actionListener="#{produktNeTregBean.ndryshoProduktNeTregShites(userLoggedinBean.userModel.id)}"
+				value="Ruaj Ndryshimet" style="margin-left: 16px" update=":edit"></p:commandButton>
+			<br />
+		</h:panelGroup>
+
+
+	</h:form>
+	<br />
+	<br />
+
+</h:body>
+</html>

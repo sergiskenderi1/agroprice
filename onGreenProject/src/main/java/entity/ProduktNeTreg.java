@@ -15,9 +15,10 @@ public class ProduktNeTreg {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int sasiaNeTreg;
+    private float cmimiShites;
 	private boolean valid;
 	@ManyToOne
 	@JoinColumn(name = "idshites")
@@ -26,15 +27,24 @@ public class ProduktNeTreg {
 	@JoinColumn(name = "idProdukt")
 	private Produkt produkt;
 	@ManyToOne
-	@JoinColumn(name = "idNjesiMatese")
-	private NjesiMatese njesiMatese;
-	@ManyToOne
 	@JoinColumn(name = "treguId")
 	private Tregu tregu;
 	
 	public ProduktNeTreg() {
 		
 	}
+
+	public float getCmimiShites() {
+		return cmimiShites;
+	}
+
+
+
+	public void setCmimiShites(float cmimiShites) {
+		this.cmimiShites = cmimiShites;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -74,14 +84,6 @@ public class ProduktNeTreg {
 
 	public void setProdukt(Produkt produkt) {
 		this.produkt = produkt;
-	}
-
-	public NjesiMatese getNjesiMatese() {
-		return njesiMatese;
-	}
-
-	public void setNjesiMatese(NjesiMatese njesiMatese) {
-		this.njesiMatese = njesiMatese;
 	}
 
 	public Tregu getTregu() {

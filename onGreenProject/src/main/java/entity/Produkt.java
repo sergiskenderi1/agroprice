@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +21,23 @@ public class Produkt {
 	private float cmimiMin;
 	private float cmimiMax;
 	private boolean valid;
+	@ManyToOne
+	@JoinColumn(name = "idnjesimatese")
+	private NjesiMatese njesiMatese;
 	
 	public Produkt() {
 		
 	}
+
+	public NjesiMatese getNjesiMatese() {
+		return njesiMatese;
+	}
+
+	public void setNjesiMatese(NjesiMatese njesiMatese) {
+		this.njesiMatese = njesiMatese;
+	}
+
+
 
 	public float getCmimiMin() {
 		return cmimiMin;

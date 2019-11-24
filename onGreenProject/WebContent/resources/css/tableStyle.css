@@ -43,11 +43,11 @@
 
 .ui-column-title {
 	font-size: 15px !important;
-	text-align: left !important;
+	text-align: center !important;
 }
 
 .ui-datatable thead th {
-	text-align: left !important;
+	text-align: center !important;
 }
 .searchFilter{
 	padding-left:250px !important;

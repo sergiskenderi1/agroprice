@@ -1,5 +1,7 @@
 package model;
 
+import entity.NjesiMatese;
+
 public class ProduktModel {
 
 	private Integer id;
@@ -7,8 +9,17 @@ public class ProduktModel {
 	private float cmimiMin;
 	private float cmimiMax;
 	private boolean valid;
+	private NjesiMatese njesiMatese;
 
 	
+	public NjesiMatese getNjesiMatese() {
+		return njesiMatese;
+	}
+
+	public void setNjesiMatese(NjesiMatese njesiMatese) {
+		this.njesiMatese = njesiMatese;
+	}
+
 	public float getCmimiMin() {
 		return cmimiMin;
 	}

@@ -32,7 +32,7 @@
 				<h:outputText value="#{userLoggedinBean.userModel.celular}" styleClass="msgInput" />
 				<br />
 				<h:form>
-					<p:commandButton value="Dilni" action="#{userLoggedinBean.logout}"
+					<p:commandButton value="Dilni" action="#{userLoggedinBean.dilni}"
 						styleClass="logOut" icon="fa fa-sign-out" />
 				</h:form>
 			</h:panelGroup>
@@ -69,7 +69,7 @@
 						action="menaxhoProdukt.xhtml?faces-redirect=true"
 						icon="fa fa-cogs" styleClass="buttonStyle" />
 					<p:commandButton value="Menaxho Ne Treg"
-						action="#{storeProductResouceBean.moveToSelectStoreForArticle}"
+						action="menaxhoProduktNeTregAdmin.xhtml?faces-redirect=true"
 						icon="fa fa-cogs" styleClass="buttonStyle" />
 				</h:form>
 
