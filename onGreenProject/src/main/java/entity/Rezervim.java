@@ -25,10 +25,12 @@ public class Rezervim {
 	private float cmimiTotal;
 	private String mesazhi;
 	private boolean valid;
-	private int idShites;
 	@ManyToOne
 	@JoinColumn(name = "idclient")
 	private User user;
+	@ManyToOne
+	@JoinColumn(name = "idShites")
+	private User shites;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idstatus")
 	private Status status;
@@ -38,16 +40,17 @@ public class Rezervim {
 	public Rezervim() {
 		
 	}
-	
-	public int getIdShites() {
-		return idShites;
+
+	public User getShites() {
+		return shites;
 	}
 
 
-
-	public void setIdShites(int idShites) {
-		this.idShites = idShites;
+	public void setShites(User shites) {
+		this.shites = shites;
 	}
+
+
 
 
 	/**

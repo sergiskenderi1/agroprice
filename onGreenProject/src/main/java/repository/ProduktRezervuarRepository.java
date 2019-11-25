@@ -33,5 +33,19 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 		return false;
 		}
 	}
+	
+	@Override
+	public List<ProduktRezervuar> tregoProdukteNeRezervim(int idRezervim) {
+		try {
+			List<ProduktRezervuar> list = new ArrayList<>();
+			Query query = em.createQuery("Select p from ProduktRezervuar p where id_rezervim=:id and valid=:valid");
+			query.setParameter("id", idRezervim);
+			query.setParameter("valid", Boolean.TRUE);
+			list = query.getResultList();
+			return list;
+		}catch (Exception e) {
+			return null;
+		}
+	}
 
 }

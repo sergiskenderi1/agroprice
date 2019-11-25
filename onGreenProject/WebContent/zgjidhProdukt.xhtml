@@ -10,7 +10,7 @@
 		http-equiv="X-UA-Conpatible" />
 	<title>Paneli i Zgjedhjes se Produkteve</title>
 	<h:outputStylesheet library="css" name="headerAndFooter.css" />
-	<h:outputStylesheet library="css" name="tableStyleShitesProdukte.css" />
+	<h:outputStylesheet library="css" name="tableStyleProdukt.css" />
 </h:head>
 <h:body styleClass="content">
 	<ui:insert name="header">
@@ -47,7 +47,7 @@
 			filterBy="#{product.cmimiMax}" filterMatchMode="contains">
 				<h:outputText value="#{product.cmimiMax}"></h:outputText>
 			</p:column>
-			<p:column headerText="Zgjidh Produkt" styleClass="table-columnManage1">
+			<p:column headerText="Zgjidh Produkt" styleClass="table-columnName">
 				<p:commandButton id="zgjidh" value="Zgjidh" process="@this"
 					styleClass="editButton" icon="fa fa-pencil"
 					actionListener="#{produktNeTregBean.produktiZgjedhur(product)}"

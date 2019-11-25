@@ -13,6 +13,7 @@ public class RezervimModel {
 	private int idShites;
 	private User user;
 	private Status status;
+	private User shites;
 	
 	
 	public int getIdShites() {
@@ -62,6 +63,12 @@ public class RezervimModel {
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	public User getShites() {
+		return shites;
+	}
+	public void setShites(User shites) {
+		this.shites = shites;
 	}
 	
 }

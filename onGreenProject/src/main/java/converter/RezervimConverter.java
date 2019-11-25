@@ -14,6 +14,7 @@ public class RezervimConverter {
 		entity.setStatus(model.getStatus());
 		entity.setUser(model.getUser());
 		entity.setValid(model.isValid());
+		entity.setShites(model.getShites());
 		return entity;
 	}
 	
@@ -26,6 +27,7 @@ public class RezervimConverter {
 		model.setStatus(entity.getStatus());
 		model.setUser(entity.getUser());
 		model.setValid(entity.isValid());
+		model.setShites(entity.getShites());
 		return model;
 	}
 }
