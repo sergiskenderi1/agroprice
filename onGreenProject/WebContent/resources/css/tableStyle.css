@@ -129,17 +129,21 @@
 
 .table-column1 {
 	width: 10px !important;
+	text-align:center;
 }
 
 .table-column2 {
 	width: 70px !important;
+	text-align:center;
 }
 
 .table-column3{
 	width: 120px !important;
+	text-align:center;
 }
 .table-column4{
 	width: 120px !important;
+	text-align:center;
 }
 
 .table-column7{

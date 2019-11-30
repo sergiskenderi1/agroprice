@@ -179,4 +179,7 @@ public class TregBean {
 		this.idTreg = idTreg;
 	}
 
+	public int sasiaProdukteve(TreguModel treg) {
+		return tregService.sasiaProdukteve(treg);
+	}
 }

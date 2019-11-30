@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import converter.UserConverter;
+import entity.ProduktNeTreg;
 import entity.User;
 import model.UserModel;
+import repository.ProduktNeTregRepository;
+import repository.ProduktNeTregRepositoryInterface;
 import repository.UserRepository;
 import repository.UserRepositoryInterface;
 
@@ -65,5 +68,26 @@ public class UserService implements UserServiceInterface {
 			return userRepository.fshiUser(UserConverter.convertToUser(userModel));
 		} else
 			return false;
+	}
+	
+	@Override
+	public List<UserModel> tregoTeGjitheShitesit() {
+		List<UserModel> userModels = new ArrayList<>();
+		for (User shites : userRepository.tregoTeGjitheShitesit()) {
+			userModels.add(UserConverter.convertToUserModel(shites));
+		}
+		return userModels;
+	}
+	
+	@Override
+	public int gjejSasiPerShites(UserModel userModel) {
+		ProduktNeTregRepositoryInterface produktRepository = new ProduktNeTregRepository();
+		List<ProduktNeTreg> produkte = new ArrayList<>();
+		produkte = produktRepository.tregoProdukteNgaShites(userModel.getId());
+		int sasia = 0;
+		for(ProduktNeTreg produkteNeTreg : produkte) {
+			sasia += produkteNeTreg.getSasiaNeTreg();
+		}
+		return sasia;
 	}
 }

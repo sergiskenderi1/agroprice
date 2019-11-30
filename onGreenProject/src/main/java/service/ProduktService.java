@@ -7,6 +7,7 @@ import converter.NjesiMateseConverter;
 import converter.ProduktConverter;
 import entity.NjesiMatese;
 import entity.Produkt;
+import entity.ProduktNeTreg;
 import model.NjesiMateseModel;
 import model.ProduktModel;
 import repository.ProduktNeTregRepository;
@@ -71,5 +72,31 @@ public class ProduktService implements ProduktServiceInterface{
 			njesiMatese.add(NjesiMateseConverter.convertToNjesiMateseModel(entity));
 		}
 		return njesiMatese;
+	}
+	
+	@Override
+	public int gjejSasiNeTregje(ProduktModel produktModel) {
+		List<ProduktNeTreg> produkteNeTregje = new ArrayList<>();
+		ProduktNeTregRepositoryInterface produktNeTregRepository = new ProduktNeTregRepository();
+		produkteNeTregje = produktNeTregRepository.gjejProduktNeTregNgaId(produktModel.getId());
+		int sasia = 0;
+		for(ProduktNeTreg produktNeTreg : produkteNeTregje) {
+			sasia += produktNeTreg.getSasiaNeTreg();
+		}
+		return sasia;
+	}
+	
+	@Override
+	public float gjejCmiminMesatar(ProduktModel produktModel) {
+		List<ProduktNeTreg> produkteNeTregje = new ArrayList<>();
+		ProduktNeTregRepositoryInterface produktNeTregRepository = new ProduktNeTregRepository();
+		produkteNeTregje = produktNeTregRepository.gjejProduktNeTregNgaId(produktModel.getId());
+		float cmimiMesatar = 0 ;
+		for(ProduktNeTreg produktNeTreg : produkteNeTregje) {
+			cmimiMesatar += produktNeTreg.getCmimiShites();
+		}
+		
+		cmimiMesatar /= produkteNeTregje.size();
+		return cmimiMesatar;
 	}
 }

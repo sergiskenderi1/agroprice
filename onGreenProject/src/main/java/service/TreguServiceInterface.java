@@ -17,4 +17,6 @@ public interface TreguServiceInterface {
 	public TreguModel gjejTregNgaEmri(String emri);
 	
 	public boolean gjejTregNgaId(int idTreg);
+	
+	public int sasiaProdukteve(TreguModel treguModel);
 }

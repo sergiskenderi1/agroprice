@@ -29,13 +29,20 @@
 		</h:panelGrid>
 	<br></br>
 	<br></br>
-	<h:panelGrid columns="2" style="margin-left: auto;
-	margin-right: auto;" cellpadding="20">
-	<p:graphicImage value="/resources/images/stats1.PNG"></p:graphicImage>
-	<p:graphicImage value="/resources/images/stats3.PNG"></p:graphicImage>
-	</h:panelGrid>
-	<p:graphicImage value="/resources/images/stats2.PNG" 
-	 styleClass="centerimg"></p:graphicImage>
+	<h:panelGrid columns="2" style="width:100%;padding-left:180px;">
+    <p:chart type="line" model="#{chartView.animatedModel1}" style="width:400px;" />
+    <p:chart type="bar" model="#{chartView.animatedModel2}" style="width:400px;" />
+</h:panelGrid>
+	<br />
+	<p:chart type="bar" model="#{chartView.combinedModel}" style="height:300px" />
+	<br />
+	<br />
+	<h:panelGrid columns="2" columnClasses="left,right" style="width:70%;padding-left:280px;">
+        <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px">
+            <p:ajax event="itemSelect" listener="#{chartView.itemSelect}"/>
+        </p:chart>
+        <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px" />
+    </h:panelGrid>
 	 <br></br>
 	 <br></br>
 </h:form>

@@ -182,4 +182,11 @@ public class UserResourceBean {
 		this.userModel = new UserModel();
 	}
 
+	public void tregoTeGjitheShitesit() {
+		this.employeeList = userService.tregoTeGjitheShitesit();
+	}
+	
+	public int gjejSasiPerShites(UserModel userModel) {
+		return userService.gjejSasiPerShites(userModel);
+	}
 }

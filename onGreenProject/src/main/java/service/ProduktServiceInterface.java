@@ -18,4 +18,8 @@ public interface ProduktServiceInterface {
 	public boolean fshiProdukt(ProduktModel produktModel);
 	
 	public List<NjesiMateseModel> tregoNjesiMatese();
+	
+	public int gjejSasiNeTregje(ProduktModel produktModel);
+	
+	public float gjejCmiminMesatar(ProduktModel produktModel);
 }

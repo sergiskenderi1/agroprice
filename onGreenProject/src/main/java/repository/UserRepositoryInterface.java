@@ -22,6 +22,8 @@ public interface UserRepositoryInterface {
 	
 	public List<User> tregoShitesit(int idTregu);
 	
+	public List<User> tregoTeGjitheShitesit();
+	
 	public boolean krijoShites(User shites, int idTregu);
 	
 	public boolean editUser(User user);

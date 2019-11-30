@@ -135,4 +135,12 @@ public class ProduktBean {
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
 		}
 	}
+	
+	public int sasiaNeTregje(ProduktModel produktModel) {
+		return productService.gjejSasiNeTregje(produktModel);
+	}
+	
+	public float cmimiMesatar(ProduktModel produktModel) {
+		return productService.gjejCmiminMesatar(produktModel);
+	}
 }

@@ -47,7 +47,7 @@ public class UserRepository implements UserRepositoryInterface {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public User getUserById(int idUser) {
 		try {
@@ -88,16 +88,16 @@ public class UserRepository implements UserRepositoryInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean verifyUsernameToEdit(String username, int id) {
 		try {
 			Query query = em.createQuery("Select u from User u where u.username=:user ");
 			query.setParameter("user", username);
 			User user = (User) query.getSingleResult();
-			if(user.getIduseri() == id)
+			if (user.getIduseri() == id)
 				return false;
-			
+
 			return true;
 		} catch (NoResultException ex) {
 			return false;
@@ -118,12 +118,12 @@ public class UserRepository implements UserRepositoryInterface {
 	@Override
 	public List<User> tregoShitesit(int idTregu) {
 		List<User> employees = new ArrayList<>();
-        
+
 		try {
 			Query query = em.createQuery("Select r from Roli r where emri=:e");
 			query.setParameter("e", "shites");
 			Roli roli = (Roli) query.getSingleResult();
-			
+
 			TypedQuery<User> employeeQuery = em.createQuery(
 					"Select u from User u where valid=:valid and roli=:idrole and id_tregu=:id", User.class);
 			employeeQuery.setParameter("valid", Boolean.TRUE);
@@ -136,7 +136,28 @@ public class UserRepository implements UserRepositoryInterface {
 			return null;
 		}
 	}
-	
+
+	@Override
+	public List<User> tregoTeGjitheShitesit() {
+		List<User> employees = new ArrayList<>();
+
+		try {
+			Query query = em.createQuery("Select r from Roli r where emri=:e");
+			query.setParameter("e", "shites");
+			Roli roli = (Roli) query.getSingleResult();
+
+			TypedQuery<User> employeeQuery = em.createQuery(
+					"Select u from User u where valid=:valid and roli=:idrole", User.class);
+			employeeQuery.setParameter("valid", Boolean.TRUE);
+			employeeQuery.setParameter("idrole", roli.getIdroli());
+			employees = employeeQuery.getResultList();
+			return employees;
+		} catch (Exception e) {
+			System.out.print(e);
+			return null;
+		}
+	}
+
 	@Override
 	public boolean krijoShites(User shites, int idTregu) {
 		Roli role = new Roli();
@@ -144,7 +165,7 @@ public class UserRepository implements UserRepositoryInterface {
 		try {
 			Query query = em.createQuery("Select r from Roli r where emri=:e");
 			query.setParameter("e", "shites");
-			role = (Roli)query.getSingleResult();
+			role = (Roli) query.getSingleResult();
 			tx.begin();
 			shites.setValid(Boolean.TRUE);
 			tregu.setIdtregu(idTregu);
@@ -157,7 +178,7 @@ public class UserRepository implements UserRepositoryInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean editUser(User user) {
 		try {
@@ -169,7 +190,7 @@ public class UserRepository implements UserRepositoryInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean fshiUser(User user) {
 		try {
@@ -183,20 +204,20 @@ public class UserRepository implements UserRepositoryInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean verifikoShitesNgaRezervimet(int idUser) {
 		try {
 			List<Rezervim> rezervime = new ArrayList<>();
 			Query query = em.createQuery("Select r from Rezervim r where idShites=:idUser and valid=:valid");
-			query.setParameter("idUser",idUser);
-			query.setParameter("valid",Boolean.TRUE);
+			query.setParameter("idUser", idUser);
+			query.setParameter("valid", Boolean.TRUE);
 			rezervime = query.getResultList();
-			if(rezervime.isEmpty())
-			 return false;
-		
+			if (rezervime.isEmpty())
+				return false;
+
 			return true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}

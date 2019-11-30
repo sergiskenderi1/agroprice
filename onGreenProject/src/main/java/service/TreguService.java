@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import converter.TreguConverter;
+import entity.ProduktNeTreg;
 import entity.Tregu;
 import model.TreguModel;
+import repository.ProduktNeTregRepository;
+import repository.ProduktNeTregRepositoryInterface;
 import repository.TreguRepository;
 import repository.TreguRepositoryInterface;
 
@@ -57,5 +60,17 @@ public class TreguService implements TreguServiceInterface {
 			return false;
 		else 
 			return true;
+	}
+	
+	@Override
+	public int sasiaProdukteve(TreguModel treguModel) {
+		ProduktNeTregRepositoryInterface produktRepository = new ProduktNeTregRepository();
+		List<ProduktNeTreg> produkte = new ArrayList<>();
+		produkte = produktRepository.tregoProdukteNeTreg(treguModel.getId());
+		int sasiaTotale = 0;
+		for(ProduktNeTreg produkt : produkte) {
+			sasiaTotale += produkt.getSasiaNeTreg();
+		}
+		return sasiaTotale;
 	}
 }

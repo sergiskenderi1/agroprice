@@ -62,8 +62,6 @@ public class ProduktNeTregBean {
 		this.filteredProducts = filteredProducts;
 	}
 
-
-
 	public ProduktNeTregModel getProduktNeTregModel() {
 		return produktNeTregModel;
 	}
@@ -91,6 +89,7 @@ public class ProduktNeTregBean {
 	public void tregoProdukteNgaShites(int idShites){
 		produkteNeTreg = produktNeTregService.tregoProdukteNgaShites(idShites);
 	}
+
 	
 	public void handleClose() {
 		this.produktNeTregModel = new ProduktNeTregModel();
@@ -150,4 +149,7 @@ public class ProduktNeTregBean {
 		produkteNeTreg = produktNeTregService.tregoProdukteNeTreg(idTregu);
 	}
 	
+	public void tregoTeGjithaProduktetNeTregje() {
+		produkteNeTreg = produktNeTregService.tregoProdukteNeTregje();
+	}
 }

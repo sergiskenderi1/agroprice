@@ -17,10 +17,14 @@ public interface UserServiceInterface {
 	public boolean verifyEmail(String email);
 	
 	public List<UserModel> tregoShitesit(int idTregu);
+	
+	public List<UserModel> tregoTeGjitheShitesit();
 
 	public boolean krijoShites(UserModel userModel, int idTregu);
 	
 	public boolean ndryshoUser(UserModel userModel);
 	
 	public boolean fshiUser(UserModel userModel);
+	
+	public int gjejSasiPerShites(UserModel userModel);
 }
