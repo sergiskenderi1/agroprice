@@ -102,4 +102,18 @@ public class ProduktNeTregRepository implements ProduktNeTregRepositoryInterface
 			return null;
 		}
 	}
+	
+	@Override
+	public List<ProduktNeTreg> tregoProdukteNeTreg(int idTregu) {
+		List<ProduktNeTreg> produktNeTreg = new  ArrayList<>();
+		try {
+			Query query = em.createQuery("Select p from ProduktNeTreg p where treguId=:id and valid=:valid");
+			query.setParameter("id", idTregu);
+			query.setParameter("valid", Boolean.TRUE);
+			produktNeTreg = query.getResultList();
+			return produktNeTreg;
+		}catch (Exception e) {
+			return null;
+		}
+	}
 }

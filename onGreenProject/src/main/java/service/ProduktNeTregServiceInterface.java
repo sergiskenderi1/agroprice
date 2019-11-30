@@ -16,5 +16,6 @@ public interface ProduktNeTregServiceInterface {
 	public boolean shtoProduktNeTreg(ProduktNeTregModel produktNeTreg,int idShites);
 	
 	public List<ProduktNeTregModel> tregoProdukteNeTregje();
-	
+
+	public List<ProduktNeTregModel> tregoProdukteNeTreg(int idTregu);
 }

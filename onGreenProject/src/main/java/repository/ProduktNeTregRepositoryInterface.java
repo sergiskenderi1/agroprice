@@ -16,4 +16,6 @@ public interface ProduktNeTregRepositoryInterface {
 	public boolean shtoProduktNeTreg(ProduktNeTreg produktNeTreg);
 	
 	public List<ProduktNeTreg> tregoProdukteNeTregje();
+	
+	public List<ProduktNeTreg> tregoProdukteNeTreg(int idTregu);
 }

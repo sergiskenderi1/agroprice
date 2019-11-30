@@ -19,4 +19,10 @@ public interface RezervimServiceInterface {
 	public List<RezervimModel> tregoRezervimeNePritjeKlient(int idKlient);
 	
 	public List<RezervimModel> tregoRezervimeKlient(int idKlient);
+	
+	public List<RezervimModel> tregoRezervimeTeKrijuaraKlient(int idKlient);
+	
+	public boolean dergoRezervim(RezervimModel rezervim);
+	
+	public boolean fshiRezervim(RezervimModel rezervim);
 }

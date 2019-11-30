@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Zgjidh nje Treg</title>
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="chooseStore.css" />
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+</h:head>
+<h:body styleClass="fullContent">
+	<ui:insert name="header">
+		<ui:include src="/templates/headerKlient.xhtml"></ui:include>
+	</ui:insert>
+	<br />
+	<br />
+	<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
+	<h:form id="newStoreForm" styleClass="formNew">
+		<br />
+		<br />
+		<h:panelGrid columns="1" styleClass="mainGrid">
+		<h:outputLabel styleClass="titleStore">Zgjidhni njerin prej tregjeve .</h:outputLabel>
+		<p:dataScroller value="#{tregBean.storeList}" var="store">
+ 
+        <h:panelGrid columns="3" style="width:100%">
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5" >
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{store.id}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Emri:" />
+                    <h:outputText value="#{store.emri}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Adresa:" />
+                    <h:outputText value="#{store.adresa}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+        <p:commandButton value="Zgjidh" styleClass="enterButton" style="margin-right:100px;"
+        action="#{tregBean.moveToPannel(store.id,userLoggedinBean.userModel)}"
+        ></p:commandButton>
+        <p:separator style="width:270px;margin-left:-20px;"></p:separator>
+    </p:dataScroller>
+		</h:panelGrid>
+	</h:form>
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+</h:body>
+</html>

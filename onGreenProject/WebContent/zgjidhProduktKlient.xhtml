@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Paneli i Perzgjedhjes se Produkteve</title>
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+	<h:outputStylesheet library="css" name="tableStyleProduktKlient.css" />
+</h:head>
+<f:metadata>
+	<f:viewParam name="id" value="#{tregBean.idTreg}" />
+	<f:viewAction
+		action="#{produktNeTregBean.tregoProdukteNeTreg(tregBean.idTreg)}" />
+</f:metadata>
+<h:body styleClass="content">
+	<ui:insert name="header">
+		<ui:include src="/templates/headerKlient.xhtml"></ui:include>
+	</ui:insert>
+	<br></br>
+	<p:growl id="growl" showDetail="true" life="2000" sticky="false" />
+	<h:form id="productform">
+	<br/>
+	  <h:panelGrid columns="1" styleClass="headGrid">
+		<h:panelGroup>
+		<p:commandButton value="Shko Prapa"
+					action="zgjidhTregKlient.xhtml?faces-redirect=true"
+					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
+		</h:panelGroup>
+		</h:panelGrid>
+		<p:dataTable styleClass="tableStore" id="productsdatatable"
+			value="#{produktNeTregBean.produkteNeTreg}" var="product" border="1" widgetVar="filterProduct" 
+			filteredValue="#{produktBean.filteredProducts}" scrollable="true"
+			emptyMessage="Nuk u gjet asnje Produkt">
+		
+			<p:column headerText="Emri" styleClass="table-columnName" filterBy="#{product.getProdukt().emri}" 
+			filterMatchMode="contains">
+				<h:outputText value="#{product.getProdukt().emri}"></h:outputText>
+			</p:column>
+			<p:column headerText="Cmimi" styleClass="table-columnPrice" 
+			filterBy="#{product.cmimiShites}" filterMatchMode="contains">
+				<h:outputText value="#{product.cmimiShites}"></h:outputText>
+			</p:column>
+			<p:column headerText="Njesia Matese" styleClass="table-columnName" 
+			filterBy="#{product.getProdukt().getNjesiMatese().emri}" 
+			filterMatchMode="contains">
+				<h:outputText value="#{product.getProdukt().getNjesiMatese().emri}"></h:outputText>
+			</p:column>
+			<p:column headerText="Sasia" styleClass="table-columnPrice" 
+			filterBy="#{product.sasiaNeTreg}" filterMatchMode="contains">
+				<h:outputText value="#{product.sasiaNeTreg}"></h:outputText>
+			</p:column>
+			<p:column headerText="Shitesi" styleClass="table-columnName" 
+			filterBy="#{product.getUser().getEmri()} #{product.getUser().getMbiemri()}" filterMatchMode="contains">
+				<h:outputText value="#{product.getUser().getEmri()} #{product.getUser().getMbiemri()}"></h:outputText>
+			</p:column>
+			<p:column headerText="Celular" styleClass="table-columnName" 
+			filterBy="#{product.getUser().getCelular()}" filterMatchMode="contains">
+				<h:outputText value="#{product.getUser().getCelular()}"></h:outputText>
+			</p:column>
+			<p:column headerText="Zgjidh Produkt" styleClass="table-columnName">
+				<p:commandButton id="zgjidh" value="Rezervo" process="@this"
+					styleClass="editButton" icon="fa fa-cart-arrow-down"
+					actionListener="#{produktRezervuarBean.produktiZgjedhur(product)}"
+					update=":entityDialog" oncomplete="PF('entityDialog').show()">
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
+		width="300" height="490">
+    	<ui:include src="shtoProduktNeRezervim.xhtml" />
+		<p:ajax event="close" listener="#{produktRezervuarBean.handleClose}" />
+	</p:dialog>
+	<br />
+	<br />
+	<br />
+	<br />
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+</h:body>
+</html>

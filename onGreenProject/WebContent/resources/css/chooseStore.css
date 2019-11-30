@@ -3,12 +3,10 @@
     font-family: "Arial Black";
     color: #000000;
     font-size: 15px;
-    padding-left: 25% !important;
 }
 
 .enterButton {
 	background: #008CBA !important;
-	margin-left: 25% !important;
 	font-weight: normal !important;
 	color: white !important;
 	cursor: pointer;
@@ -21,6 +19,7 @@
 	margin:0 auto;
 	width:450px;
 	background-color: #409fff;
+	text-align: center;
 }
 
 .ui-datascroller .ui-datascroller-item {

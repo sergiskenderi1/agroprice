@@ -25,9 +25,9 @@
 		<br />
 		<h:panelGrid columns="1" styleClass="mainGrid">
 		<h:outputLabel styleClass="titleStore">Zgjidhni njerin prej tregjeve .</h:outputLabel>
-		<p:dataScroller value="#{tregBean.storeList}" var="store" chunkSize="20">
+		<p:dataScroller value="#{tregBean.storeList}" var="store">
  
-        <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+        <h:panelGrid columns="3" style="width:100%">
             <p:outputPanel>
                 <h:panelGrid columns="2" cellpadding="5" >
                     <h:outputText value="Id:" />
@@ -41,7 +41,8 @@
                 </h:panelGrid>
             </p:outputPanel>
         </h:panelGrid>
-        <p:commandButton value="Zgjidh" styleClass="enterButton" action="#{tregBean.moveToEmployeePannel(store.id)}"
+        <p:commandButton value="Zgjidh" styleClass="enterButton" style="margin-right:100px;"
+        action="#{tregBean.moveToPannel(store.id,userLoggedinBean.userModel)}"
         ></p:commandButton>
         <p:separator style="width:270px;margin-left:-20px;"></p:separator>
     </p:dataScroller>

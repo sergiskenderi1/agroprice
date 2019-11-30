@@ -146,4 +146,8 @@ public class ProduktNeTregBean {
 		}
 	}
 	
+	public void tregoProdukteNeTreg(int idTregu) {
+		produkteNeTreg = produktNeTregService.tregoProdukteNeTreg(idTregu);
+	}
+	
 }

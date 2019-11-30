@@ -36,10 +36,9 @@
 				<h:outputText value="#{rezervim.getShites().getTregu().getAdresa()}"></h:outputText>
 			</p:column>
 			
-			<p:column headerText="Shites"
-				filterBy="#{rezervim.getShites().getEmri()}"
+			<p:column headerText="Shites" filterBy="#{rezervim.getShites().getEmri()} #{rezervim.getShites().getMbiemri()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.getShites().getEmri()}"></h:outputText>
+				<h:outputText value="#{rezervim.getShites().getEmri()} #{rezervim.getShites().getMbiemri()}"></h:outputText>
 			</p:column>
 			
 			<p:column headerText="Nr.Cel"

@@ -1,0 +1,43 @@
+.ui-panelgrid .ui-panelgrid-cell {
+	border-style: none !important;
+}
+
+.mainPannel{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 30%;
+}
+
+.titleManageOrder {
+	font-family: "Arial Black";
+	color: #000000;
+	font-size: 20px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 40px;
+}
+
+.buttons{
+	margin-top:10px;
+	margin-left: 70px;
+	background: #008CBA !important;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
+
+.sendOrder {
+	margin-left: 8px !important;
+	margin-top: 30px !important;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+	background: #51ce31!important;
+}

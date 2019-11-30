@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import entity.ProduktRezervuar;
+import entity.Rezervim;
 import entity.ProduktNeTreg;
 import util.HibernateUtil;
 
@@ -48,4 +49,43 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 		}
 	}
 
+	@Override
+	public boolean rezervoProdukt(ProduktRezervuar produktRezervuar) {
+		try {
+			tx.begin();
+			produktRezervuar.setValid(Boolean.TRUE);
+			em.persist(produktRezervuar);
+			tx.commit();
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean ndryshoProduktNeRezervim(ProduktRezervuar produktRezervuar) {
+		try {
+			tx.begin();
+			produktRezervuar.setValid(Boolean.TRUE);
+			em.merge(produktRezervuar);
+			tx.commit();
+			return true;
+		}catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+    @Override
+    public boolean fshiProdukt(ProduktRezervuar produkt) {
+    	try {
+    		tx.begin();
+    		produkt.setValid(Boolean.FALSE);
+    		em.merge(produkt);
+    		tx.commit();
+    		return true;
+    	}catch (Exception e) {
+			return false;
+		}
+    }
 }

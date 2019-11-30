@@ -76,4 +76,13 @@ public class ProduktNeTregService implements ProduktNeTregServiceInterface{
 			return false;
 		}
 	}
+	
+	@Override
+	public List<ProduktNeTregModel> tregoProdukteNeTreg(int idTregu) {
+		List<ProduktNeTregModel> modele = new ArrayList<>();
+		for(ProduktNeTreg entity : produktNeTregRepository.tregoProdukteNeTreg(idTregu)) {
+			modele.add(ProduktNeTregConverter.convertToModel(entity));
+		}
+		return modele;
+	}
 }

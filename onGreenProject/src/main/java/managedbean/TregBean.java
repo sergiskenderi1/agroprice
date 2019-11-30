@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
 
 import model.TreguModel;
+import model.UserModel;
 import service.TreguService;
 import service.TreguServiceInterface;
 import util.FacesContextUtil;
@@ -140,7 +143,8 @@ public class TregBean {
 		this.tregModel = new TreguModel();
 	}
 	
-	public String moveToEmployeePannel(int idTreg) {
+	public String moveToPannel(int idTreg,UserModel userModel) {
+		if(userModel.getRole().getEmri().equals("admin")) {
         this.setIdTreg(idTreg);
 		if (idTreg != 0) {
 			return "menaxhoShitesit.xhtml?id=" + idTreg + "faces-redirect=true";
@@ -148,6 +152,23 @@ public class TregBean {
 			FacesContextUtil.facesContext("KUJDES!", "Ju lutem zgjidhni nje treg ne liste!");
 			return null;
 		}
+	 }else {
+
+		 try {
+				if (idTreg != 0) {
+					 this.setIdTreg(idTreg);
+					return "zgjidhProduktKlient.xhtml?id=" + idTreg + "faces-redirect=true";
+				} else {
+					FacesContext facesContext = FacesContext.getCurrentInstance();
+					FacesMessage facesMessage = new FacesMessage("Ju nuk keni zgjedhur asnje Treg.");
+					facesContext.addMessage("newStoreForm:confirm", facesMessage);
+					PrimeFaces.current().ajax().update("newStoreForm:radioDT");
+					return null;
+				}
+			} catch (Exception e) {
+				return "selectStore.xhtml?faces-redirect=true";
+			}
+	 }
 	}
 
 	public int getIdTreg() {

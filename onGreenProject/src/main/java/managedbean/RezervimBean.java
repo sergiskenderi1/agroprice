@@ -130,7 +130,37 @@ public class RezervimBean {
 			
 		} else {
 			FacesContextUtil.facesContext("Gabim","Rezervimi nuk mund te pranohet pasi eshte fshire ose eshte ne perpunim.");
-
 		}
+	}
+	
+	public void tregoRezervimeTeKrijuaraKlient(int idKlient) {
+		this.id = idKlient;
+		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(idKlient);
+	}
+	
+	public void dergoRezervim(RezervimModel rezervim) {
+		if (rezervimService.dergoRezervim(rezervim)) {
+			rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
+			FacesContextUtil.facesContext("Sukses!", "Rezervimi u dergua me sukses!");
+			PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
+			
+		} else {
+			FacesContextUtil.facesContext("Gabim","Rezervimi nuk mund te dergohet.");
+		}
+	}
+	
+	public void fshiRezervim(RezervimModel rezervim) {
+		if (rezervimService.fshiRezervim(rezervim)) {
+			rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
+			FacesContextUtil.facesContext("Sukses!", "Rezervimi u fshi me sukses!");
+			PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
+		} else {
+			FacesContextUtil.facesContext("Gabim","Rezervimi nuk mund te fshihet.");
+		}
+	}
+	
+	public String shkoNePanelinERezervimeve() {
+		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
+		return "rezervimePerTuNdryshuar.xhtml?faces-redirect=true";
 	}
 }

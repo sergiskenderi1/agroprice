@@ -8,6 +8,10 @@
 	
 }
 
+.table-ndryshoProdukt{
+	width: 70px;
+}
+
 .ui-inputfield{
 	box-shadow: none !important;
 }
@@ -36,6 +40,18 @@
 	background: #00c131!important;
 	margin-top: -2px !important;
 	margin-left:5px;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
+
+.buttonDelete {
+	background: #BA4141 !important;
+	margin-top: -2px !important;
+	margin-left: 10px;
 	font-weight: normal !important;
 	color: white !important;
 	cursor: pointer;

@@ -36,11 +36,11 @@
 				<h:form columns="2">
 				<p:growl id="growl" sticky="false" time="4000"/>
 					<p:commandButton value="Dilni"
-						action="#{userLoggedinBean.logout}" styleClass="logOut"
+						action="#{userLoggedinBean.dilni}" styleClass="logOut"
 						icon="fa fa-sign-out" />
 
 					<p:commandButton value="Ndrysho Profilin" styleClass="logOut" 
-					action="editClientProfile.xhtml?faces-redirect=true"
+					action="ndryshoKlientProfil.xhtml?faces-redirect=true"
 					icon="fa fa-edit"/>
 				</h:form>
 			</h:panelGroup>
@@ -74,8 +74,8 @@
 				<br />
 				<br />
 				<h:form>
-					<p:commandButton value="Krijo" icon="fa fa-cart-plus"
-                     action="#{orderResourceBean.moveToManageOrder(userLoggedinBean.userModel.id)}"
+					<p:commandButton value="Menaxho Rezervim" icon="fa fa-cart-plus"
+                     action="menaxhoRezervimKlient.xhtml?faces-redirect=true"
 					styleClass="buttonStyle">
 					</p:commandButton>
 				</h:form>

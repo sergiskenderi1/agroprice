@@ -34,7 +34,8 @@
 }
 
 .formNew {
-	margin-left: 50px !important;
+	margin-left: auto !important;
+	text-align: center;
 }
 
 .title {
@@ -65,8 +66,7 @@
 }
 
 td {
-	font-size: 13px !important;
-	height: 10px !important;
+	font-size: 17px !important;
 }
 
 .fullContent {
@@ -117,4 +117,16 @@ td {
 	transform: translateX(-50%) translateY(-50%);
 	padding: 3px 15px;
 	margin: 6px 2px;
+}
+
+.ruajNdryshime{
+	background: #008CBA !important;
+	margin-right: auto !important;
+	margin-top: auto !important;
+	font-weight: normal !important;
+	color: white !important;
+	cursor: pointer;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
 }

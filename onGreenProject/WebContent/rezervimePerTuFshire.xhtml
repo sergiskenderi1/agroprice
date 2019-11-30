@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Paneli i Rezervimeve ne Pritje</title>
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="tableStyleRezervime.css" />
+</h:head>
+<f:metadata>
+	<f:viewAction
+		action="#{rezervimBean.tregoRezervimeTeKrijuaraKlient(userLoggedinBean.userModel.id)}" />
+</f:metadata>
+<h:body styleClass="fullContent">
+	<ui:insert name="header">
+		<ui:include src="/templates/headerKlient.xhtml"></ui:include>
+	</ui:insert>
+	<p:growl id="growlMessage" showDetail="true" sticky="false" life="2000" />
+	<h:form id="formRezervim">
+		<br />
+		<br />
+		<p:dataTable id="tableRezervim" value="#{rezervimBean.rezervime}"
+			var="rezervim" border="1" widgetVar="filterRezervi"
+			filteredValue="#{rezervimBean.filteredRezervime}" scrollable="true"
+			emptyMessage="Nuk u gjet asnje Rezervim">
+
+			<p:column headerText="Adresa"
+				filterBy="#{rezervim.getShites().getTregu().getEmri()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getShites().getTregu().getAdresa()}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="Shites"
+				filterBy="#{rezervim.getShites().getEmri()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getShites().getEmri()} #{rezervim.getShites().getMbiemri()}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="Nr.Cel"
+				filterBy="#{rezervim.getShites().getCelular()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getShites().getCelular()}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.cmimiTotal}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="Data" filterBy="#{rezervim.data}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.data}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="Mesazh" filterBy="#{rezervim.mesazhi}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.mesazhi}"></h:outputText>
+			</p:column>
+
+            <p:column headerText="Gjendja" filterBy="#{rezervim.getStatus().getEmri()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getStatus().getEmri()}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="Fshi Rezervim"
+				styleClass="table-RezervimPerfunduar">
+				<p:commandButton styleClass="buttonDelete" value="Fshi"
+					update="growlMessage"
+					actionListener="#{rezervimBean.fshiRezervim(rezervim)}"
+					icon="fa fa-trash">
+					<p:confirm header="Confirmation" message="A jeni i sigurte?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Po" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Jo" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
+		width="700" height="300">
+		<ui:include src="shikoProdukteNeRezervim.xhtml" />
+		<p:ajax event="close" listener="#{rezervimBean.handleClose}" />
+	</p:dialog>
+
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+
+</h:body>
+
+</html>

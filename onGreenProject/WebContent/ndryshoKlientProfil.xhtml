@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Ndrysho Profil</title>
+	<h:outputStylesheet library="css" name="formStyle.css" />
+	<h:outputStylesheet library="css" name="headerAndFooter.css" />
+	<style>               
+        .Bimage{background-image:url("#{resource['images:editUserPhoto.jpg']}");
+        background-size:100%;
+    background-repeat: no-repeat; 
+	}
+        </style> 
+</h:head>
+<h:body styleClass="Bimage">
+    <ui:insert name="header">
+		<ui:include src="/templates/headerKlient.xhtml"></ui:include>
+	</ui:insert>
+	<br />
+	<br />
+	<h:form styleClass="formNew" id="editForm">
+		<p:growl id="growl" showDetail="true" time="3000" />
+		<p:panelGrid columns="1" styleClass="mainPannel"
+			style="margin:0 auto;width:350px;">
+			<h:panelGroup columns="1" styelClass="mainGroup">
+				<br />
+				<br />
+				<h:outputText value="Ndrysho Profilin" styleClass="titleEditStore"></h:outputText>
+				<p:separator style="width:80%;" />
+				<br />
+				<br />
+				<p:outputLabel styleClass="inputField" value="Emri"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.emri}" style="text-align:center;"
+					required="true" requiredMessage="Emri duhet plotesuar!"
+					validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
+					<f:validateLength minimum="3" maximum="45"></f:validateLength>
+					<f:validateRegex pattern="^[a-zA-Z]+$" />
+				</p:inputText>
+				<br />
+
+
+				<p:outputLabel styleClass="inputField" value="Mbiemri"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.mbiemri}" style="text-align:center;"
+					required="true" requiredMessage="Mbiemri duhet plotesuar!"
+					validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
+					<f:validateLength minimum="3" maximum="245"></f:validateLength>
+					<f:validateRegex pattern="^[a-zA-Z]+$" />
+				</p:inputText>
+				<br />
+
+
+				<p:outputLabel styleClass="inputField" value="Adresa"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.adresa}" style="text-align:center;"
+					required="true" requiredMessage="Adresa duhet plotesuar!"
+					validatorMessage="Adresa duhet te kete me pak se 45 karaktere.">
+					<f:validateLength maximum="45"></f:validateLength>
+				</p:inputText>
+				<br />
+
+				<p:outputLabel styleClass="inputField" value="Email"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.email}" style="text-align:center;"
+					required="true" requiredMessage="Email duhet plotesuar!"
+					validatorMessage="Email nuk eshte i sakte.">
+					<f:validateRegex
+						pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+				</p:inputText>
+				<br />
+
+				<p:outputLabel styleClass="inputField" value="Celular"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.celular}" style="text-align:center;"
+					required="true" requiredMessage="Celulari duhet plotesuar!"
+					validatorMessage="Ju lutem shkruani nje numer te sakte (fillon me +355)">
+					<f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />
+				</p:inputText>
+				<br />
+
+				<p:outputLabel styleClass="inputField" value="Username"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.username}" style="text-align:center;"
+					required="true" requiredMessage="Username duhet plotesuar!"
+					validatorMessage="Username duhet te kete me shume se 3 dhe me pak se 45 karaktere.">
+					<f:validateLength minimum="4" maximum="45" />
+				</p:inputText>
+				<br />
+
+				<p:outputLabel styleClass="inputField" value="Fjalekalimi"></p:outputLabel>
+				<br />
+				<p:inputText value="#{userLoggedinBean.userModel.fjalekalimi}" style="text-align:center;"
+					required="true" requiredMessage="Fjalekalimi duhet plotesuar!"
+					validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere.">
+					<f:validateLength minimum="8" />
+				</p:inputText>
+				<br />
+				<br />
+				<p:commandButton id="edit" update="editForm" styleClass="ruajNdryshime"
+					action="#{userResourceBean.ndryshoProfil(userLoggedinBean.userModel)}" value="Ruaj Ndryshimet"></p:commandButton>
+				<br></br>
+				<br />
+				<br />
+			</h:panelGroup>
+		</p:panelGrid>
+	</h:form>
+	<br />
+	<br />
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+</h:body>
+</html>

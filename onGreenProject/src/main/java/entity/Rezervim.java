@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,10 +26,10 @@ public class Rezervim {
 	private float cmimiTotal;
 	private String mesazhi;
 	private boolean valid;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idclient")
 	private User user;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idShites")
 	private User shites;
 	@ManyToOne(fetch = FetchType.LAZY)

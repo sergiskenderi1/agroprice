@@ -72,11 +72,11 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
-	<p:dialog widgetVar="dlgNew" modal="true" width="350" height="350">
+	<p:dialog widgetVar="dlgNew" modal="true" width="350" height="450">
  		<ui:include src="krijoProdukt.xhtml" />
 	</p:dialog>
 	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
-		width="350" height="350">
+		width="350" height="450">
 		<ui:include src="ndryshoProdukt.xhtml" />
 		<p:ajax event="close" listener="#{produktBean.handleClose}" />
 	</p:dialog>

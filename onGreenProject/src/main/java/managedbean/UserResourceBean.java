@@ -158,6 +158,16 @@ public class UserResourceBean {
 		}
 	}
 	
+	public void ndryshoProfil(UserModel user) {
+		if (userService.ndryshoUser(user)) {
+			FacesContextUtil.facesContext("Sukses!", "Profili u ndryshua me sukses!");
+			PrimeFaces.current().ajax().update("formNew");
+			userModel = new UserModel();
+		} else {
+			FacesContextUtil.facesContext("Error!", "Profili me kete username eshte ekzistues!");
+		}
+	}
+	
 	public void fshiShites(UserModel shites) {
 		if (userService.fshiUser(shites)) {
 			employeeList = userService.tregoShitesit(shites.getTregu().getIdtregu());
