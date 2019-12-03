@@ -34,8 +34,7 @@
         </h:panelGrid><br/>
         <p:commandButton id="loginButton" styleClass="button"
         value="Logohu" update="loginForm" action="#{loginBean.verifyLogin}"
-        actionListener="#{userLoggedinBean.UserLoggedIn}"
-        >
+        actionListener="#{userLoggedinBean.UserLoggedIn}">
         <f:attribute name="username" value="#{loginBean.userModel.username}"/> 
         </p:commandButton>
         <p:commandLink id="back" action="#{firstPageBean.goToHome}" immediate="true"

@@ -61,31 +61,6 @@ public class UserResourceBean {
 		return "indexEmployee.xhtml";
 	}
 
-	public String addUser() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		// verifikon nese username eshte ekzistues
-		if (!(userService.verifyUsername(userModel.getUsername()))) {
-			// verifikon nese emaili q ka dhene eshte ekzistues
-			if (!(userService.verifyEmail(userModel.getEmail()))) {
-				if (userService.addUser(userModel)) {
-					FacesMessage facesMessage = new FacesMessage("Regjistrimi u krye me sukses.");
-					facesContext.addMessage("signUpForm:register", facesMessage);
-					facesContext.getExternalContext().getFlash().setKeepMessages(true);
-					return "klientPannel.xhtml?faces-redirect=true";
-				} else {
-					return null;
-				}
-			} else {
-				FacesMessage facesMessage = new FacesMessage("Ky email nuk eshte i disponueshem.");
-				facesContext.addMessage("registerForm:email", facesMessage);
-				return null;
-			}
-		} else {
-			FacesMessage facesMessage = new FacesMessage("Ky username nuk eshte i disponueshem.");
-			facesContext.addMessage("registerForm:username", facesMessage);
-			return null;
-		}
-	}
 	
 	public void krijoShites(int idTregu) {
 		if (userService.krijoShites(userModel, idTregu)) {
@@ -188,5 +163,39 @@ public class UserResourceBean {
 	
 	public int gjejSasiPerShites(UserModel userModel) {
 		return userService.gjejSasiPerShites(userModel);
+	}
+	
+	public String addUser() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		// verifikon nese username eshte ekzistues
+		if (!(userService.verifyUsername(userModel.getUsername()))) {
+			// verifikon nese emaili q ka dhene eshte ekzistues
+			if (!(userService.verifyEmail(userModel.getEmail()))) {
+				if (userService.addUser(userModel)) {
+					FacesMessage facesMessage = new FacesMessage("Regjistrimi u krye me sukses. Logohuni ne llogarine tuaj.");
+					facesContext.addMessage("signUpForm:register", facesMessage);
+					facesContext.getExternalContext().getFlash().setKeepMessages(true);
+					return "logohu.xhtml?faces-redirect=true";
+				} else {
+					return null;
+				}
+			} else {
+				FacesMessage facesMessage = new FacesMessage("Ky email nuk eshte i disponueshem.");
+				facesContext.addMessage("registerForm:email", facesMessage);
+				return null;
+			}
+		} else {
+			FacesMessage facesMessage = new FacesMessage("Ky username nuk eshte i disponueshem.");
+			facesContext.addMessage("registerForm:username", facesMessage);
+			return null;
+		}
+	}
+	
+	public String redirectToMenaxhoProdukt() {
+		return "/Admin/menaxhoProdukt.xhtml?faces-redirect=true";
+	}
+	
+	public String redirectToMenaxhoProduktNeTregAdmin() {
+		return "/Admin/menaxhoProduktNeTregAdmin.xhtml?faces-redirect=true";
 	}
 }

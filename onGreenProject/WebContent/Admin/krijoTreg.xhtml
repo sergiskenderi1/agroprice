@@ -25,7 +25,7 @@
 
 		<p:outputLabel styleClass="inputField" value="Emri i Tregut"></p:outputLabel>
 		<br />
-		<p:inputText value="#{tregBean.tregModel.emri}"
+		<p:inputText value="#{tregBean.tregModel.emri}" style="text-align:center;"
 			required="true" requiredMessage="Emri duhet plotesuar."
 			validatorMessage="Emri duhet te kete nga 3 - 30 karaktere.">
 			<f:validateLength minimum="3" maximum="30"></f:validateLength>
@@ -35,7 +35,7 @@
 
 		<p:outputLabel styleClass="inputField" value="Adresa"></p:outputLabel>
 		<br />
-		<p:inputText value="#{tregBean.tregModel.adresa}"
+		<p:inputText value="#{tregBean.tregModel.adresa}" style="text-align:center;"
 			required="true" requiredMessage="Adresa duhet plotesuar."
 			validatorMessage="Adresa duhet te kete nga 5-35 karaktere.">
 			<f:validateLength minimum="5" maximum="35"></f:validateLength>
@@ -46,7 +46,7 @@
 		<p:outputLabel styleClass="inputField" value="Celular"></p:outputLabel>
 		<br />
 
-		<p:inputText value="#{tregBean.tregModel.celular}"
+		<p:inputText value="#{tregBean.tregModel.celular}" style="text-align:center;"
 			required="true" requiredMessage="Numri duhet plotesuar."
 			validatorMessage="Numri nuk ekziston . Ju lutem venodseni ne formatin: +355 6x xx xx xxx">
 			<f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />

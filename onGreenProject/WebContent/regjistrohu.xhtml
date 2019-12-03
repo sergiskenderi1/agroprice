@@ -51,12 +51,12 @@
 			</p:inputText>
 			<p:message for="username" display="icon" />
 
-			<p:inputText id="password" value="#{userResourceBean.userModel.fjalekalimi}"
+			<p:password id="password" value="#{userResourceBean.userModel.fjalekalimi}"
 				placeholder="Fjalekalimi" required="true" label="Fjalekalimi"
 				requiredMessage="Fjalekalimi duhet plotesuar !"
 				validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere">
 				<f:validateLength minimum="8" maximum="45" />
-			</p:inputText>
+			</p:password>
 			<p:message for="password" display="icon" />
 
 			<p:inputText id="address" value="#{userResourceBean.userModel.adresa}"
@@ -87,7 +87,7 @@
 			update="registerForm" action="#{userResourceBean.addUser}">
 		</p:commandButton>
 		<br> </br>
-		<p:outputLabel value="Nuk doni te regjistorheni?" styleClass="signUp"></p:outputLabel>
+		<p:outputLabel value="Nuk doni te regjistroheni?" styleClass="signUp"></p:outputLabel>
 		<p:commandLink action="#{firstPageBean.goToHome}" ajax="false"
 			immediate="true" styleClass="link">
 			<h:outputText value="Prapa" styleClass="labelCancel" />

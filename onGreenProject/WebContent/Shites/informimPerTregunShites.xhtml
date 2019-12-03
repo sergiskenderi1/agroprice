@@ -77,15 +77,6 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
-	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
-		width="300" height="490">
-    	<ui:include src="shtoProduktNeRezervim.xhtml" />
-		<p:ajax event="close" listener="#{produktRezervuarBean.handleClose}" />
-	</p:dialog>
-	<br />
-	<br />
-	<br />
-	<br />
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

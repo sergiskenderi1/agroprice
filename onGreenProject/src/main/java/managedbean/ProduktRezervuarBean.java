@@ -116,7 +116,7 @@ public class ProduktRezervuarBean {
 	
     public String ndryshoRezervim(RezervimModel rezervim) {
     	this.produktRezervuarModel.setRezervim(RezervimConverter.convertToEntity(rezervim));
-    	return "ndryshoRezervim.xhtml?id=" + rezervim.getId() + "faces-redirect=true";
+    	return "/Klient/ndryshoRezervim.xhtml?id=" + rezervim.getId() + "faces-redirect=true";
     }
     
     public void tregoProdukteNeRezervim(int idRezervim) {

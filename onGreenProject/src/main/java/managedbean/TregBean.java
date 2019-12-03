@@ -95,7 +95,7 @@ public class TregBean {
 	}
 
 	public String moveToTregPannel() {
-		return "menaxhoTregjet.xhtml?faces-redirect=true";
+		return "/Admin/menaxhoTregjet.xhtml?faces-redirect=true";
 	}
 
 	public void krijoTreg() {
@@ -147,7 +147,7 @@ public class TregBean {
 		if(userModel.getRole().getEmri().equals("admin")) {
         this.setIdTreg(idTreg);
 		if (idTreg != 0) {
-			return "menaxhoShitesit.xhtml?id=" + idTreg + "faces-redirect=true";
+			return "/Admin/menaxhoShitesit.xhtml?id=" + idTreg + "faces-redirect=true";
 		} else {
 			FacesContextUtil.facesContext("KUJDES!", "Ju lutem zgjidhni nje treg ne liste!");
 			return null;
@@ -157,7 +157,7 @@ public class TregBean {
 		 try {
 				if (idTreg != 0) {
 					 this.setIdTreg(idTreg);
-					return "zgjidhProduktKlient.xhtml?id=" + idTreg + "faces-redirect=true";
+					return "/Klient/zgjidhProduktKlient.xhtml?id=" + idTreg + "faces-redirect=true";
 				} else {
 					FacesContext facesContext = FacesContext.getCurrentInstance();
 					FacesMessage facesMessage = new FacesMessage("Ju nuk keni zgjedhur asnje Treg.");

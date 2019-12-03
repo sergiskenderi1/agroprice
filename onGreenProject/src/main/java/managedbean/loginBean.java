@@ -54,12 +54,12 @@ public class loginBean {
 	public String verifyLogin() {
 		if (userService.verifyLogin(userModel)) {
 			this.userModel = userService.getUserByUsername(userModel.getUsername());
-			if (userModel.getRole().getIdroli() == 1) {
-				return "adminPannel.xhtml?faces-redirect=true";
-			} else if (userModel.getRole().getIdroli() == 2) {
-				return "shitesPannel.xhtml?faces-redirect=true";
-			} else if (userModel.getRole().getIdroli() == 3) {
-				return "klientPannel.xhtml?faces-redirect=true";
+			if (userModel.getRole().getEmri().equals("admin")) {
+				return "/Admin/adminPannel.xhtml?faces-redirect=true";
+			} else if (userModel.getRole().getEmri().equals("shites")) {
+				return "/Shites/shitesPannel.xhtml?faces-redirect=true";
+			} else if (userModel.getRole().getEmri().equals("klient")) {
+				return "/Klient/klientPannel.xhtml?faces-redirect=true";
 			} else {
 				return null;
 			}

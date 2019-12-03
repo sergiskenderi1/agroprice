@@ -25,6 +25,13 @@
 	<h:form id="formRezervim">
 		<br />
 		<br />
+		<h:panelGrid columns="1" styleClass="headGrid">
+			<h:panelGroup>
+				<p:commandButton value="Shko Prapa"
+					action="menaxhoRezervimKlient.xhtml?faces-redirect=true"
+					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
+			</h:panelGroup>
+		</h:panelGrid>
 		<p:dataTable id="tableRezervim" value="#{rezervimBean.rezervime}"
 			var="rezervim" border="1" widgetVar="filterRezervi"
 			filteredValue="#{rezervimBean.filteredRezervime}" scrollable="true"
@@ -68,15 +75,21 @@
 				<h:outputText value="#{rezervim.getStatus().getEmri()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Ndrysho"
-				styleClass="table-ndryshoProdukt">
-				<p:commandButton id="edit" value="Produktet" process="@this"
-					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
-					update=":entityDialog" oncomplete="PF('entityDialog').show()"
-					styleClass="editButton" icon="fa fa-list-ol" />
-				<p:commandButton id="edit1" value="Ndrysho"  update="formRezervim"
-					action="#{produktRezervuarBean.ndryshoRezervim(rezervim)}"
-					styleClass="editButton" icon="fa fa-edit" />
+			<p:column headerText="Fshi Rezervim"
+				styleClass="table-RezervimPerfunduar">
+				<p:commandButton styleClass="buttonDelete" value="Fshi"
+					update="growlMessage"
+					actionListener="#{rezervimBean.fshiRezervim(rezervim)}"
+					icon="fa fa-trash">
+					<p:confirm header="Confirmation" message="A jeni i sigurte?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Po" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Jo" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
 			</p:column>
 		</p:dataTable>
 

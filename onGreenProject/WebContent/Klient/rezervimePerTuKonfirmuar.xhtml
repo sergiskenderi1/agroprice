@@ -25,6 +25,13 @@
 	<h:form id="formRezervim">
 		<br />
 		<br />
+		<h:panelGrid columns="1" styleClass="headGrid">
+			<h:panelGroup>
+				<p:commandButton value="Shko Prapa"
+					action="menaxhoRezervimKlient.xhtml?faces-redirect=true"
+					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
+			</h:panelGroup>
+		</h:panelGrid>
 		<p:dataTable id="tableRezervim" value="#{rezervimBean.rezervime}"
 			var="rezervim" border="1" widgetVar="filterRezervi"
 			filteredValue="#{rezervimBean.filteredRezervime}" scrollable="true"
