@@ -17,36 +17,36 @@
 	<ui:insert name="header">
 		<ui:include src="/templates/headerAdmin.xhtml"></ui:include>
 	</ui:insert>
-	<br />
-	<br />
 	<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
 	<h:form id="newStoreForm" styleClass="formNew">
 		<br />
 		<br />
-		<h:panelGrid columns="1" styleClass="mainGrid">
-		<h:outputLabel styleClass="titleStore">Zgjidhni njerin prej tregjeve .</h:outputLabel>
-		<p:dataScroller value="#{tregBean.storeList}" var="store">
- 
-        <h:panelGrid columns="3" style="width:100%">
-            <p:outputPanel>
-                <h:panelGrid columns="2" cellpadding="5" >
-                    <h:outputText value="Id:" />
-                    <h:outputText value="#{store.id}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Emri:" />
-                    <h:outputText value="#{store.emri}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Adresa:" />
-                    <h:outputText value="#{store.adresa}" style="font-weight: bold"/>
-                </h:panelGrid>
-            </p:outputPanel>
-        </h:panelGrid>
-        <p:commandButton value="Zgjidh" styleClass="enterButton" style="margin-right:100px;"
-        action="#{tregBean.moveToPannel(store.id,userLoggedinBean.userModel)}"
-        ></p:commandButton>
-        <p:separator style="width:270px;margin-left:-20px;"></p:separator>
-    </p:dataScroller>
+		<h:panelGrid columns="1" styleClass="headGrid">
+			<p:commandButton value="Shko Prapa"
+				action="adminPannel.xhtml?faces-redirect=true"
+				styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
 		</h:panelGrid>
+		<br />
+		<h:panelGrid columns="1" styleClass="headGrid" border="1">
+			<h:outputLabel value="Zgjidhni nje Treg" styleClass="label"></h:outputLabel>
+		</h:panelGrid>
+		<p:dataGrid var="treg" value="#{tregBean.storeList}" columns="3"
+			layout="grid" rows="12" style="width:60%;margin: 0 auto;">
+			<p:panel>
+				<h:panelGrid columns="1" style="text-align:center;">
+					<p:graphicImage value="/resources/images/storeLogo.jpg"
+						style="width:50%;height:50%;" />
+
+					<h:outputText value="Emri: #{treg.emri}" />
+					<h:outputText value="Adresa: #{treg.adresa}" />
+					<p:commandButton value="Zgjidh" styleClass="enterButton"
+						icon="fa fa-map-marker"
+						action="#{tregBean.moveToPannel(treg.id,userLoggedinBean.userModel)}">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+		</p:dataGrid>
+		<br />
 	</h:form>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>

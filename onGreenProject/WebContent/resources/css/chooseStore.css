@@ -1,8 +1,7 @@
-
 .titleStore {
-    font-family: "Arial Black";
-    color: #000000;
-    font-size: 15px;
+	font-family: "Arial Black";
+	color: #000000;
+	font-size: 15px;
 }
 
 .enterButton {
@@ -15,16 +14,15 @@
 	text-shadow: none !important;
 }
 
-.mainGrid{
-	margin:0 auto;
-	width:450px;
+.mainGrid {
+	margin: 0 auto;
+	width: 450px;
 	background-color: #409fff;
 	text-align: center;
 }
 
 .newButton {
 	background: #008CBA !important;
-	margin-left: 25px !important;
 	color: white !important;
 	font-weight: normal !important;
 	font-size: 13px !important;
@@ -33,13 +31,33 @@
 	cursor: pointer;
 }
 
-.headGrid{
+.headGrid {
 	margin-left: auto;
 	margin-right: auto;
 }
 
+
 .ui-datascroller .ui-datascroller-item {
-        border-bottom: 1px solid #A8A8A8;
-        margin-left: 20%;
-        padding-bottom: 5%;
-    }
+	border-bottom: 1px solid #A8A8A8;
+	margin-left: 20%;
+	padding-bottom: 5%;
+}
+
+.ui-datagrid .ui-datagrid-content {
+	border: 1px solid #c8c8c8;
+	background-color: #fff;
+	color: #333;
+	padding: .571em 1em;
+	line-height: 1.5;
+}
+
+.ui-datagrid .ui-paginator.ui-paginator-top {
+	border-bottom: 0 none;
+}
+
+.label{
+	font-weight: normal !important;
+	font-size: 23px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+}
