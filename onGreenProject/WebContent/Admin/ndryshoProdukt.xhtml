@@ -12,6 +12,10 @@
 	<h:outputStylesheet library="css" name="formStyle.css" />
 	<h:outputStylesheet library="css" name="tableStyleProdukt.css" />
 </h:head>
+<f:metadata>
+	<f:viewAction
+		action="#{produktBean.currentNjesiMatese}" />
+</f:metadata>
 <h:body styleClass="fullContent">
 	<h:form styleClass="formNew" id="edit"
 		visible="#{facesContext.validationFailed}">

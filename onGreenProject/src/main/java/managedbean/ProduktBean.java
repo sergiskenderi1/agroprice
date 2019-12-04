@@ -124,6 +124,10 @@ public class ProduktBean {
 		}
 	}
 	
+	public void currentNjesiMatese() {
+		this.njesiMatese = productModel.getNjesiMatese().getEmri();
+	}
+	
 	public void fshiProdukt(ProduktModel produktModel) {
 		if (productService.verifikoProduktPerTeFshire(produktModel)) {
 			productService.fshiProdukt(produktModel);
@@ -131,7 +135,7 @@ public class ProduktBean {
 			FacesContextUtil.facesContext("Sukses!", "Produkti u fshi me sukses!");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
 		} else {
-			FacesContextUtil.facesContext("Error!", "Produkti nuk mund te fshihet sepse ka gjendje ne tregje.!");
+			FacesContextUtil.facesContext("Error!", "Produkti nuk mund te fshihet sepse ka gjendje ne tregje!");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
 		}
 	}

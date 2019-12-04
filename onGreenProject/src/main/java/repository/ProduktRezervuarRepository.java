@@ -28,8 +28,15 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 			if(!produkteTeRezervuara.isEmpty()) {
 			return true;
 			}
-			else 
+			else {
+				for(ProduktRezervuar produkte : produkteTeRezervuara) {
+					if(!produkte.getRezervim().isValid() || (produkte.getRezervim().getStatus().getEmri().equals("derguar")
+							 && produkte.getRezervim().getStatus().getEmri().equals("pranuar"))){
+						return true;
+					}
+				}
 			return false;
+			}
 		}catch(Exception e) {
 		return false;
 		}

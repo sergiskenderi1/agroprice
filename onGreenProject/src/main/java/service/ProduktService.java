@@ -62,7 +62,12 @@ public class ProduktService implements ProduktServiceInterface{
 	
 	@Override
 	public boolean fshiProdukt(ProduktModel produktModel) {
+		ProduktNeTregRepositoryInterface produktNeTregRepository = new ProduktNeTregRepository();
+		if(produktNeTregRepository.gjejProduktNeTregNgaId(produktModel.getId()).isEmpty()) {
 		return productRepository.fshiProdukt(ProduktConverter.convertToProduktEntity(produktModel));
+		}else {
+			return false;
+		}
 	}
 	
 	@Override
