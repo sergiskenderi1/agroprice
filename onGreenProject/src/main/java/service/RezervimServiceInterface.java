@@ -16,6 +16,8 @@ public interface RezervimServiceInterface {
 	
 	public boolean pranoRezervim(RezervimModel rezervim);
 	
+	public boolean refuzoRezervim(RezervimModel rezervim);
+	
 	public List<RezervimModel> tregoRezervimeNePritjeKlient(int idKlient);
 	
 	public List<RezervimModel> tregoRezervimeKlient(int idKlient);

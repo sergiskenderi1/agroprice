@@ -18,6 +18,8 @@ public interface RezervimRepositoryInterface {
 	
 	public boolean pranoRezervim(Rezervim rezervim);
 	
+	public boolean refuzoRezervim(Rezervim rezervim);
+	
 	public List<Rezervim> tregoRezervimeKlient(int idKlient);
 	
 	public Rezervim krijoRezervim(int idKlient,int idShites,float cmimi);

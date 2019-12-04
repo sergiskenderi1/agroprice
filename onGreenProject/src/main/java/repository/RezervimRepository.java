@@ -145,6 +145,25 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 	}
 	
 	@Override
+	public boolean refuzoRezervim(Rezervim rezervim) {
+		try {
+			Status status = new Status();
+			Query que = em.createQuery("Select s from Status s where emri=:emri");
+			que.setParameter("emri","krijuar");
+			status = (Status)que.getSingleResult();
+			tx.begin();
+			rezervim.setStatus(status);
+			rezervim.setMesazhi("Rezervimi eshte refuzuar.");
+			em.merge(rezervim);
+			tx.commit();
+			return true;
+		}catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	@Override
 	public List<Rezervim> tregoRezervimeKlient(int idKlient) {
 		List<Rezervim> rezervime = new ArrayList<Rezervim>();
 		try {

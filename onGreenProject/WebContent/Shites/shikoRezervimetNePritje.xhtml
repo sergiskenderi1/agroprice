@@ -41,9 +41,15 @@
 			emptyMessage="Nuk u gjet asnje Rezervim">
 
 			<p:column headerText="Klienti"
-				filterBy="#{rezervim.getUser().getUsername()}"
+				filterBy="#{rezervim.getUser().getEmri()} #{rezervim.getUser().getMbiemri()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.getUser().getUsername()}"></h:outputText>
+				<h:outputText value="#{rezervim.getUser().getEmri()} #{rezervim.getUser().getMbiemri()}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="Celular"
+				filterBy="#{rezervim.getUser().getCelular()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getUser().getCelular()}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
@@ -62,7 +68,7 @@
 			</p:column>
 
 			<p:column headerText="Shiko Produktet"
-				styleClass="table-RezervimPerfunduar1">
+				style="width:100px">
 				<p:commandButton id="edit" value="Shiko" process="@this"
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"

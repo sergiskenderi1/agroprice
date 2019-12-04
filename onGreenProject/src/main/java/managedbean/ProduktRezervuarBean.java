@@ -122,4 +122,8 @@ public class ProduktRezervuarBean {
     public void tregoProdukteNeRezervim(int idRezervim) {
        produkteRezervuar = produktRezervuarService.tregoProdukteNeRezervim(idRezervim);
     }
+    
+    public float tregoCmiminEProduktit(ProduktRezervuarModel produkt) {
+    	return produkt.getCmimi()/produkt.getSasia();
+    }
 }

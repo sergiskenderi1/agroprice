@@ -29,7 +29,7 @@ public class ProduktRezervuarService implements ProduktRezervuarServiceInterface
 	public boolean rezervoProdukt(ProduktRezervuarModel produktRezervuar, int idKlient) {
 		RezervimRepositoryInterface rezervimRepository = new RezervimRepository();
 		Rezervim rezervim = new Rezervim();
-		if (produktRezervuar.getSasia() < produktRezervuar.getProduktNeTreg().getSasiaNeTreg()) {
+		if (produktRezervuar.getSasia() <= produktRezervuar.getProduktNeTreg().getSasiaNeTreg()) {
 			if (rezervimRepository.gjejRezervimNePritje(idKlient,
 					produktRezervuar.getProduktNeTreg().getUser().getIduseri()) == null) {
 				// krijo rezervim + shto kete produkt ne rezervimin e sapokrijuar

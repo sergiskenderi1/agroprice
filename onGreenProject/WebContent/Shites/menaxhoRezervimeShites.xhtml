@@ -41,9 +41,15 @@
 			emptyMessage="Nuk u gjet asnje Rezervim">
 
 			<p:column headerText="Klienti"
-				filterBy="#{rezervim.getUser().getUsername()}"
+				filterBy="#{rezervim.getUser().getEmri()} #{rezervim.getUser().getMbiemri()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.getUser().getUsername()}"></h:outputText>
+				<h:outputText value="#{rezervim.getUser().getEmri()} #{rezervim.getUser().getMbiemri()}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="Celular"
+				filterBy="#{rezervim.getUser().getCelular()}"
+				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
+				<h:outputText value="#{rezervim.getUser().getCelular()}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
@@ -62,7 +68,7 @@
 			</p:column>
 
 			<p:column headerText="Shiko Produktet"
-				styleClass="table-RezervimPerfunduar1">
+				style="width:125px;">
 				<p:commandButton id="edit" value="Shiko" process="@this"
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"
@@ -70,6 +76,18 @@
 				<p:commandButton id="edit1" value="Prano" update="growlMessage"
 					actionListener="#{rezervimBean.pranoRezervim(rezervim)}"
 					styleClass="acceptButton" icon="fa fa-check-square-o">
+					<p:confirm header="Confirmation" message="A jeni te sigurte?"
+						icon="fa fa-exclamation-triangle " />
+				</p:commandButton>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Po" type="button" 
+						styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+					<p:commandButton value="Jo" type="button"
+						styleClass="ui-confirmdialog-no" icon="fa fa-ban" />
+				</p:confirmDialog>
+				<p:commandButton id="edit2" value="Refuzo" update="growlMessage"
+					actionListener="#{rezervimBean.refuzoRezervim(rezervim)}"
+					styleClass="buttonDelete" icon="fa fa-check-square-o">
 					<p:confirm header="Confirmation" message="A jeni te sigurte?"
 						icon="fa fa-exclamation-triangle " />
 				</p:commandButton>

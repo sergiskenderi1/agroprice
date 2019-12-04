@@ -133,6 +133,17 @@ public class RezervimBean {
 		}
 	}
 	
+	public void refuzoRezervim(RezervimModel rezervim) {
+		if (rezervimService.refuzoRezervim(rezervim)) {
+			rezervime = rezervimService.tregoRezervimeShites(id);
+			FacesContextUtil.facesContext("Sukses!", "Rezervimi u refuzuar me sukses!");
+			PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
+			
+		} else {
+			FacesContextUtil.facesContext("Gabim","Rezervimi nuk mund te refuzohet pasi eshte fshire ose eshte ne perpunim.");
+		}
+	}
+	
 	public void tregoRezervimeTeKrijuaraKlient(int idKlient) {
 		this.id = idKlient;
 		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(idKlient);
