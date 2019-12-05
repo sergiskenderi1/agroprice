@@ -63,9 +63,14 @@
 			<br />
 			<p:inputText value="#{produktRezervuarBean.produktRezervuarModel.getProduktNeTreg().getUser().getCelular()}"
 				disabled="true" />
+		    <br />
+			<p:outputLabel styleClass="inputField" value="Pershkrimi"></p:outputLabel>
+			<br />
+			<p:inputTextarea rows="5" cols="25" disabled="true"
+			autoResize="false" value="#{produktRezervuarBean.produktRezervuarModel.getProduktNeTreg().pershkrimi}">
+			</p:inputTextarea>
 			<br />
 			<br />
-
 			<p:commandButton actionListener="#{produktRezervuarBean.rezervoProdukt(produktRezervuarBean.produktRezervuarModel,
 			userLoggedinBean.userModel.id)}"
 				value="Rezervo Produkt" style="margin-left: 16px" update=":edit"></p:commandButton>

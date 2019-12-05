@@ -11,7 +11,6 @@
 	<title>Paneli i Produkteve te Rezervuara</title>
 	<h:outputStylesheet library="css" name="headerAndFooter.css" />
 	<h:outputStylesheet library="css" name="tableStyleRezervime.css" />
-	<h:outputStylesheet library="css" name="formStyle.css" />
 </h:head>
 <f:metadata>
 	<f:viewParam name="id" value="#{rezervimBean.rezervimModel.id}" />
@@ -37,7 +36,7 @@
 			value="#{produktRezervuarBean.produkteRezervuar}" var="produkt"
 			border="1" scrollable="true" emptyMessage="Nuk u gjet asnje Produkt">
 
-			<p:column headerText="Emri" styleClass="table-columnCmimi">
+			<p:column headerText="Emri" >
 				<h:outputText
 					value="#{produkt.getProduktNeTreg().getProdukt().getEmri()}"></h:outputText>
 			</p:column>
@@ -59,6 +58,15 @@
 			<p:column headerText="Sasia ne Treg" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProduktNeTreg().sasiaNeTreg}"></h:outputText>
 			</p:column>
+			
+			<p:column headerText="Pershkrimi" style="width:90px;">
+				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
+                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{produkt}" 
+                    target="#{produktRezervuarBean.produktRezervuarModel}" />
+                </p:commandLink>
+			</p:column>
+			
 			<p:column headerText="Ndrysho" style="width:220px;">
 				<p:commandButton id="edit" value="Ndrysho" process="@this"
 					actionListener="#{produktRezervuarBean.shikoProdukt(produkt)}"
@@ -85,6 +93,13 @@
 		<ui:include src="ndryshoProduktNeRezervim.xhtml" />
 		<p:ajax event="close" listener="#{rezervimBean.handleClose}" />
 	</p:dialog>
+	<p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
+      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
+                value="#{produktRezervuarBean.produktRezervuarModel.getProduktNeTreg().getPershkrimi()}" />
+        </p:outputPanel>
+    </p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

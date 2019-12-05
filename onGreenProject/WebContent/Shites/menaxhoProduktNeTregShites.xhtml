@@ -37,7 +37,7 @@
 			emptyMessage="Nuk u gjet asnje Produkt">
 			
 			<p:column headerText="Emri" filterBy="#{produkt.getProdukt().emri}" filterMatchMode="contains" 
-			styleClass="table-columnName">
+			styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().emri}"></h:outputText>
 			</p:column>
 
@@ -57,7 +57,7 @@
 			</p:column>
 
 			<p:column headerText="Sasia juaj" filterBy="#{produkt.sasiaNeTreg}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
+			style="width:80px;">
 				<h:outputText value="#{produkt.sasiaNeTreg}"></h:outputText>
 			</p:column>
 
@@ -65,6 +65,14 @@
 			filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().getNjesiMatese().emri}"></h:outputText>
 			</p:column>
+			
+			<p:column headerText="Pershkrimi" style="width:80px;">
+				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
+                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{produkt}" target="#{produktNeTregBean.produktNeTregModel}" />
+                </p:commandLink>
+			</p:column>
+			
 			<p:column headerText="Menaxho Shites" styleClass="table-columnManage">
 				<p:commandButton id="edit" value="Ndrysho" process="@this"
 					actionListener="#{produktNeTregBean.edit(produkt)}"
@@ -93,7 +101,13 @@
 		<ui:include src="ndryshoProduktNeTregShites.xhtml" /> 
 		<p:ajax event="close" listener="#{produktNeTregBean.handleClose}" />
 	</p:dialog>
-
+      <p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
+      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
+                value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
+        </p:outputPanel>
+    </p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

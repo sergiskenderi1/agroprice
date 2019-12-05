@@ -9,6 +9,7 @@ public class ProduktNeTregModel {
 	private int id;
 	private int sasiaNeTreg;
 	private boolean valid;
+	private String pershkrimi;
 	private User user;
 	private Produkt produkt;
 	private Tregu tregu;
@@ -62,6 +63,13 @@ public class ProduktNeTregModel {
 	public void setTregu(Tregu tregu) {
 		this.tregu = tregu;
 	}
-	
+
+	public String getPershkrimi() {
+		return pershkrimi;
+	}
+
+	public void setPershkrimi(String pershkrimi) {
+		this.pershkrimi = pershkrimi;
+	}
 	
 }

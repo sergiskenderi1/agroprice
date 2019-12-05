@@ -47,7 +47,7 @@
 			</p:column>
 
 			<p:column headerText="Sasia" filterBy="#{produkt.sasiaNeTreg}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
+			style="width:40px;">
 				<h:outputText value="#{produkt.sasiaNeTreg}"></h:outputText>
 			</p:column>
 
@@ -55,11 +55,17 @@
 			filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().getNjesiMatese().emri}"></h:outputText>
 			</p:column>
-			<p:column headerText="Shitesi" filterBy="#{produkt.getUser().getEmri()}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
-				<h:outputText value="#{produkt.getUser().getEmri()}"></h:outputText>
+			<p:column headerText="Pershkrimi" styleClass="table-columnCmimi">
+				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
+                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{produkt}" target="#{produktNeTregBean.produktNeTregModel}" />
+                </p:commandLink>
 			</p:column>
-			<p:column headerText="Menaxho Produkt" styleClass="table-columnCmimi">
+			<p:column headerText="Shitesi" filterBy="#{produkt.getUser().getEmri()} #{produkt.getUser().getMbiemri()}"
+			 filterMatchMode="contains" styleClass="table-columnCmimi">
+				<h:outputText value="#{produkt.getUser().getEmri()} #{produkt.getUser().getMbiemri()}"></h:outputText>
+			</p:column>
+			<p:column headerText="Menaxho Produkt" style="width:80px;">
 						
 					<p:commandButton styleClass="buttonDelete" value="Fshi"
 					update="growlMessage"
@@ -78,6 +84,13 @@
 		</p:dataTable>
 
 	</h:form>
+	 <p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
+      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
+                value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
+        </p:outputPanel>
+    </p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

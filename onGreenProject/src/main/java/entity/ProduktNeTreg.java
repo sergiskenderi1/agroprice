@@ -19,6 +19,7 @@ public class ProduktNeTreg {
 	private int id;
 	private int sasiaNeTreg;
     private float cmimiShites;
+    private String pershkrimi;
 	private boolean valid;
 	@ManyToOne
 	@JoinColumn(name = "idshites")
@@ -93,7 +94,13 @@ public class ProduktNeTreg {
 	public void setTregu(Tregu tregu) {
 		this.tregu = tregu;
 	}
-	
-	
+
+	public String getPershkrimi() {
+		return pershkrimi;
+	}
+
+	public void setPershkrimi(String pershkrimi) {
+		this.pershkrimi = pershkrimi;
+	}
 	
 }

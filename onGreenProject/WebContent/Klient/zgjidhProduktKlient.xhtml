@@ -45,7 +45,7 @@
 			filterBy="#{product.cmimiShites}" filterMatchMode="contains">
 				<h:outputText value="#{product.cmimiShites}"></h:outputText>
 			</p:column>
-			<p:column headerText="Njesia Matese" styleClass="table-columnName" 
+			<p:column headerText="Njesia Matese" styleClass="table-columnsPrice" 
 			filterBy="#{product.getProdukt().getNjesiMatese().emri}" 
 			filterMatchMode="contains">
 				<h:outputText value="#{product.getProdukt().getNjesiMatese().emri}"></h:outputText>
@@ -62,6 +62,12 @@
 			filterBy="#{product.getUser().getCelular()}" filterMatchMode="contains">
 				<h:outputText value="#{product.getUser().getCelular()}"></h:outputText>
 			</p:column>
+			<p:column headerText="Pershkrimi" style="width:80px;">
+				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
+                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{product}" target="#{produktNeTregBean.produktNeTregModel}" />
+                </p:commandLink>
+			</p:column>
 			<p:column headerText="Zgjidh Produkt" styleClass="table-columnName">
 				<p:commandButton id="zgjidh" value="Rezervo" process="@this"
 					styleClass="editButton" icon="fa fa-cart-arrow-down"
@@ -76,10 +82,13 @@
     	<ui:include src="shtoProduktNeRezervim.xhtml" />
 		<p:ajax event="close" listener="#{produktRezervuarBean.handleClose}" />
 	</p:dialog>
-	<br />
-	<br />
-	<br />
-	<br />
+	<p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
+      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
+                value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
+        </p:outputPanel>
+    </p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

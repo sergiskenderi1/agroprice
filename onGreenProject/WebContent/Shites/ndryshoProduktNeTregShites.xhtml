@@ -69,8 +69,14 @@
 			<p:inputText value="#{produktNeTregBean.produktNeTregModel.getProdukt().getNjesiMatese().getEmri()}"
 				disabled="true" />
 			<br />
+			<p:outputLabel styleClass="inputField" value="Pershkrimi"></p:outputLabel>
 			<br />
-
+			<p:inputTextarea rows="5" cols="25" maxlength="244" counterTemplate="{0} karaktere te mbetura"
+			autoResize="false" counter="display" value="#{produktNeTregBean.produktNeTregModel.pershkrimi}"></p:inputTextarea>
+			<br />
+			<h:outputText id="display" style="font-size:10px;"></h:outputText>
+			<br />
+			<br />
 			<p:commandButton actionListener="#{produktNeTregBean.ndryshoProduktNeTregShites(userLoggedinBean.userModel.id)}"
 				value="Ruaj Ndryshimet" style="margin-left: 16px" update=":edit"></p:commandButton>
 			<br />

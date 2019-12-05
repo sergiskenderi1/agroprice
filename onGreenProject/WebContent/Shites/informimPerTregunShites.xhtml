@@ -25,11 +25,9 @@
 	<h:form id="productform">
 	<br/>
 	  <h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
 		<p:commandButton value="Shko Prapa"
 					action="shitesPannel.xhtml?faces-redirect=true"
 					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
-		</h:panelGroup>
 		</h:panelGrid>
         <br />
 		<h:panelGrid columns="1" styleClass="headGrid">
@@ -75,8 +73,21 @@
 			filterBy="#{product.getUser().getCelular()}" filterMatchMode="contains">
 				<h:outputText value="#{product.getUser().getCelular()}"></h:outputText>
 			</p:column>
+			<p:column headerText="Pershkrimi" styleClass="table-columnName">
+				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
+                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{product}" target="#{produktNeTregBean.produktNeTregModel}" />
+                </p:commandLink>
+			</p:column>
 		</p:dataTable>
 	</h:form>
+	 <p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
+      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
+                value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
+        </p:outputPanel>
+    </p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

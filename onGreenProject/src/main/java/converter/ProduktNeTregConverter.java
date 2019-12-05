@@ -13,6 +13,7 @@ public class ProduktNeTregConverter {
 		entity.setTregu(model.getTregu());
 		entity.setUser(model.getUser());
 		entity.setCmimiShites(model.getCmimiShites());
+		entity.setPershkrimi(model.getPershkrimi());
 		entity.setValid(model.isValid());
 		return entity;
 	}
@@ -25,6 +26,7 @@ public class ProduktNeTregConverter {
 	    model.setTregu(entity.getTregu());
 	    model.setUser(entity.getUser());
 	    model.setCmimiShites(entity.getCmimiShites());
+	    model.setPershkrimi(entity.getPershkrimi());
 	    model.setValid(entity.isValid());
 	    return model;
 	}
