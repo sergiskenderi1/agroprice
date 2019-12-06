@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-
 import model.TreguModel;
 
 public interface TreguServiceInterface {
@@ -19,4 +18,6 @@ public interface TreguServiceInterface {
 	public boolean gjejTregNgaId(int idTreg);
 	
 	public int sasiaProdukteve(TreguModel treguModel);
+	
+	public String produktiMeIShitur(TreguModel treguModel);
 }

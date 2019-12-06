@@ -33,4 +33,6 @@ public interface RezervimRepositoryInterface {
 	public boolean dergoRezervim(Rezervim rezervim);
 	
 	public boolean fshiRezervim(Rezervim rezervim);
+	
+	public List<Rezervim> gjejRezervimeNeMuaj(int muaji);
 }

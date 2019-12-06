@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
 
+import model.ProduktModel;
 import model.TreguModel;
 import model.UserModel;
 import service.TreguService;
@@ -181,5 +182,9 @@ public class TregBean {
 
 	public int sasiaProdukteve(TreguModel treg) {
 		return tregService.sasiaProdukteve(treg);
+	}
+	
+	public String produktiMeIShitur(TreguModel treg) {
+		return tregService.produktiMeIShitur(treg);
 	}
 }

@@ -71,6 +71,10 @@
 			filterBy="#{product.getUser().getEmri()} #{product.getUser().getMbiemri()}" filterMatchMode="contains">
 				<h:outputText value="#{product.getUser().getEmri()} #{product.getUser().getMbiemri()}"></h:outputText>
 			</p:column>
+			<p:column headerText="Tregu" styleClass="table-columnName" 
+			filterBy="#{product.getTregu().getAdresa()} #{product.getTregu().getEmri()}" filterMatchMode="contains">
+				<h:outputText value="#{product.getTregu().getAdresa()} , #{product.getTregu().getEmri()}"></h:outputText>
+			</p:column>
 			<p:column headerText="Celular" styleClass="table-columnName" 
 			filterBy="#{product.getUser().getCelular()}" filterMatchMode="contains">
 				<h:outputText value="#{product.getUser().getCelular()}"></h:outputText>

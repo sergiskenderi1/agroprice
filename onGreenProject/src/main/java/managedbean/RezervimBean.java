@@ -141,11 +141,11 @@ public class RezervimBean {
 	public void tregoRezervimeTeKrijuaraKlient(int idKlient) {
 		this.id = idKlient;
 		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(idKlient);
+		PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
 	}
 	
 	public void dergoRezervim(RezervimModel rezervim) {
 		if (rezervimService.dergoRezervim(rezervim)) {
-			System.out.println(rezervim.getMesazhi());
 			rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
 			FacesContextUtil.facesContext("Sukses!", "Rezervimi u dergua me sukses!");
 			PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
@@ -165,8 +165,8 @@ public class RezervimBean {
 		}
 	}
 	
-	public String shkoNePanelinERezervimeve() {
-		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
+	public String shkoNePanelinERezervimeve(int idKlient) {
+		PrimeFaces.current().ajax().update("formRezervim:tableRezervim");
 		return "rezervimePerTuNdryshuar.xhtml?faces-redirect=true";
 	}
 	
@@ -174,4 +174,7 @@ public class RezervimBean {
 		this.rezervimModel = rezervim;
 	}
 	
+	public void update() {
+		this.rezervime = rezervimService.tregoRezervimeTeKrijuaraKlient(id);
+	}
 }

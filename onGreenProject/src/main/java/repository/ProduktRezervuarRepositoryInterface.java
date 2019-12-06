@@ -1,6 +1,8 @@
 package repository;
 
 import java.util.List;
+
+import entity.ProduktNeTreg;
 import entity.ProduktRezervuar;
 
 public interface ProduktRezervuarRepositoryInterface{
@@ -15,4 +17,5 @@ public interface ProduktRezervuarRepositoryInterface{
 	
 	public boolean fshiProdukt(ProduktRezervuar produkt);
 	
+	public int tregoSasiRezervuar(ProduktNeTreg produkt);
 }

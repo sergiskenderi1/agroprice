@@ -95,4 +95,23 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 			return false;
 		}
     }
+    
+    @Override
+    public int tregoSasiRezervuar(ProduktNeTreg produkt) {
+    	try {
+			List<ProduktRezervuar> list = new ArrayList<>();
+			Query query = em.createQuery("Select p from ProduktRezervuar p where id_produktnetreg=:id and valid=:valid");
+			query.setParameter("id", produkt.getId());
+			query.setParameter("valid", Boolean.TRUE);
+			list = query.getResultList();
+			int sasia = 0;
+			for(ProduktRezervuar produktet : list){
+				if(produktet.getRezervim().getStatus().getEmri().equals("perfunduar"))
+				sasia += produktet.getSasia();
+			}
+			return sasia;
+		}catch (Exception e) {
+			return 0;
+		}
+    }
 }

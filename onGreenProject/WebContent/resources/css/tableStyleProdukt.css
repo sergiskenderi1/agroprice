@@ -67,6 +67,26 @@
 	cursor: pointer;
 }
 
+.newButton {
+	background: #008CBA !important;
+	margin-left: 25px !important;
+	color: white !important;
+	font-weight: normal !important;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+	cursor: pointer;
+}
+
+.newButton1{
+	background: #008CBA !important;
+	color: white !important;
+	font-weight: normal !important;
+	font-size: 13px !important;
+	font-family: Arial !important;
+	text-shadow: none !important;
+	cursor: pointer;
+}
 
 .ui-dialog .ui-dialog-titlebar-close {
 	background-color: #333333 !important;

@@ -1,6 +1,8 @@
 package managedbean;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +12,6 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
-
 import model.NjesiMateseModel;
 import model.ProduktModel;
 import service.ProduktService;
@@ -27,6 +28,8 @@ public class ProduktBean {
 	private List<ProduktModel> filteredProducts;
 	private String njesiMatese;
 	private List<NjesiMateseModel> njesiMateseList;
+	private String data;
+	private int muaji;
 	
 	@PostConstruct
 	public void init() {
@@ -35,8 +38,27 @@ public class ProduktBean {
 		productModels = new ArrayList<>();
 		productModels = productService.tregoProduktet();
 		njesiMateseList = productService.tregoNjesiMatese();
+		Date date = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+		data = (String) dateFormat.format(date);
 	}
-	
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public int getMuaji() {
+		return muaji;
+	}
+
+	public void setMuaji(int muaji) {
+		this.muaji = muaji;
+	}
+
 	public List<NjesiMateseModel> getNjesiMateseList() {
 		return njesiMateseList;
 	}
@@ -44,8 +66,6 @@ public class ProduktBean {
 	public void setNjesiMateseList(List<NjesiMateseModel> njesiMateseList) {
 		this.njesiMateseList = njesiMateseList;
 	}
-
-
 
 	public String getNjesiMatese() {
 		return njesiMatese;
@@ -145,6 +165,18 @@ public class ProduktBean {
 	}
 	
 	public float cmimiMesatar(ProduktModel produktModel) {
+		if(muaji == 0)
 		return productService.gjejCmiminMesatar(produktModel);
+		else {
+			return productService.gjejCmiminMesatarPerMuaj(produktModel,muaji);
+		}
+	}
+
+	public float cmimiMeiVogel(ProduktModel produktModel) {
+		return productService.gjejCmiminMeTeVogel(produktModel);
+	}
+	
+	public float cmimiMeiLarte(ProduktModel produktModel) {
+		return productService.gjejCmiminMeTeLarte(produktModel);
 	}
 }

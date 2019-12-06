@@ -56,11 +56,6 @@
 				<h:outputText value="#{rezervim.getShites().getCelular()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
-				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.cmimiTotal}"></h:outputText>
-			</p:column>
-
 			<p:column headerText="Data" filterBy="#{rezervim.data}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
 				<h:outputText value="#{rezervim.data}"></h:outputText>
@@ -78,7 +73,7 @@
 				<h:outputText value="#{rezervim.getStatus().getEmri()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Konfirmo nje Rezervim" style="width:130px;">
+			<p:column headerText="Konfirmo nje Rezervim" style="width:150px;">
 				<p:commandButton id="edit" value="Produktet" process="@this"
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"

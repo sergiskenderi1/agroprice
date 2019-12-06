@@ -28,7 +28,7 @@
 		<h:panelGrid columns="1" styleClass="headGrid">
 			<h:panelGroup>
 				<p:commandButton value="Shko Prapa"
-					action="#{rezervimBean.shkoNePanelinERezervimeve}"
+					action="#{rezervimBean.shkoNePanelinERezervimeve(userLoggedinBean.userModel.id)}"
 					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
 			</h:panelGroup>
 		</h:panelGrid>
@@ -45,18 +45,14 @@
 				<h:outputText value="#{produkt.sasia}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi per Sasine"
+			<p:column headerText="Cmimi"
 				styleClass="table-columnCmimi">
-				<h:outputText value="#{produkt.cmimi}"></h:outputText>
+				<h:outputText value="#{produktRezervuarBean.tregoCmiminEProduktit(produkt)}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Njesia Matese" styleClass="table-columnCmimi">
 				<h:outputText
 					value="#{produkt.getProduktNeTreg().getProdukt().getNjesiMatese().getEmri()}"></h:outputText>
-			</p:column>
-
-			<p:column headerText="Sasia ne Treg" styleClass="table-columnCmimi">
-				<h:outputText value="#{produkt.getProduktNeTreg().sasiaNeTreg}"></h:outputText>
 			</p:column>
 			
 			<p:column headerText="Pershkrimi" style="width:90px;">

@@ -56,16 +56,6 @@
 				<h:outputText value="#{rezervim.getShites().getCelular()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
-				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.cmimiTotal}"></h:outputText>
-			</p:column>
-
-			<p:column headerText="Data" filterBy="#{rezervim.data}"
-				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.data}"></h:outputText>
-			</p:column>
-
 			<p:column headerText="Mesazh" filterBy="#{rezervim.mesazhi}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
 				<h:outputText value="#{rezervim.mesazhi}"></h:outputText>
@@ -82,8 +72,9 @@
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"
 					styleClass="editButton" icon="fa fa-list-ol" />
-				<p:commandButton id="edit1" value="Ndrysho" update="formRezervim"
+				<p:commandButton id="edit1" value="Ndrysho" update="formRezervim:tableRezervim"
 					action="#{produktRezervuarBean.ndryshoRezervim(rezervim)}"
+					actionListener="#{rezervimBean.update}"
 					styleClass="editButton" icon="fa fa-edit" />
 			</p:column>
 		</p:dataTable>
@@ -93,6 +84,7 @@
 		width="700" height="300">
 		<ui:include src="shikoProdukteNeRezervim.xhtml" />
 		<p:ajax event="close" listener="#{rezervimBean.handleClose}" />
+		<p:ajax event="close" listener="#{produktRezervuarBean.handleClose}" />
 	</p:dialog>
 
 	<ui:insert name="footer">

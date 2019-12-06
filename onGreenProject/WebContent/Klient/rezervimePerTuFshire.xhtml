@@ -42,27 +42,18 @@
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
 				<h:outputText value="#{rezervim.getShites().getTregu().getAdresa()}"></h:outputText>
 			</p:column>
-			
+
 			<p:column headerText="Shites"
 				filterBy="#{rezervim.getShites().getEmri()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.getShites().getEmri()} #{rezervim.getShites().getMbiemri()}"></h:outputText>
+				<h:outputText
+					value="#{rezervim.getShites().getEmri()} #{rezervim.getShites().getMbiemri()}"></h:outputText>
 			</p:column>
-			
+
 			<p:column headerText="Nr.Cel"
 				filterBy="#{rezervim.getShites().getCelular()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
 				<h:outputText value="#{rezervim.getShites().getCelular()}"></h:outputText>
-			</p:column>
-
-			<p:column headerText="Cmimi Total" filterBy="#{rezervim.cmimiTotal}"
-				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.cmimiTotal}"></h:outputText>
-			</p:column>
-
-			<p:column headerText="Data" filterBy="#{rezervim.data}"
-				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
-				<h:outputText value="#{rezervim.data}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Mesazh" filterBy="#{rezervim.mesazhi}"
@@ -70,13 +61,18 @@
 				<h:outputText value="#{rezervim.mesazhi}"></h:outputText>
 			</p:column>
 
-            <p:column headerText="Gjendja" filterBy="#{rezervim.getStatus().getEmri()}"
+			<p:column headerText="Gjendja"
+				filterBy="#{rezervim.getStatus().getEmri()}"
 				filterMatchMode="contains" styleClass="table-RezervimPerfunduar">
 				<h:outputText value="#{rezervim.getStatus().getEmri()}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Fshi Rezervim"
-				styleClass="table-RezervimPerfunduar">
+				style="width:120px;">
+				<p:commandButton id="edit" value="Produktet" process="@this"
+					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
+					update=":entityDialog" oncomplete="PF('entityDialog').show()"
+					styleClass="editButton" icon="fa fa-list-ol" />
 				<p:commandButton styleClass="buttonDelete" value="Fshi"
 					update="growlMessage"
 					actionListener="#{rezervimBean.fshiRezervim(rezervim)}"
@@ -98,8 +94,8 @@
 		width="700" height="300">
 		<ui:include src="shikoProdukteNeRezervim.xhtml" />
 		<p:ajax event="close" listener="#{rezervimBean.handleClose}" />
+		<p:ajax event="close" listener="#{produktRezervuarBean.handleClose}" />
 	</p:dialog>
-
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

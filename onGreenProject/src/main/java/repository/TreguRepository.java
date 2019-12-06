@@ -127,4 +127,19 @@ public class TreguRepository implements TreguRepositoryInterface{
 		}
 	}
 	
+	@Override
+	public List<Tregu> tregoTregjeNgaCmimi(float cmimi) {
+		List<Tregu> tregjet = new ArrayList<Tregu>();
+		try {
+			TypedQuery<Tregu> treguQuery = 
+					em.createQuery("Select t from Tregu t where valid=:valid and cmimiShites=:cmimi", Tregu.class);
+			treguQuery.setParameter("valid", Boolean.TRUE);
+			treguQuery.setParameter("cmimiShites", cmimi);
+			tregjet = treguQuery.getResultList();
+			return tregjet;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }

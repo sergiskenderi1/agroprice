@@ -20,12 +20,26 @@
 	<p:growl id="growl" showDetail="true" life="2000" sticky="false" />
 	<h:form id="productform">
 	<br/>
-	  <h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
+	  <h:panelGrid columns="3" styleClass="headGrid">
 		<p:commandButton value="Shko Prapa"
 					action="informimPerTregunShites.xhtml?faces-redirect=true"
 					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
-		</h:panelGroup>
+		<p:selectOneMenu id="muaji" label="Muaji" value="#{produktBean.muaji}">
+				<f:selectItem itemValue="#{null}" itemLabel="#{produktBean.data}" />
+			    <f:selectItem itemValue="01" itemLabel="Janar" />
+			    <f:selectItem itemValue="2" itemLabel="Shkurt" />
+			    <f:selectItem itemValue="3" itemLabel="Mars" />
+			    <f:selectItem itemValue="4" itemLabel="Prill" />
+			    <f:selectItem itemValue="5" itemLabel="Maj" />
+			    <f:selectItem itemValue="6" itemLabel="Qershor" />
+			    <f:selectItem itemValue="7" itemLabel="Korrik" />
+			    <f:selectItem itemValue="8" itemLabel="Gusht" />
+			    <f:selectItem itemValue="9" itemLabel="Shtator" />
+			    <f:selectItem itemValue="10" itemLabel="Tetor" />
+			     <f:selectItem itemValue="11" itemLabel="Nentor" />
+			    <f:selectItem itemValue="12" itemLabel="Dhjetor" />
+			</p:selectOneMenu>
+			<p:commandButton value="Shfaq" styleClass="newButton1" update="productform:productsdatatable" icon="fa fa-check" />
 		</h:panelGrid>
 		<p:dataTable styleClass="tableStore" id="productsdatatable"
 			value="#{produktBean.productModels}" var="product" border="1" widgetVar="filterProduct" 
@@ -45,12 +59,14 @@
 			<p:column headerText="Cmimi Mesatar" styleClass="table-columnName" >
 				<h:outputText value="#{produktBean.cmimiMesatar(product)}"></h:outputText>
 			</p:column>
+			<p:column headerText="Cmimi me i vogel" styleClass="table-columnName" >
+				<h:outputText value="#{produktBean.cmimiMeiVogel(product)}"></h:outputText>
+			</p:column>
+			<p:column headerText="Cmimi me i larte" styleClass="table-columnName" >
+				<h:outputText value="#{produktBean.cmimiMeiLarte(product)}"></h:outputText>
+			</p:column>
 		</p:dataTable>
 	</h:form>
-	<br />
-	<br />
-	<br />
-	<br />
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

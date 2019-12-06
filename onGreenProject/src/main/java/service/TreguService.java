@@ -9,6 +9,8 @@ import entity.Tregu;
 import model.TreguModel;
 import repository.ProduktNeTregRepository;
 import repository.ProduktNeTregRepositoryInterface;
+import repository.ProduktRezervuarRepository;
+import repository.ProduktRezervuarRepositoryInterface;
 import repository.TreguRepository;
 import repository.TreguRepositoryInterface;
 
@@ -72,5 +74,22 @@ public class TreguService implements TreguServiceInterface {
 			sasiaTotale += produkt.getSasiaNeTreg();
 		}
 		return sasiaTotale;
+	}
+	
+	@Override
+	public String produktiMeIShitur(TreguModel treguModel) {
+		ProduktNeTregRepositoryInterface produktRepository = new ProduktNeTregRepository();
+		List<ProduktNeTreg> produkte = new ArrayList<>();
+		produkte = produktRepository.tregoProdukteNeTreg(treguModel.getId());
+		int sasia = 0 ;
+		String emri="";
+		ProduktRezervuarRepositoryInterface produktRezervuarRepository = new ProduktRezervuarRepository();
+		for(ProduktNeTreg produkt : produkte) {
+			if(sasia < produktRezervuarRepository.tregoSasiRezervuar(produkt)) {
+				sasia = produktRezervuarRepository.tregoSasiRezervuar(produkt);
+				emri  = produkt.getProdukt().getEmri();
+			}
+		}
+		return emri;
 	}
 }

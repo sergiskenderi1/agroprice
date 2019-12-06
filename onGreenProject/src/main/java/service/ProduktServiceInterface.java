@@ -22,4 +22,10 @@ public interface ProduktServiceInterface {
 	public int gjejSasiNeTregje(ProduktModel produktModel);
 	
 	public float gjejCmiminMesatar(ProduktModel produktModel);
+	
+	public float gjejCmiminMesatarPerMuaj(ProduktModel produktModel,int muaji);
+	
+	public float gjejCmiminMeTeVogel(ProduktModel produktModel);
+	
+	public float gjejCmiminMeTeLarte(ProduktModel produktModel);
 }

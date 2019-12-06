@@ -7,6 +7,8 @@ import entity.Tregu;
 public interface TreguRepositoryInterface {
 
 	public List<Tregu> tregoTregjet();
+	
+	public List<Tregu> tregoTregjeNgaCmimi(float cmimi);
 
 	public Tregu gjejTregNgaEmri(String emri);
 

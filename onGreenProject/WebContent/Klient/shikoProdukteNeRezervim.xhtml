@@ -17,6 +17,10 @@
 	<h:form id="formProdukt">
 		<br />
 		<br />
+		<h:panelGrid styleClass="headGrid" columns="2">
+		<h:outputLabel value="Cmimi Total : "/>
+		<h:outputLabel value="#{produktRezervuarBean.cmimiTotal}"/>
+		</h:panelGrid>
 		<p:dataTable id="tableProduktRezervim"
 			value="#{produktRezervuarBean.produkteRezervuar}" var="produkt" border="1"
 			scrollable="true" emptyMessage="Nuk u gjet asnje Produkt">

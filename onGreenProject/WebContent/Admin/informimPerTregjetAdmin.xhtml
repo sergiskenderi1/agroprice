@@ -16,46 +16,50 @@
 	<ui:insert name="header">
 		<ui:include src="/templates/headerAdmin.xhtml"></ui:include>
 	</ui:insert>
-    <p:growl id="growlMessage" showDetail="true" sticky="false" life="2000" />
+	<p:growl id="growlMessage" showDetail="true" sticky="false" life="2000" />
 	<h:form id="formStore">
 		<br />
 		<br />
 		<h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
-		<p:commandButton value="Shko Prapa"
+			<h:panelGroup>
+				<p:commandButton value="Shko Prapa"
 					action="informimPerTregunAdmin.xhtml?faces-redirect=true"
 					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
-		</h:panelGroup>
+			</h:panelGroup>
 		</h:panelGrid>
-		<br/>
+		<br />
 		<p:dataTable id="tableStore" styleClass="tableList"
-			value="#{tregBean.storeList}" var="store" border="1" 
-			widgetVar="filterStore" filteredValue="#{tregBean.filteredStores}" 
+			value="#{tregBean.storeList}" var="store" border="1"
+			widgetVar="filterStore" filteredValue="#{tregBean.filteredStores}"
 			emptyMessage="Nuk gjendet asnje treg .">
 
-			<p:column  headerText="ID" filterBy="#{store.id}" filterMatchMode="contains" 
-			styleClass="table-column1">
+			<p:column headerText="ID" filterBy="#{store.id}"
+				filterMatchMode="contains" styleClass="table-column1">
 				<h:outputText value="#{store.id}"></h:outputText>
 			</p:column>
 
-			<p:column  headerText="Emri" filterBy="#{store.emri}" filterMatchMode="contains" 
-			styleClass="table-column2">
+			<p:column headerText="Emri" filterBy="#{store.emri}"
+				filterMatchMode="contains" styleClass="table-column2">
 				<h:outputText value="#{store.emri}"></h:outputText>
 			</p:column>
 
-			<p:column  headerText="Adresa" filterBy="#{store.adresa}" 
-			filterMatchMode="contains" styleClass="table-column3">
+			<p:column headerText="Adresa" filterBy="#{store.adresa}"
+				filterMatchMode="contains" styleClass="table-column3">
 				<h:outputText value="#{store.adresa}"></h:outputText>
 			</p:column>
 
-			<p:column  headerText="Celular" filterBy="#{store.celular}" filterMatchMode="contains" 
-			styleClass="table-column4">
+			<p:column headerText="Celular" filterBy="#{store.celular}"
+				filterMatchMode="contains" styleClass="table-column4">
 				<h:outputText value="#{store.celular}"></h:outputText>
 			</p:column>
 
-			<p:column  headerText="Sasia Produkteve" 
-			styleClass="table-column4">
+			<p:column headerText="Sasia Produkteve" styleClass="table-column4">
 				<h:outputText value="#{tregBean.sasiaProdukteve(store)}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="Produkti me i shitur"
+				styleClass="table-column4">
+				<h:outputText value="#{tregBean.produktiMeIShitur(store)}"></h:outputText>
 			</p:column>
 
 		</p:dataTable>

@@ -26,12 +26,17 @@ public class ProduktRezervuarBean {
 	private ProduktRezervuarServiceInterface produktRezervuarService;
 	private List<ProduktRezervuarModel> produkteRezervuar;
 	private List<ProduktRezervuarModel> filteredProducts;
+	private float cmimiTotal;
 	
 	@PostConstruct
 	public void init() {
        produktRezervuarModel = new ProduktRezervuarModel();
        produktRezervuarService = new ProduktRezervuarService();
        produkteRezervuar = new ArrayList<>();
+	}
+
+	public float getCmimiTotal() {
+		return cmimiTotal;
 	}
 
 	public ProduktRezervuarModel getProduktRezervuarModel() {
@@ -72,6 +77,7 @@ public class ProduktRezervuarBean {
 	
 	public void handleClose() {
 		this.produktRezervuarModel = new ProduktRezervuarModel();
+		cmimiTotal = 0 ;
 	}
 	
 	public void rezervoProdukt(ProduktRezervuarModel produktRezervuar,int idKlient) {
@@ -108,7 +114,11 @@ public class ProduktRezervuarBean {
 	public void shiko(RezervimModel rezervim) {
 		this.produktRezervuarModel.setRezervim(RezervimConverter.convertToEntity(rezervim));
 		produkteRezervuar = produktRezervuarService.tregoProdukteNeRezervim(rezervim.getId());
+		for(ProduktRezervuarModel produkte : produkteRezervuar) {
+	   		cmimiTotal +=produkte.getCmimi();
+	     	}
 	}
+	
 	
 	public void shikoProdukt(ProduktRezervuarModel produkt) {
 		this.produktRezervuarModel = produkt;

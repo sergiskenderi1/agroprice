@@ -61,6 +61,15 @@
 				<br />
 				<h:outputText value="Ju urojme nje dite te kendshme..." styleClass="welcome1" />
 				<br />
+				<br />
+				<h:panelGrid columns="2">
+				<h:outputText value="Nese deshironi te informoheni rreth tregut : "></h:outputText>
+				<h:form>
+				<p:commandLink action="informimPerTregun.xhtml?faces-redirect=true">
+				<h:outputText styleClass="fa fa-question-circle" style="color:blue;"></h:outputText> 
+				</p:commandLink>
+				</h:form>
+				</h:panelGrid>
 				<h:graphicImage value="/resources/images/products.png"
 					styleClass="products" />
 				<br />

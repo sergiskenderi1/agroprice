@@ -91,13 +91,18 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 			Query quer = em.createQuery("Select s from Status s where emri=:emri");
 			que.setParameter("emri","derguar");
 			stat = (Status)que.getSingleResult();
+			Status statu = new Status();
+			Query qu = em.createQuery("Select s from Status s where emri=:emri");
+			qu.setParameter("emri","refuzuar");
+			statu = (Status)qu.getSingleResult();
 			
 			Query query = em.createQuery("Select r from Rezervim r where idclient=:idKlient and valid=:valid and "
-					+ " idstatus=:idstatus or idstatus=:id");
+					+ " idstatus=:idstatus or idstatus=:id or idstatus=:idstat");
 			query.setParameter("idKlient",idKlient);
 			query.setParameter("valid", Boolean.TRUE);
 			query.setParameter("idstatus", status.getId());
 			query.setParameter("id", stat.getId());
+			query.setParameter("idstat", statu.getId());
 			rezervime = query.getResultList();
 			return rezervime;
 		}catch (Exception e) {
@@ -149,7 +154,7 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 		try {
 			Status status = new Status();
 			Query que = em.createQuery("Select s from Status s where emri=:emri");
-			que.setParameter("emri","krijuar");
+			que.setParameter("emri","refuzuar");
 			status = (Status)que.getSingleResult();
 			tx.begin();
 			rezervim.setStatus(status);
@@ -288,4 +293,31 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 		}
 	}
 	
+	@Override
+	public List<Rezervim> gjejRezervimeNeMuaj(int muaji) {
+		String muaj="";
+		if(muaji < 10) muaj="0"+ muaji;
+		else muaj = Integer.toString(muaji);
+		List<Rezervim> rezervime = new ArrayList<>();
+		List<Rezervim> perTuKthyer = new ArrayList<>();
+		try {
+			Status status = new Status();
+			Query que = em.createQuery("Select s from Status s where emri=:emri");
+			que.setParameter("emri","krijuar");
+			status = (Status)que.getSingleResult();
+			
+			Query query = em.createQuery("Select r from Rezervim r where idstatus !=:idstatus");
+			query.setParameter("idstatus", status.getId());
+			rezervime = query.getResultList();
+			for(Rezervim rezervim : rezervime) {
+				if(rezervim.getData().substring(0,2).equals(muaj)) {
+					perTuKthyer.add(rezervim);
+				}
+			}
+		return perTuKthyer;
+		}catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
 }
