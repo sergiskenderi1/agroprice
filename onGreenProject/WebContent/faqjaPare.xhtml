@@ -10,16 +10,17 @@
 	<h:outputStylesheet library="css" name="faqjaPare.css" />
 </h:head>
 <h:body styleClass="fullContent">
-<h:form>
-<ui:insert name="header">
-		<ui:include src="/templates/headerFaqjaPare.xhtml"></ui:include>
-	</ui:insert>
-	<br></br>
-<p:graphicImage value="/resources/images/Agri3.jpg" styleClass="centerimg" 
-   style="width:900px;height:550px;" />
-   <br></br>
-   <h:panelGrid columns="2" styleClass="ourLooks">
-			<p:graphicImage value="/resources/images/AgriTechno.jpg" 
+	<h:form>
+		<ui:insert name="header">
+			<ui:include src="/templates/headerFaqjaPare.xhtml"></ui:include>
+		</ui:insert>
+		<br></br>
+		<br />
+		<p:graphicImage value="/resources/images/Agri3.jpg"
+			styleClass="centerimg" style="width:900px;height:550px;" />
+		<br></br>
+		<h:panelGrid columns="2" styleClass="ourLooks">
+			<p:graphicImage value="/resources/images/AgriTechno.jpg"
 				styleClass="imageOnPanel" />
 			<h:outputText
 				value="Ne sjellim teknologjinë &lt;br /&gt; 
@@ -27,31 +28,77 @@
 		 agrokulturës ne Shqipëri."
 				escape="false" styleClass="labelOnPanel"></h:outputText>
 		</h:panelGrid>
-	<br></br>
-	<br></br>
-	<h:panelGrid columns="2" style="width:100%;padding-left:180px;">
-    <p:chart type="line" model="#{chartView.animatedModel1}" style="width:400px;" />
-    <p:chart type="bar" model="#{chartView.animatedModel2}" style="width:400px;" />
-</h:panelGrid>
-	<br />
-	<p:chart type="bar" model="#{chartView.combinedModel}" style="height:300px" />
-	<br />
-	<br />
-	<h:panelGrid columns="2" columnClasses="left,right" style="width:70%;padding-left:280px;">
-        <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px">
-            <p:ajax event="itemSelect" listener="#{chartView.itemSelect}"/>
-        </p:chart>
-        <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px" />
-    </h:panelGrid>
-	 <br></br>
-	 <br></br>
-</h:form>
-<ui:insert name="footer">
+		<br />
+		<p:carousel value="#{produktBean.productModels}" circular="true"
+			autoPlayInterval="5000" headerText="Produktet Ne Tregje"
+			var="produkt" itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+				layout="grid" styleClass="ui-panelgrid-blank">
+				<h:outputText value="Emri:" />
+				<h:outputText value="#{produkt.emri}" />
+
+				<h:outputText value="Njesi Matese:" />
+				<h:outputText value="#{produkt.getNjesiMatese().emri}" />
+
+				<h:outputText value="Sasia ne Tregje:" />
+				<h:outputText value="#{produktBean.sasiaNeTregje(produkt)}" />
+
+				<h:outputText value="Cmimi Mesatar:" />
+				<h:outputText value="#{produktBean.cmimiMesatar(produkt)}" />
+			</p:panelGrid>
+
+		</p:carousel>
+		<br />
+		<br />
+		<h:panelGrid columns="1" styleClass="paneliKuriozitetit" cellpadding="10">
+		 <h:outputLabel styleClass="label">Kënaqësia e kureshtjes tonë, është një</h:outputLabel>
+		 <h:outputLabel styleClass="label">nga burimet më të mëdha të lumturisë në jetë.</h:outputLabel>
+		 <h:outputLabel styleClass="label1">Per me shume info :</h:outputLabel>
+		 <p:commandButton value="KURIOZITETE" styleClass="kuriozitete" actionListener="{firstPageBean.tregoKuriozitet}"
+		  onclick="PF('kuriozitet').show();"></p:commandButton>
+		</h:panelGrid>
+		<br></br>
+		<br></br>
+		<p:contentFlow value="#{firstPageBean.tregjet}" var="image"
+			style="width:90%;margin:0 auto;">
+			<p:graphicImage value="resources/images/#{image}"
+				styleClass="content" />
+			<div class="caption" style="color: green;">#{image}</div>
+		</p:contentFlow>
+		<br />
+		<br />
+		<p:carousel value="#{tregBean.storeList}" circular="true"
+			autoPlayInterval="5000" headerText="Tregjet"
+			var="store" itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="2" style="width:100%;margin:10px 0px;height:140px;"
+				layout="grid" styleClass="ui-panelgrid-blank">
+				<h:outputText value="Emri:" />
+				<h:outputText value="#{store.emri}" />
+      
+				<h:outputText value="Adresa:" />
+				<h:outputText value="#{store.adresa}" />
+
+				<h:outputText value="Celular:" />
+				<h:outputText value="#{store.celular}" />
+
+				<h:outputText value="Sasia Produkteve:" />
+				<h:outputText value="#{tregBean.sasiaProdukteve(store)}" />
+			</p:panelGrid>
+
+		</p:carousel>
+		<br />
+		<br />
+	</h:form>
+	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>
-<p:dialog header="Informacion" resizable="false"
-		styleClass="dialog" widgetVar="dlg1" showEffect="explode" height="500">
-		<p:graphicImage value="/resources/images/dialogImage.jpg"/>
+	<p:dialog header="Informacion" resizable="false" styleClass="dialog"
+		widgetVar="dlg1" showEffect="explode" height="500">
+		<p:graphicImage value="/resources/images/dialogImage.jpg" />
+	</p:dialog>
+	<p:dialog header="Kuriozitet" resizable="false" styleClass="dialog"
+		widgetVar="kuriozitet" showEffect="explode">
+		<p:graphicImage value="resources/images/#{firstPageBean.image}" />
 	</p:dialog>
 </h:body>
 </html>

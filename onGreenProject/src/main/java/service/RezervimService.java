@@ -3,6 +3,7 @@ package service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import converter.RezervimConverter;
@@ -119,5 +120,38 @@ public class RezervimService implements RezervimServiceInterface {
 			}
 		}
 		return rezervimRepository.fshiRezervim(RezervimConverter.convertToEntity(rezervim));
+	}
+
+	@Override
+	public List<Integer> statistikaRezervimeTotaleNeMuaj(int muaji, int viti) {
+		List<Rezervim> rezervime = new ArrayList<>();
+		List<Integer> rezervimeNeJave = new ArrayList<>();
+		int java1 = 0;
+		int java2 = 0;
+		int java3 = 0;
+		int java4 = 0;
+		try {
+			rezervime = rezervimRepository.gjejRezervimeNeMuaj(muaji);
+			for(Rezervim rezervim : rezervime) {
+				String[] data = rezervim.getData().split("/");
+				if(Integer.parseInt(data[2]) == viti) {
+					if(Integer.parseInt(data[1]) < 8)
+						java1++;
+					else if(Integer.parseInt(data[1]) < 15)
+						java2++;
+					else if(Integer.parseInt(data[1]) < 22)
+						java3++;
+					else 
+						java4++;
+				}
+			}
+			rezervimeNeJave.add(1, java1);
+			rezervimeNeJave.add(2, java2);
+			rezervimeNeJave.add(3, java3);
+			rezervimeNeJave.add(4, java4);
+			return rezervimeNeJave;
+		}catch (Exception e) {
+		return null;
+		}
 	}
 }

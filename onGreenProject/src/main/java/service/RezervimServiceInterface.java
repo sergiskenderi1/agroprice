@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import model.RezervimModel;
@@ -27,4 +28,6 @@ public interface RezervimServiceInterface {
 	public boolean dergoRezervim(RezervimModel rezervim);
 	
 	public boolean fshiRezervim(RezervimModel rezervim);
+	
+	public List<Integer> statistikaRezervimeTotaleNeMuaj(int muaji,int viti);
 }

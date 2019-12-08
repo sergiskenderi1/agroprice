@@ -1,6 +1,7 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -320,4 +321,5 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 			return null;
 		}
 	}
+
 }
