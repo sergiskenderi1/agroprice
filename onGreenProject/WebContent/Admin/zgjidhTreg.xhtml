@@ -13,6 +13,9 @@
 	<h:outputStylesheet library="css" name="chooseStore.css" />
 	<h:outputStylesheet library="css" name="headerAndFooter.css" />
 </h:head>
+<f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
+</f:metadata>
 <h:body styleClass="fullContent">
 	<ui:insert name="header">
 		<ui:include src="/templates/headerAdmin.xhtml"></ui:include>

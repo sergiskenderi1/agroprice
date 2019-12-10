@@ -14,6 +14,7 @@
 	<h:outputStylesheet library="css" name="tableStyleRezervime.css" />
 </h:head>
 <f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
 	<f:viewAction
 		action="#{rezervimBean.tregoRezervimeShites(userLoggedinBean.userModel.id)}" />
 </f:metadata>

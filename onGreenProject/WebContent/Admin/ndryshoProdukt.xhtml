@@ -13,6 +13,7 @@
 	<h:outputStylesheet library="css" name="tableStyleProdukt.css" />
 </h:head>
 <f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
 	<f:viewAction
 		action="#{produktBean.currentNjesiMatese}" />
 </f:metadata>

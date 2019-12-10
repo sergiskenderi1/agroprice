@@ -13,8 +13,11 @@
 	<h:outputStylesheet library="css" name="tableStyleShites.css" />
 </h:head>
 <f:metadata>
+	<f:event
+		listener="#{userResourceBean.validate(userLoggedinBean.userModel)}"
+		type="preRenderView"></f:event>
 	<f:viewParam name="id" value="#{tregBean.idTreg}" />
-	<f:event type="postValidate" listener="#{userResourceBean.redirect}" /> 
+	<f:event type="postValidate" listener="#{userResourceBean.redirect}" />
 	<f:viewAction
 		action="#{userResourceBean.tregoShitesit(tregBean.idTreg)}" />
 </f:metadata>
@@ -27,43 +30,51 @@
 		<br />
 		<br />
 		<h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
-		<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Shitesve</p:outputLabel>
-		<p:commandButton value="Krijo Shites" type="button"
+			<h:panelGroup>
+				<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Shitesve</p:outputLabel>
+				<p:commandButton value="Krijo Shites" type="button"
 					onclick="PF('dlgNew').show();" update=":newForm"
 					styleClass="newButton" icon="fa fa-user-plus"></p:commandButton>
-		</h:panelGroup>
+			</h:panelGroup>
 		</h:panelGrid>
-		<p:dataTable id="tableEmployee" value="#{userResourceBean.employeeList}" var="employee" border="1" 
-			widgetVar="filterEmployee" filteredValue="#{userResourceBean.filteredEmployees}" scrollable="true"
-			emptyMessage="Nuk u gjet asnje Shites">
-			
-			<p:column headerText="ID" filterBy="#{employee.id}" filterMatchMode="contains" styleClass="table-columnID">
+		<p:dataTable id="tableEmployee"
+			value="#{userResourceBean.employeeList}" var="employee" border="1"
+			widgetVar="filterEmployee"
+			filteredValue="#{userResourceBean.filteredEmployees}"
+			scrollable="true" emptyMessage="Nuk u gjet asnje Shites">
+
+			<p:column headerText="ID" filterBy="#{employee.id}"
+				filterMatchMode="contains" styleClass="table-columnID">
 				<h:outputText value="#{employee.id}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Emri" filterBy="#{employee.emri}" filterMatchMode="contains" styleClass="table-columnName">
+			<p:column headerText="Emri" filterBy="#{employee.emri}"
+				filterMatchMode="contains" styleClass="table-columnName">
 				<h:outputText value="#{employee.emri}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Mbiemri" filterBy="#{employee.mbiemri}" filterMatchMode="contains" 
-			styleClass="table-columnSurname">
+			<p:column headerText="Mbiemri" filterBy="#{employee.mbiemri}"
+				filterMatchMode="contains" styleClass="table-columnSurname">
 				<h:outputText value="#{employee.mbiemri}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Adresa" filterBy="#{employee.adresa}" filterMatchMode="contains"  styleClass="table-columnAddress">
+			<p:column headerText="Adresa" filterBy="#{employee.adresa}"
+				filterMatchMode="contains" styleClass="table-columnAddress">
 				<h:outputText value="#{employee.adresa}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Email" filterBy="#{employee.email}" filterMatchMode="contains" styleClass="table-columnMail">
+			<p:column headerText="Email" filterBy="#{employee.email}"
+				filterMatchMode="contains" styleClass="table-columnMail">
 				<h:outputText value="#{employee.email}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Celular" filterBy="#{employee.celular}" filterMatchMode="contains" styleClass="table-columnMobile">
+			<p:column headerText="Celular" filterBy="#{employee.celular}"
+				filterMatchMode="contains" styleClass="table-columnMobile">
 				<h:outputText value="#{employee.celular}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Username" filterBy="#{employee.username}" filterMatchMode="contains" styleClass="table-columnUser">
+			<p:column headerText="Username" filterBy="#{employee.username}"
+				filterMatchMode="contains" styleClass="table-columnUser">
 				<h:outputText value="#{employee.username}"></h:outputText>
 			</p:column>
 
@@ -72,8 +83,8 @@
 					actionListener="#{userResourceBean.edit(employee)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"
 					styleClass="editButton" icon="fa fa-pencil" />
-									
-					<p:commandButton styleClass="buttonDelete" value="Fshi"
+
+				<p:commandButton styleClass="buttonDelete" value="Fshi"
 					update="growlMessage"
 					actionListener="#{userResourceBean.fshiShites(employee)}"
 					icon="fa fa-trash">
@@ -92,11 +103,11 @@
 
 	</h:form>
 	<p:dialog id="newForm" widgetVar="dlgNew" width="380" height="480">
- 		<ui:include src="krijoShites.xhtml" />
+		<ui:include src="krijoShites.xhtml" />
 	</p:dialog>
 	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
 		width="380" height="480">
-		<ui:include src="ndryshoShites.xhtml" /> 
+		<ui:include src="ndryshoShites.xhtml" />
 		<p:ajax event="close" listener="#{userResourceBean.handleClose}" />
 	</p:dialog>
 

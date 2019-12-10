@@ -14,6 +14,10 @@
 	<h:outputStylesheet library="css" name="tableStyleRezervime.css" />
 </h:head>
 <f:metadata>
+	<f:event
+		listener="#{userResourceBean.validate(userLoggedinBean.userModel)}"
+		type="preRenderView"></f:event>
+
 	<f:viewAction
 		action="#{rezervimBean.tregoRezervimeTeKrijuaraKlient(userLoggedinBean.userModel.id)}" />
 </f:metadata>
@@ -67,8 +71,7 @@
 				<h:outputText value="#{rezervim.getStatus().getEmri()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Fshi Rezervim"
-				style="width:120px;">
+			<p:column headerText="Fshi Rezervim" style="width:120px;">
 				<p:commandButton id="edit" value="Produktet" process="@this"
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"

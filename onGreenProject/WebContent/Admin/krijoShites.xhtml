@@ -13,6 +13,9 @@
 	<h:outputStylesheet library="css" name="tableStyleShites.css" />
 </h:head>
 <f:metadata>
+	<f:event
+		listener="#{userResourceBean.validate(userLoggedinBean.userModel)}"
+		type="preRenderView"></f:event>
 	<f:viewParam name="id" value="#{tregBean.idTreg}" />
 	<f:viewAction
 		action="#{userResourceBean.tregoShitesit(tregBean.idTreg)}" />
@@ -29,7 +32,8 @@
 		<p:outputLabel styleClass="inputField" value="Emri"></p:outputLabel>
 		<br />
 		<p:inputText value="#{userResourceBean.userModel.emri}"
-			required="true" requiredMessage="Emri duhet plotesuar!" style="text-align:center;"
+			required="true" requiredMessage="Emri duhet plotesuar!"
+			style="text-align:center;"
 			validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
 			<f:validateLength minimum="3" maximum="45"></f:validateLength>
 			<f:validateRegex pattern="^[a-zA-Z]+$" />
@@ -39,8 +43,9 @@
 
 		<p:outputLabel styleClass="inputField" value="Mbiemri"></p:outputLabel>
 		<br />
-		<p:inputText value="#{userResourceBean.userModel.mbiemri}" style="text-align:center;"
-			required="true" requiredMessage="Mbiemri duhet plotesuar!"
+		<p:inputText value="#{userResourceBean.userModel.mbiemri}"
+			style="text-align:center;" required="true"
+			requiredMessage="Mbiemri duhet plotesuar!"
 			validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
 			<f:validateLength minimum="3" maximum="245"></f:validateLength>
 			<f:validateRegex pattern="^[a-zA-Z]+$" />
@@ -50,17 +55,19 @@
 
 		<p:outputLabel styleClass="inputField" value="Adresa"></p:outputLabel>
 		<br />
-		<p:inputText value="#{userResourceBean.userModel.adresa}" style="text-align:center;"
-			required="true" requiredMessage="Adresa duhet plotesuar!"
+		<p:inputText value="#{userResourceBean.userModel.adresa}"
+			style="text-align:center;" required="true"
+			requiredMessage="Adresa duhet plotesuar!"
 			validatorMessage="Adresa duhet te kete me pak se 45 karaktere.">
-			<f:validateLength  maximum="45"></f:validateLength>
+			<f:validateLength maximum="45"></f:validateLength>
 		</p:inputText>
 		<br />
 
 		<p:outputLabel styleClass="inputField" value="Email"></p:outputLabel>
 		<br />
-		<p:inputText value="#{userResourceBean.userModel.email}" style="text-align:center;"
-			required="true" requiredMessage="Email duhet plotesuar!"
+		<p:inputText value="#{userResourceBean.userModel.email}"
+			style="text-align:center;" required="true"
+			requiredMessage="Email duhet plotesuar!"
 			validatorMessage="Email nuk eshte i sakte.">
 			<f:validateRegex
 				pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
@@ -69,8 +76,9 @@
 
 		<p:outputLabel styleClass="inputField" value="Celular"></p:outputLabel>
 		<br />
-		<p:inputText value="#{userResourceBean.userModel.celular}" style="text-align:center;"
-			required="true" requiredMessage="Celulari duhet plotesuar!"
+		<p:inputText value="#{userResourceBean.userModel.celular}"
+			style="text-align:center;" required="true"
+			requiredMessage="Celulari duhet plotesuar!"
 			validatorMessage="Ju lutem shkruani nje numer te sakte (fillon me +355)">
 			<f:validateRegex pattern="^([+]355)(6)[7-9]{1}[0-9]{7}$" />
 		</p:inputText>
@@ -79,18 +87,20 @@
 		<p:outputLabel styleClass="inputField" value="Username"></p:outputLabel>
 		<br />
 		<p:inputText value="#{userResourceBean.userModel.username}"
-			required="true" requiredMessage="Username duhet plotesuar!" style="text-align:center;"
+			required="true" requiredMessage="Username duhet plotesuar!"
+			style="text-align:center;"
 			validatorMessage="Username duhet te kete me shume se 3 dhe me pak se 45 karaktere.">
-			<f:validateLength minimum="4" maximum="45"/>
+			<f:validateLength minimum="4" maximum="45" />
 		</p:inputText>
 		<br />
 
 		<p:outputLabel styleClass="inputField" value="Fjalekalimi"></p:outputLabel>
 		<br />
-		<p:password value="#{userResourceBean.userModel.fjalekalimi}" style="text-align:center;"
-			required="true" requiredMessage="Fjalekalimi duhet plotesuar!"
+		<p:password value="#{userResourceBean.userModel.fjalekalimi}"
+			style="text-align:center;" required="true"
+			requiredMessage="Fjalekalimi duhet plotesuar!"
 			validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere.">
-			<f:validateLength minimum="8" maximum="45"/>
+			<f:validateLength minimum="8" maximum="45" />
 		</p:password>
 		<br />
 		<br />
@@ -98,8 +108,7 @@
 
 		<p:commandButton
 			actionListener="#{userResourceBean.krijoShites(tregBean.idTreg)}"
-			value="Ruaj Shitesin" update=":newEmployeeForm"
-			></p:commandButton>
+			value="Ruaj Shitesin" update=":newEmployeeForm"></p:commandButton>
 		<br />
 
 

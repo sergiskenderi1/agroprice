@@ -9,11 +9,10 @@
 	<title>Administration pannel</title>
 	<h:outputStylesheet library="css" name="headerAndFooter.css" />
 	<h:outputStylesheet library="css" name="profilAdmin.css" />
-	<SCRIPT type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
-    </SCRIPT>
 </h:head>
+<f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
+</f:metadata>
 <h:body styleClass="fullContent">
 	<ui:insert name="header">
 		<ui:include src="/templates/headerAdmin.xhtml"></ui:include>

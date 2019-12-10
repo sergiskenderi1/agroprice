@@ -13,6 +13,7 @@
 	<h:outputStylesheet library="css" name="tableStyleProduktKlient.css" />
 </h:head>
 <f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
 	<f:viewParam name="id" value="#{tregBean.idTreg}" />
 	<f:viewAction
 		action="#{produktNeTregBean.tregoProdukteNeTreg(tregBean.idTreg)}" />

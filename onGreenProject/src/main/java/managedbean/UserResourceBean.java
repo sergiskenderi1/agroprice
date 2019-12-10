@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
@@ -97,6 +98,26 @@ public class UserResourceBean {
 
 	public UserServiceInterface getUserService() {
 		return userService;
+	}
+	
+	public void validate(UserModel userModel) throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+		if(userModel.getId() == null) {
+			context.getExternalContext().redirect("/OnGreen/logohu.xhtml");
+		}else {
+			HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			String url = request.getRequestURL().toString();
+			String [] output = url.split("/");
+			String role = userModel.getRole().getEmri();
+			role = role.substring(0,1).toUpperCase() + role.substring(1).toLowerCase();
+			if(!output[4].equals(role)) {
+				context.getExternalContext().redirect("/OnGreen/logohu.xhtml");
+			}
+		}
+		}catch (Exception e) {
+			context.getExternalContext().redirect("/OnGreen/logohu.xhtml");
+		}
 	}
 	
 	public void redirect() throws IOException {

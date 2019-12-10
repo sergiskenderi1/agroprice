@@ -13,6 +13,9 @@
 	<h:outputStylesheet library="css" name="tableStyleShitesProdukte.css" />
 </h:head>
 <f:metadata>
+	<f:event
+		listener="#{userResourceBean.validate(userLoggedinBean.userModel)}"
+		type="preRenderView"></f:event>
 	<f:viewAction
 		action="#{produktNeTregBean.tregoProdukteNgaShites(userLoggedinBean.userModel.id)}" />
 </f:metadata>
@@ -25,61 +28,68 @@
 		<br />
 		<br />
 		<h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
-		<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Produkteve</p:outputLabel>
-		<p:commandButton value="Shto Produkt"
+			<h:panelGroup>
+				<p:outputLabel style="font-size: 20px; color: #555555;">Paneli i Menaxhimit te Produkteve</p:outputLabel>
+				<p:commandButton value="Shto Produkt"
 					action="zgjidhProdukt.xhtml?faces-redirect=true"
 					styleClass="newButton" icon="fa fa-plus"></p:commandButton>
-		</h:panelGroup>
+			</h:panelGroup>
 		</h:panelGrid>
-		<p:dataTable id="tableProduktNeTregShites" value="#{produktNeTregBean.produkteNeTreg}" var="produkt" border="1" 
-			widgetVar="filterProdukt" filteredValue="#{produktNeTregBean.filteredProducts}" scrollable="true"
-			emptyMessage="Nuk u gjet asnje Produkt">
-			
-			<p:column headerText="Emri" filterBy="#{produkt.getProdukt().emri}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
+		<p:dataTable id="tableProduktNeTregShites"
+			value="#{produktNeTregBean.produkteNeTreg}" var="produkt" border="1"
+			widgetVar="filterProdukt"
+			filteredValue="#{produktNeTregBean.filteredProducts}"
+			scrollable="true" emptyMessage="Nuk u gjet asnje Produkt">
+
+			<p:column headerText="Emri" filterBy="#{produkt.getProdukt().emri}"
+				filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().emri}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi Minimal" filterBy="#{produkt.getProdukt().cmimiMin}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
+			<p:column headerText="Cmimi Minimal"
+				filterBy="#{produkt.getProdukt().cmimiMin}"
+				filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().cmimiMin}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi Maksimal" filterBy="#{produkt.getProdukt().cmimiMax}" 
-			filterMatchMode="contains"  styleClass="table-columnCmimi">
+			<p:column headerText="Cmimi Maksimal"
+				filterBy="#{produkt.getProdukt().cmimiMax}"
+				filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().cmimiMax}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Cmimi juaj" filterBy="#{produkt.cmimiShites}" filterMatchMode="contains" 
-			styleClass="table-columnCmimi">
+			<p:column headerText="Cmimi juaj" filterBy="#{produkt.cmimiShites}"
+				filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.cmimiShites}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Sasia juaj" filterBy="#{produkt.sasiaNeTreg}" filterMatchMode="contains" 
-			style="width:80px;">
+			<p:column headerText="Sasia juaj" filterBy="#{produkt.sasiaNeTreg}"
+				filterMatchMode="contains" style="width:80px;">
 				<h:outputText value="#{produkt.sasiaNeTreg}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Njesia Matese" filterBy="#{produkt.getProdukt().getNjesiMatese().emri}" 
-			filterMatchMode="contains" styleClass="table-columnCmimi">
+			<p:column headerText="Njesia Matese"
+				filterBy="#{produkt.getProdukt().getNjesiMatese().emri}"
+				filterMatchMode="contains" styleClass="table-columnCmimi">
 				<h:outputText value="#{produkt.getProdukt().getNjesiMatese().emri}"></h:outputText>
 			</p:column>
-			
+
 			<p:column headerText="Pershkrimi" style="width:80px;">
-				<p:commandLink update=":productDetail" oncomplete="PF('Dialog').show()" title="Pershkrim">
-                    <h:outputText styleClass="fa fa-search" style="margin:0 auto;"/>
-                    <f:setPropertyActionListener value="#{produkt}" target="#{produktNeTregBean.produktNeTregModel}" />
-                </p:commandLink>
+				<p:commandLink update=":productDetail"
+					oncomplete="PF('Dialog').show()" title="Pershkrim">
+					<h:outputText styleClass="fa fa-search" style="margin:0 auto;" />
+					<f:setPropertyActionListener value="#{produkt}"
+						target="#{produktNeTregBean.produktNeTregModel}" />
+				</p:commandLink>
 			</p:column>
-			
+
 			<p:column headerText="Menaxho Shites" styleClass="table-columnManage">
 				<p:commandButton id="edit" value="Ndrysho" process="@this"
 					actionListener="#{produktNeTregBean.edit(produkt)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"
 					styleClass="editButton" icon="fa fa-pencil" />
-									
-					<p:commandButton styleClass="buttonDelete" value="Fshi"
+
+				<p:commandButton styleClass="buttonDelete" value="Fshi"
 					update="growlMessage"
 					actionListener="#{produktNeTregBean.fshiProduktShites(produkt,userLoggedinBean.userModel.id)}"
 					icon="fa fa-trash">
@@ -98,16 +108,17 @@
 	</h:form>
 	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
 		width="300" height="490">
-		<ui:include src="ndryshoProduktNeTregShites.xhtml" /> 
+		<ui:include src="ndryshoProduktNeTregShites.xhtml" />
 		<p:ajax event="close" listener="#{produktNeTregBean.handleClose}" />
 	</p:dialog>
-      <p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog" width="400"
-      modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="productDetail" style="text-align:center;">
-                <h:inputTextarea style="width:250px;height:200px;" disabled="true" 
-                value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
-        </p:outputPanel>
-    </p:dialog>
+	<p:dialog header="Pershkrimi i Produktit" widgetVar="Dialog"
+		width="400" modal="true" showEffect="fade" hideEffect="fade"
+		resizable="false">
+		<p:outputPanel id="productDetail" style="text-align:center;">
+			<h:inputTextarea style="width:250px;height:200px;" disabled="true"
+				value="#{produktNeTregBean.produktNeTregModel.pershkrimi}" />
+		</p:outputPanel>
+	</p:dialog>
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

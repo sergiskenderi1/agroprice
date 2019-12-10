@@ -9,6 +9,9 @@
 	<title>Faqja e Pare - AgroPrice</title>
 	<h:outputStylesheet library="css" name="faqjaPare.css" />
 </h:head>
+ <f:metadata>
+  <f:event listener="#{userLoggedinBean.control}" type="preRenderView"></f:event>
+</f:metadata>
 <h:body styleClass="fullContent">
 	<h:form>
 		<ui:insert name="header">
@@ -97,8 +100,8 @@
 		<p:graphicImage value="/resources/images/dialogImage.jpg" />
 	</p:dialog>
 	<p:dialog header="Kuriozitet" resizable="false" styleClass="dialog"
-		widgetVar="kuriozitet" showEffect="explode">
-		<p:graphicImage value="resources/images/#{firstPageBean.image}" />
+		widgetVar="kuriozitet" showEffect="explode" >
+		<p:graphicImage value="resources/images/#{firstPageBean.image}"/>
 	</p:dialog>
 </h:body>
 </html>

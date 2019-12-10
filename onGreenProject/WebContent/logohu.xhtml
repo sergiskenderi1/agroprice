@@ -15,6 +15,9 @@
 	}
         </style>  
    </h:head>
+   <f:metadata>
+  <f:event listener="#{userLoggedinBean.control}" type="preRenderView"></f:event>
+</f:metadata>
    <h:body styleClass="Bimage">
   <h:form styleClass="center" id="loginForm">
         <p:growl id="growl" sticky="false" time="3000"/>

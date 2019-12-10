@@ -20,6 +20,7 @@
         </style>  
 </h:head>
 <f:metadata>
+  <f:event listener="#{userResourceBean.validate(userLoggedinBean.userModel)}" type="preRenderView"></f:event>
 	<f:viewParam name="idClient" value="#{userLoggedinBean.userModel.id}" />
 </f:metadata>
 <h:body styleClass="Bimage">

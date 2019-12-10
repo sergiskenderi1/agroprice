@@ -13,8 +13,10 @@
 	<h:outputStylesheet library="css" name="tableStyleShites.css" />
 </h:head>
 <f:metadata>
-	<f:viewAction
-		action="#{userResourceBean.tregoTeGjitheShitesit}" />
+	<f:event
+		listener="#{userResourceBean.validate(userLoggedinBean.userModel)}"
+		type="preRenderView"></f:event>
+	<f:viewAction action="#{userResourceBean.tregoTeGjitheShitesit}" />
 </f:metadata>
 <h:body styleClass="content">
 	<ui:insert name="header">
@@ -25,42 +27,50 @@
 		<br />
 		<br />
 		<h:panelGrid columns="1" styleClass="headGrid">
-		<h:panelGroup>
-		<p:commandButton value="Shko Prapa"
+			<h:panelGroup>
+				<p:commandButton value="Shko Prapa"
 					action="informimPerTregunShites.xhtml?faces-redirect=true"
 					styleClass="newButton" icon="fa fa-hand-o-left"></p:commandButton>
-		</h:panelGroup>
+			</h:panelGroup>
 		</h:panelGrid>
-		<p:dataTable id="tableEmployee" value="#{userResourceBean.employeeList}" var="employee" border="1" 
-			widgetVar="filterEmployee" filteredValue="#{userResourceBean.filteredEmployees}" scrollable="true"
-			emptyMessage="Nuk u gjet asnje Shites">
+		<p:dataTable id="tableEmployee"
+			value="#{userResourceBean.employeeList}" var="employee" border="1"
+			widgetVar="filterEmployee"
+			filteredValue="#{userResourceBean.filteredEmployees}"
+			scrollable="true" emptyMessage="Nuk u gjet asnje Shites">
 
-			<p:column headerText="Emri" filterBy="#{employee.emri}" filterMatchMode="contains" styleClass="table-columnMobile">
+			<p:column headerText="Emri" filterBy="#{employee.emri}"
+				filterMatchMode="contains" styleClass="table-columnMobile">
 				<h:outputText value="#{employee.emri}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Mbiemri" filterBy="#{employee.mbiemri}" filterMatchMode="contains" 
-			styleClass="table-columnMobile">
+			<p:column headerText="Mbiemri" filterBy="#{employee.mbiemri}"
+				filterMatchMode="contains" styleClass="table-columnMobile">
 				<h:outputText value="#{employee.mbiemri}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Tregu" filterBy="#{employee.getTregu().getAdresa()}" 
-			filterMatchMode="contains"  styleClass="table-columnAddress">
+			<p:column headerText="Tregu"
+				filterBy="#{employee.getTregu().getAdresa()}"
+				filterMatchMode="contains" styleClass="table-columnAddress">
 				<h:outputText value="#{employee.getTregu().getAdresa()}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Email" filterBy="#{employee.email}" filterMatchMode="contains" styleClass="table-columnMail">
+			<p:column headerText="Email" filterBy="#{employee.email}"
+				filterMatchMode="contains" styleClass="table-columnMail">
 				<h:outputText value="#{employee.email}"></h:outputText>
 			</p:column>
 
-			<p:column headerText="Celular" filterBy="#{employee.celular}" filterMatchMode="contains" styleClass="table-columnMobile">
+			<p:column headerText="Celular" filterBy="#{employee.celular}"
+				filterMatchMode="contains" styleClass="table-columnMobile">
 				<h:outputText value="#{employee.celular}"></h:outputText>
 			</p:column>
 
-            <p:column headerText="Sasi Totale Produktesh" styleClass="table-columnMobile">
-				<h:outputText value="#{userResourceBean.gjejSasiPerShites(employee)}"></h:outputText>
+			<p:column headerText="Sasi Totale Produktesh"
+				styleClass="table-columnMobile">
+				<h:outputText
+					value="#{userResourceBean.gjejSasiPerShites(employee)}"></h:outputText>
 			</p:column>
-			
+
 		</p:dataTable>
 
 	</h:form>
