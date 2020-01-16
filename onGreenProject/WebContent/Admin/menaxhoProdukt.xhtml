@@ -74,6 +74,8 @@
 				</p:confirmDialog>
 			</p:column>
 		</p:dataTable>
+		<br />
+		<br />
 	</h:form>
 	<p:dialog widgetVar="dlgNew" modal="true" width="350" height="450">
  		<ui:include src="krijoProdukt.xhtml" />
@@ -83,10 +85,6 @@
 		<ui:include src="ndryshoProdukt.xhtml" />
 		<p:ajax event="close" listener="#{produktBean.handleClose}" />
 	</p:dialog>
-	<br />
-	<br />
-	<br />
-	<br />
 	<ui:insert name="footer">
 		<ui:include src="/templates/footer.xhtml"></ui:include>
 	</ui:insert>

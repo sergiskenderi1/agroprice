@@ -69,7 +69,7 @@
 			</p:column>
 
 			<p:column headerText="Shiko Produktet"
-				style="width:125px;">
+				style="width:155px;">
 				<p:commandButton id="edit" value="Shiko" process="@this"
 					actionListener="#{produktRezervuarBean.shiko(rezervim)}"
 					update=":entityDialog" oncomplete="PF('entityDialog').show()"
@@ -100,7 +100,8 @@
 				</p:confirmDialog>
 			</p:column>
 		</p:dataTable>
-
+      <br />
+      <br />
 	</h:form>
 	<p:dialog id="entityDialog" widgetVar="entityDialog" modal="true"
 		width="700" height="500">

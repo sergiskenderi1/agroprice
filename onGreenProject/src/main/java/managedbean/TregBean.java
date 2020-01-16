@@ -130,7 +130,7 @@ public class TregBean {
 			PrimeFaces.current().ajax().update("formStore:tableStore");
 			
 		} else {
-			FacesContextUtil.facesContext("Tregu nuk mund te fshihet!", "Ndodhen shites dhe produkte brenda ketij tregu!");
+			FacesContextUtil.facesContext("Tregu nuk mund te fshihet!", "Ndodhen rezervime aktive ne treg!");
 
 		}
 	}

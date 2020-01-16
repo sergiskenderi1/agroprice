@@ -29,5 +29,4 @@ public interface RezervimServiceInterface {
 	
 	public boolean fshiRezervim(RezervimModel rezervim);
 	
-	public List<Integer> statistikaRezervimeTotaleNeMuaj(int muaji,int viti);
 }

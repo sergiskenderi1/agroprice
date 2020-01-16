@@ -31,8 +31,8 @@
 			<p:inputText value="#{userResourceBean.userModel.emri}" required="true"
 				id="firstname" label="Emri" placeholder="Emri"
 				requiredMessage="Emri duhet plotesuar !"
-				validatorMessage="Emri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
-				<f:validateLength minimum="3" maximum="45" />
+				validatorMessage="Emri duhet te kete me shume se nje dhe me pak se 45 karaktere.">
+				<f:validateLength minimum="2" maximum="45" />
 				<f:validateRegex pattern="^[a-zA-Z]+$" />
 			</p:inputText>
 			<p:message for="firstname" display="icon" />
@@ -40,8 +40,8 @@
 			<p:inputText id="lastname" value="#{userResourceBean.userModel.mbiemri}"
 				placeholder="Mbiemri" required="true" label="Mbiemri"
 				requiredMessage="Mbiemri duhet plotesuar !"
-				validatorMessage="Mbiemri duhet te kete me shume se dy dhe me pak se 45 karaktere.">
-				<f:validateLength minimum="3" maximum="45" />
+				validatorMessage="Mbiemri duhet te kete me shume se nje dhe me pak se 45 karaktere.">
+				<f:validateLength minimum="2" maximum="45" />
 				<f:validateRegex pattern="^[a-zA-Z]+$" />
 			</p:inputText>
 			<p:message for="lastname" display="icon" />

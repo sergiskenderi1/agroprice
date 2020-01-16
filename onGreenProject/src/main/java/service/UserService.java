@@ -9,6 +9,8 @@ import entity.User;
 import model.UserModel;
 import repository.ProduktNeTregRepository;
 import repository.ProduktNeTregRepositoryInterface;
+import repository.RezervimRepository;
+import repository.RezervimRepositoryInterface;
 import repository.UserRepository;
 import repository.UserRepositoryInterface;
 
@@ -56,7 +58,8 @@ public class UserService implements UserServiceInterface {
 	
 	@Override
 	public boolean ndryshoUser(UserModel userModel) {
-		if (!userRepository.verifyUsernameToEdit(userModel.getUsername(),userModel.getId())) {
+		if (!userRepository.verifyUsernameToEdit(userModel.getUsername(),userModel.getId()) &&
+				!userRepository.verifyEmailToEdit(userModel.getEmail(),userModel.getId())) {
 			return userRepository.editUser(UserConverter.convertToUser(userModel));
 		} else
 			return false;
@@ -64,7 +67,9 @@ public class UserService implements UserServiceInterface {
 	
 	@Override
 	public boolean fshiUser(UserModel userModel) {
-		if (!userRepository.verifikoShitesNgaRezervimet(userModel.getId())) {
+		RezervimRepositoryInterface rezervimRepository = new RezervimRepository();
+		if (rezervimRepository.tregoRezervimeShites(userModel.getId()).size() == 0 && 
+				rezervimRepository.tregoRezervimeNePritjeShites(userModel.getId()).size() == 0) {
 			return userRepository.fshiUser(UserConverter.convertToUser(userModel));
 		} else
 			return false;

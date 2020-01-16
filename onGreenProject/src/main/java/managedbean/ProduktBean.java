@@ -149,13 +149,13 @@ public class ProduktBean {
 	}
 	
 	public void fshiProdukt(ProduktModel produktModel) {
-		if (productService.verifikoProduktPerTeFshire(produktModel)) {
-			productService.fshiProdukt(produktModel);
+		if (productService.fshiProdukt(produktModel)) {
 			productModels = productService.tregoProduktet();
 			FacesContextUtil.facesContext("Sukses!", "Produkti u fshi me sukses!");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
 		} else {
-			FacesContextUtil.facesContext("Error!", "Produkti nuk mund te fshihet sepse ka gjendje ne tregje!");
+			FacesContextUtil.facesContext("Error!", "Produkti nuk mund te fshihet sepse ka rezervime aktive per kete "
+					+ " produkt !");
 			PrimeFaces.current().ajax().update("productform:productsdatatable");
 		}
 	}
@@ -168,7 +168,10 @@ public class ProduktBean {
 		if(muaji == 0)
 		return productService.gjejCmiminMesatar(produktModel);
 		else {
-			return productService.gjejCmiminMesatarPerMuaj(produktModel,muaji);
+			if(muaji < Integer.parseInt(data.substring(0,2)))
+			return productService.gjejCmiminMesatarPerMuaj(produktModel,muaji,Integer.parseInt(data.substring(6)));
+			else
+				return productService.gjejCmiminMesatarPerMuaj(produktModel,muaji,Integer.parseInt(data.substring(6))-1);	
 		}
 	}
 

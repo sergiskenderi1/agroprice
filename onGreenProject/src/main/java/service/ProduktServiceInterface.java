@@ -13,8 +13,6 @@ public interface ProduktServiceInterface {
 	
 	public boolean ndryshoProdukt(ProduktModel produktModel,String njesiMatese);
 	
-	public boolean verifikoProduktPerTeFshire(ProduktModel produktModel);
-	
 	public boolean fshiProdukt(ProduktModel produktModel);
 	
 	public List<NjesiMateseModel> tregoNjesiMatese();
@@ -23,7 +21,7 @@ public interface ProduktServiceInterface {
 	
 	public float gjejCmiminMesatar(ProduktModel produktModel);
 	
-	public float gjejCmiminMesatarPerMuaj(ProduktModel produktModel,int muaji);
+	public float gjejCmiminMesatarPerMuaj(ProduktModel produktModel,int muaji,int viti);
 	
 	public float gjejCmiminMeTeVogel(ProduktModel produktModel);
 	

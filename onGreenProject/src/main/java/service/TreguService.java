@@ -11,6 +11,8 @@ import repository.ProduktNeTregRepository;
 import repository.ProduktNeTregRepositoryInterface;
 import repository.ProduktRezervuarRepository;
 import repository.ProduktRezervuarRepositoryInterface;
+import repository.RezervimRepository;
+import repository.RezervimRepositoryInterface;
 import repository.TreguRepository;
 import repository.TreguRepositoryInterface;
 
@@ -44,7 +46,8 @@ public class TreguService implements TreguServiceInterface {
 	
 	@Override
 	public boolean fshiTreg(TreguModel tregModel) {
-		if(treguRepository.verifikoTreg(TreguConverter.convertToEntity(tregModel))) {
+		RezervimRepositoryInterface rezervimRepository = new RezervimRepository();
+		if(rezervimRepository.rezervimeAktiveNeTreg(tregModel.getId()).size() == 0) {
 			return treguRepository.fshiTreg(TreguConverter.convertToEntity(tregModel));
 		}else
 		return false;

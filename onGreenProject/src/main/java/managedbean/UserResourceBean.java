@@ -150,7 +150,7 @@ public class UserResourceBean {
 			userModel = new UserModel();
 			PrimeFaces.current().executeScript("PF('entityDialog').hide();");
 		} else {
-			FacesContextUtil.facesContext("Error!", "Shitesi me kete username eshte ekzistues!");
+			FacesContextUtil.facesContext("Error!", "Shitesi me kete username ose email eshte ekzistues!");
 		}
 	}
 	
@@ -160,7 +160,7 @@ public class UserResourceBean {
 			PrimeFaces.current().ajax().update("formNew");
 			userModel = new UserModel();
 		} else {
-			FacesContextUtil.facesContext("Error!", "Profili me kete username eshte ekzistues!");
+			FacesContextUtil.facesContext("Error!", "Profili me kete username ose email eshte ekzistues!");
 		}
 	}
 	

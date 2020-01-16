@@ -35,5 +35,7 @@ public interface RezervimRepositoryInterface {
 	
 	public boolean fshiRezervim(Rezervim rezervim);
 	
-	public List<Rezervim> gjejRezervimeNeMuaj(int muaji);
+	public List<Rezervim> gjejRezervimeNeMuaj(int muaji,int viti);
+	
+	public List<Rezervim> rezervimeAktiveNeTreg(int idTregu);
 }

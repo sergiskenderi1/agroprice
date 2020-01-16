@@ -17,6 +17,8 @@ public interface UserRepositoryInterface {
 	public boolean verifyUsername(String username);
 	
 	public boolean verifyUsernameToEdit(String username,int id);
+	
+	public boolean verifyEmailToEdit(String email,int id);
 
 	public boolean verifyEmail(String email);
 	
@@ -30,5 +32,4 @@ public interface UserRepositoryInterface {
 	
 	public boolean fshiUser(User user);
 	
-	public boolean verifikoShitesNgaRezervimet(int idUser);
 }

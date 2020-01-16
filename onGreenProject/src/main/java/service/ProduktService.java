@@ -58,18 +58,9 @@ public class ProduktService implements ProduktServiceInterface{
 	}
 	
 	@Override
-	public boolean verifikoProduktPerTeFshire(ProduktModel produktModel) {
-        ProduktNeTregRepositoryInterface produktRepository = new ProduktNeTregRepository();
-        if(produktRepository.gjejProduktNeTregNgaId(produktModel.getId()).isEmpty()) {
-        	return true;
-        }
-		return false;
-	}
-	
-	@Override
 	public boolean fshiProdukt(ProduktModel produktModel) {
-		ProduktNeTregRepositoryInterface produktNeTregRepository = new ProduktNeTregRepository();
-		if(produktNeTregRepository.gjejProduktNeTregNgaId(produktModel.getId()).isEmpty()) {
+		ProduktRezervuarRepositoryInterface produktRezervuar = new ProduktRezervuarRepository();
+        if(!produktRezervuar.verifikoProduktPerRezervime(produktModel.getId())) {
 		return productRepository.fshiProdukt(ProduktConverter.convertToProduktEntity(produktModel));
 		}else {
 			return false;
@@ -112,14 +103,14 @@ public class ProduktService implements ProduktServiceInterface{
 	}
 	
 	@Override
-	public float gjejCmiminMesatarPerMuaj(ProduktModel produktModel, int muaji) {
+	public float gjejCmiminMesatarPerMuaj(ProduktModel produktModel, int muaji,int viti) {
 		float cmimiTotal=0;
 		int i=0;
 		try {
 		RezervimRepositoryInterface rezervimRepository = new RezervimRepository();
 		ProduktRezervuarRepositoryInterface produktRezervuarRepository = new ProduktRezervuarRepository();
 		List<Rezervim> rezervime = new ArrayList<>();
-		rezervime = rezervimRepository.gjejRezervimeNeMuaj(muaji);
+		rezervime = rezervimRepository.gjejRezervimeNeMuaj(muaji,viti);
 		List<ProduktRezervuar> produkteTeRezervuara = new ArrayList<>();
 		for(Rezervim rezervim : rezervime) {
 			produkteTeRezervuara = produktRezervuarRepository.tregoProdukteNeRezervim(rezervim.getIdrezervim());

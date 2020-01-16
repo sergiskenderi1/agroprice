@@ -114,6 +114,21 @@ public class UserRepository implements UserRepositoryInterface {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean verifyEmailToEdit(String email, int id) {
+		try {
+			Query query = em.createQuery("Select u from User u where u.email=:email");
+			query.setParameter("email", email);
+			User user = (User) query.getSingleResult();
+			if(user.getIduseri() == id)
+				return false;
+			
+			return true;
+		} catch (NoResultException ex) {
+			return false;
+		}
+	}
 
 	@Override
 	public List<User> tregoShitesit(int idTregu) {
@@ -200,23 +215,6 @@ public class UserRepository implements UserRepositoryInterface {
 			tx.commit();
 			return true;
 
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean verifikoShitesNgaRezervimet(int idUser) {
-		try {
-			List<Rezervim> rezervime = new ArrayList<>();
-			Query query = em.createQuery("Select r from Rezervim r where idShites=:idUser and valid=:valid");
-			query.setParameter("idUser", idUser);
-			query.setParameter("valid", Boolean.TRUE);
-			rezervime = query.getResultList();
-			if (rezervime.isEmpty())
-				return false;
-
-			return true;
 		} catch (Exception e) {
 			return false;
 		}

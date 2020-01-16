@@ -30,8 +30,8 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 			}
 			else {
 				for(ProduktRezervuar produkte : produkteTeRezervuara) {
-					if(!produkte.getRezervim().isValid() || (produkte.getRezervim().getStatus().getEmri().equals("derguar")
-							 && produkte.getRezervim().getStatus().getEmri().equals("pranuar"))){
+					if(!produkte.getRezervim().isValid() && ( (produkte.getRezervim().getStatus().getEmri().equals("derguar")
+							 || produkte.getRezervim().getStatus().getEmri().equals("pranuar")) ) ){
 						return true;
 					}
 				}
@@ -106,7 +106,8 @@ public class ProduktRezervuarRepository implements ProduktRezervuarRepositoryInt
 			list = query.getResultList();
 			int sasia = 0;
 			for(ProduktRezervuar produktet : list){
-				if(produktet.getRezervim().getStatus().getEmri().equals("perfunduar"))
+				if(produktet.getRezervim().getStatus().getEmri().equals("perfunduar") ||
+						produktet.getRezervim().getStatus().getEmri().equals("pranuar"))
 				sasia += produktet.getSasia();
 			}
 			return sasia;

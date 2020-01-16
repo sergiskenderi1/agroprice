@@ -234,6 +234,39 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 		}
 	}
 	
+	public List<Rezervim> rezervimeAktiveNeTreg(int idTregu)
+	{
+		try {
+		Status status = new Status();
+		Query que = em.createQuery("Select s from Status s where emri=:emri");
+		que.setParameter("emri","derguar");
+		status = (Status)que.getSingleResult();
+		Status status1 = new Status();
+		Query que1 = em.createQuery("Select s from Status s where emri=:emri");
+		que1.setParameter("emri","pranuar");
+		status1 = (Status)que1.getSingleResult();
+	    
+		List<Rezervim> rezervime = new ArrayList<>();
+		List<Rezervim> rezervimeNeTreg = new ArrayList<>();
+		Query query = em.createQuery("Select r from Rezervim r where valid=:valid and "
+				+ " idstatus=:idstatus or idstatus=:id");
+		query.setParameter("valid", Boolean.TRUE);
+		query.setParameter("idstatus", status.getId());
+		query.setParameter("id", status1.getId());
+		rezervime = query.getResultList();
+		for(Rezervim rez : rezervime)
+		{
+			if(rez.getShites().getTregu().getIdtregu() == idTregu) {
+				rezervimeNeTreg.add(rez);
+			}
+		}
+		
+		return rezervimeNeTreg;
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
 	@Override
 	public boolean ndryshoRezervim(Rezervim rezervim) {
 		try {
@@ -295,7 +328,7 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 	}
 	
 	@Override
-	public List<Rezervim> gjejRezervimeNeMuaj(int muaji) {
+	public List<Rezervim> gjejRezervimeNeMuaj(int muaji,int viti) {
 		String muaj="";
 		if(muaji < 10) muaj="0"+ muaji;
 		else muaj = Integer.toString(muaji);
@@ -311,7 +344,8 @@ public class RezervimRepository implements RezervimRepositoryInterface{
 			query.setParameter("idstatus", status.getId());
 			rezervime = query.getResultList();
 			for(Rezervim rezervim : rezervime) {
-				if(rezervim.getData().substring(0,2).equals(muaj)) {
+				if(rezervim.getData().substring(0,2).equals(muaj) && 
+						Integer.parseInt(rezervim.getData().substring(6))== viti) {
 					perTuKthyer.add(rezervim);
 				}
 			}

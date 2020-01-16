@@ -99,11 +99,11 @@
 
 				<p:outputLabel styleClass="inputField" value="Fjalekalimi"></p:outputLabel>
 				<br />
-				<p:password value="#{userLoggedinBean.userModel.fjalekalimi}" style="text-align:center;"
+				<p:inputText value="#{userLoggedinBean.userModel.fjalekalimi}" style="text-align:center;"
 					required="true" requiredMessage="Fjalekalimi duhet plotesuar!" feedback="true"
 					validatorMessage="Fjalekalimi duhet te kete me shume se 7 dhe me pak se 45 karaktere.">
 					<f:validateLength minimum="8" />
-				</p:password>
+				</p:inputText>
 				<br />
 				<br />
 				<p:commandButton id="edit" update="editForm" styleClass="ruajNdryshime"
